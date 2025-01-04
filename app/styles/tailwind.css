@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "FriedelPro", "sans-serif";
+  --font-serif: "CatalogueLL", "sans-serif";
+
+  --color-*: initial;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-orange: #e15736;
+  --color-stone-100: #f5f6f2;
+  --color-stone-200: #eae9e5;
+  --color-stone-300: #d5d5d5;
+  --color-neutral-200: #e0e0de;
+  --color-neutral-300: #cdcfd3;
+  --color-neutral-400: #bcbaba;
+  --color-neutral-700: #393939;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-stone-300, currentColor);
+  }
+}
+
+html,
+body {
+  @apply bg-stone-100 antialiased;
+}
+
+@font-face {
+  font-family: "CatalogueLL";
+  src: url("./fonts/CatalogueLL-Light.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FriedelPro";
+  src: url("./fonts/FriedelPro-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
