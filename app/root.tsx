@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-import favicon from "../public/favicon.svg";
+import favicon from "~/assets/favicon.svg";
 import "./styles/tailwind.css";
 
 export const links: LinksFunction = () => [
