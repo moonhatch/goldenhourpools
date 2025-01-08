@@ -8,6 +8,7 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 import favicon from "~/assets/favicon.svg";
 import "./styles/tailwind.css";
+import PageLayout from "~/components/layout";
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/svg+xml", href: favicon },
@@ -23,7 +24,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <PageLayout>{children}</PageLayout>
         <ScrollRestoration />
         <Scripts />
       </body>

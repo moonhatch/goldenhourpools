@@ -28,6 +28,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  return <div>Main</div>;
   return (
     <div className="flex flex-col gap-4 m-4">
       <Sun className="h-16 w-16 text-orange" />
