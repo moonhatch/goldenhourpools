@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 // import { Sun } from "~/icons";
-// import { Button } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 // import { AspectRatio } from "@/components/ui/aspect-ratio";
 // import { Input } from "@/components/ui/input";
 // import { Label } from "@/components/ui/label";
@@ -32,9 +32,16 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      {/* <Sun className="h-16 w-16 text-orange" />
-      <Button>Click me</Button>
-      <RadioGroup defaultValue="option-one">
+      {/* <Sun className="h-16 w-16 text-orange" /> */}
+      <div className="grid gap-5 max-w-7xl lg:mx-24 mx-5 my-5 grid-cols-4">
+        <Button>Get In Touch</Button>
+        <Button size="sm">Contact</Button>
+        <Button variant="outline">Explore All Pools</Button>
+        <Button variant="secondary">Submit</Button>
+        <Button variant="ghost">Click me</Button>
+        <Button variant="link">Click me</Button>
+      </div>
+      {/* <RadioGroup defaultValue="option-one">
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="option-one" id="option-one" />
           <Label htmlFor="option-one">Option One</Label>
@@ -43,8 +50,8 @@ export default function Index() {
           <RadioGroupItem value="option-two" id="option-two" />
           <Label htmlFor="option-two">Option Two</Label>
         </div>
-      </RadioGroup>
-      <Input /> */}
+      </RadioGroup> */}
+      {/* <Input /> */}
       <Container mobileFullWidth>
         <Accordion
           className="lg:border lg:rounded-2xl overflow-hidden"
