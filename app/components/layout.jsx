@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import Announcement from "@/components/announcement";
 import Footer from "@/components/footer";
 
@@ -9,7 +10,7 @@ const Layout = ({ children }) => {
         <Announcement>Serving Austin, TX and surrounding areas.</Announcement>
         <div>Header</div>
       </header>
-      <main className="flex flex-col grow">{children}</main>
+      <main className="flex grow flex-col">{children}</main>
       <footer className="shrink-0">
         <Footer />
       </footer>

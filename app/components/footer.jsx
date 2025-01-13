@@ -1,5 +1,6 @@
-import PropTypes from "prop-types";
 import { Link } from "@remix-run/react";
+import PropTypes from "prop-types";
+
 import Container from "@/components/container";
 
 const Nav = () => (
@@ -52,7 +53,7 @@ LinksItem.propTypes = {
 const Footer = () => {
   return <div>Footer</div>;
   return (
-    <Container className="text-center bg-ghp-200 lg:bg-background">
+    <Container className="bg-ghp-200 text-center lg:bg-background">
       <Nav />
       <Contact />
       <Logo />

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const Announcement = ({ children }) => {
-  return <div className="bg-yellow text-center px-1 py-2.5">{children}</div>;
+  return <div className="bg-yellow px-1 py-2.5 text-center">{children}</div>;
 };
 
 Announcement.propTypes = {
