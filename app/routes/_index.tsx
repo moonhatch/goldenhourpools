@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { ArrowRight } from "lucide-react";
 
 // import { AspectRatio } from "@/components/ui/aspect-ratio";
 // import { Input } from "@/components/ui/input";
@@ -35,13 +36,14 @@ export default function Index() {
   return (
     <>
       <Sun className="h-16 w-16 text-orange" />
-      <div className="mx-5 my-5 grid max-w-7xl grid-cols-4 gap-5 lg:mx-24">
+      <div className="mx-5 my-5 grid max-w-7xl grid-cols-3 gap-5 lg:mx-24">
         <Button>Get In Touch</Button>
         <Button size="sm">Contact</Button>
-        <Button variant="outline">Explore All Pools</Button>
-        <Button variant="secondary">Submit</Button>
-        <Button variant="ghost">Click me</Button>
-        <Button variant="link">Click me</Button>
+        <Button kind="outline">Explore All Pools</Button>
+        <Button align="between" kind="secondary">
+          Submit <ArrowRight strokeWidth={1} />
+        </Button>
+        <Button rounded="xl">Click me</Button>
       </div>
       {/* <RadioGroup defaultValue="option-one">
         <div className="flex items-center space-x-2">
