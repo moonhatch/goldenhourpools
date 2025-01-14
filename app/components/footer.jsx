@@ -11,8 +11,8 @@ const Nav = () => (
   <ul className="my-6">
     <NavItem to="/">Our Pools</NavItem>
     <NavItem to="/">Gallery</NavItem>
-    <NavItem to="/">Contact</NavItem>
     <NavItem to="/">FAQ</NavItem>
+    <NavItem to="/">Contact</NavItem>
   </ul>
 );
 
