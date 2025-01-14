@@ -1,0 +1,19 @@
+{
+  "endingPosition": "absolute-with-indent",
+  "arrowParens": "always",
+  "singleQuote": false,
+  "bracketSpacing": true,
+  "customFunctions": ["cva", "cn"],
+  "importOrder": ["^@/components/(.*)$", "^@/hooks/(.*)$", "^@/icons", "^@/lib/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-classnames",
+    "prettier-plugin-merge"
+  ],
+  "printWidth": 100,
+  "trailingComma": "all",
+  "tailwindFunctions": ["cva", "cn"],
+  "tailwindStylesheet": "./app/styles/tailwind.css"
+}
