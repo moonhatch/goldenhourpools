@@ -6,7 +6,7 @@ const Container = ({ children, className, mobileFullWidth = false, size }) => {
   return (
     <div
       className={cn(
-        "mx-auto w-full max-w-7xl lg:px-24",
+        "mx-auto w-full max-w-7xl lg:px-16",
         !mobileFullWidth && "px-5",
         size === "sm" && "max-w-3xl",
         size === "md" && "max-w-5xl",

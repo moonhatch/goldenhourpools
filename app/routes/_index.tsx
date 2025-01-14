@@ -45,10 +45,9 @@ export default function Index() {
         <Button>Get In Touch</Button>
         <Button size="sm">Contact</Button>
         <Button kind="outline">Explore All Pools</Button>
-        <Button align="between" kind="secondary">
+        <Button align="between" kind="secondary" rounded="xl">
           Submit <ArrowRight strokeWidth={1} />
         </Button>
-        <Button rounded="xl">Click me</Button>
       </Container>
       <Container className="my-16 grid grid-cols-3 gap-5">
         <RadioGroup defaultValue="option-one">

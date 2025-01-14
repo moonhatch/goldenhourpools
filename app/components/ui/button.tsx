@@ -17,7 +17,7 @@ const buttonVariants = cva(
       },
       kind: {
         default: "border-orange bg-orange text-white",
-        outline: "border-white bg-transparent text-white",
+        outline: "border-orange bg-transparent text-orange",
         secondary: "bg-ghp-200",
       },
       rounded: {
