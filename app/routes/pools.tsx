@@ -2,7 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Contact Us - Golden Hour Pools" },
+    { title: "Pools - Golden Hour Pools" },
     {
       name: "description",
       content:
@@ -15,10 +15,10 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Contact() {
+export default function Pools() {
   return (
     <>
-      <div>Contact Us</div>
+      <div>Pools</div>
     </>
   );
 }
