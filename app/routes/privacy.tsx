@@ -19,7 +19,7 @@ export const meta: MetaFunction = () => {
 
 export default function Privacy() {
   return (
-    <Container className="my-24">
+    <Container className="my-24" size="sm">
       <div className="ghp-prose">
         <h1>Privacy</h1>
         <p>
