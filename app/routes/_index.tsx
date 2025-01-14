@@ -93,7 +93,11 @@ export default function Index() {
             <AccordionContent>
               Absolutely! We’d be happy to arrange a visit to one of our completed projects so you
               can see our craftsmanship firsthand. Just{" "}
-              <Link className="underline" prefetch="viewport" to="/contact">
+              <Link
+                className="underline outline-none focus-visible:underline-offset-4"
+                prefetch="viewport"
+                to="/contact"
+              >
                 get in touch
               </Link>
               , and we’ll set up a convenient time.
@@ -106,7 +110,11 @@ export default function Index() {
               prices. While we use a standardized design to maintain this balance, we know every
               space is unique. That’s why, in special cases, we can make minor adjustments to size
               and specifications to better fit your specific needs.{" "}
-              <Link className="underline" prefetch="viewport" to="/contact">
+              <Link
+                className="underline outline-none focus-visible:underline-offset-4"
+                prefetch="viewport"
+                to="/contact"
+              >
                 Let’s talk about your vision and see what’s possible!
               </Link>
             </AccordionContent>
@@ -132,7 +140,11 @@ export default function Index() {
             <AccordionContent>
               Yes, we do! We understand that a pool is a significant investment, so we offer
               flexible financing options to make your dream pool more accessible.{" "}
-              <Link className="underline" prefetch="viewport" to="/contact">
+              <Link
+                className="underline outline-none focus-visible:underline-offset-4"
+                prefetch="viewport"
+                to="/contact"
+              >
                 Contact us
               </Link>{" "}
               to discuss the best financing plan for you.
