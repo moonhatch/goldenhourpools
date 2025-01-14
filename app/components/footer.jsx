@@ -70,12 +70,17 @@ const Logo = () => {
   }, [scrollHandler]);
 
   return (
-    <div className="relative mx-auto my-16 h-40 w-40 rounded-full bg-yellow">
+    <Link
+      className="relative mx-auto my-16 block h-40 w-40 rounded-full bg-yellow
+        focus-visible:outline-1 focus-visible:outline-offset-0 focus-visible:outline-black"
+      prefetch="viewport"
+      to="/"
+    >
       <OuterGhp className="absolute h-full w-full text-orange" />
       <div className="absolute h-full w-full" ref={innerSun}>
         <InnerSun className="absolute h-full w-full text-orange" />
       </div>
-    </div>
+    </Link>
   );
 };
 
