@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 const Container = ({ children, className, mobileFullWidth = false }) => {
   return (
-    <div className={cn("flex justify-center", className)}>
-      <div className={cn("max-w-7xl grow lg:mx-24", !mobileFullWidth && "mx-5")}>{children}</div>
+    <div className={cn("mx-auto w-full max-w-7xl lg:px-24", !mobileFullWidth && "px-5", className)}>
+      {children}
     </div>
   );
 };

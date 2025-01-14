@@ -19,7 +19,6 @@ const buttonVariants = cva(
         default: "border-orange bg-orange text-white",
         outline: "border-white bg-transparent text-white",
         secondary: "bg-ghp-200",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
       },
       rounded: {
         default: "rounded-sm",

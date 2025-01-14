@@ -6,11 +6,11 @@ import Footer from "@/components/footer";
 const Layout = ({ children }) => {
   return (
     <>
-      <header className="sticky top-0 shrink-0">
+      <header className="sticky top-0 z-10 shrink-0 border-b bg-background">
         <Announcement>Serving Austin, TX and surrounding areas.</Announcement>
         <div>Header</div>
       </header>
-      <main className="flex grow flex-col">{children}</main>
+      <main className="grow">{children}</main>
       <footer className="shrink-0">
         <Footer />
       </footer>

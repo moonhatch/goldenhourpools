@@ -2,10 +2,6 @@ import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 
-// import { AspectRatio } from "@/components/ui/aspect-ratio";
-// import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
-// import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Container from "@/components/container";
 import {
   Accordion,
@@ -13,7 +9,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import { Sun } from "@/icons";
 
@@ -35,8 +35,13 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <Sun className="h-16 w-16 text-orange" />
-      <div className="mx-5 my-5 grid max-w-7xl grid-cols-3 gap-5 lg:mx-24">
+      <Container className="my-5 grid grid-cols-3 gap-5">
+        <Sun className="h-16 w-16 text-orange" />
+      </Container>
+      <Container className="my-5 grid grid-cols-3 gap-5">
+        <Input placeholder="Phone Number*" />
+      </Container>
+      <Container className="my-5 grid grid-cols-3 gap-5">
         <Button>Get In Touch</Button>
         <Button size="sm">Contact</Button>
         <Button kind="outline">Explore All Pools</Button>
@@ -44,19 +49,29 @@ export default function Index() {
           Submit <ArrowRight strokeWidth={1} />
         </Button>
         <Button rounded="xl">Click me</Button>
-      </div>
-      {/* <RadioGroup defaultValue="option-one">
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-one" id="option-one" />
-          <Label htmlFor="option-one">Option One</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="option-two" id="option-two" />
-          <Label htmlFor="option-two">Option Two</Label>
-        </div>
-      </RadioGroup> */}
-      {/* <Input /> */}
-      <Container mobileFullWidth>
+      </Container>
+      <Container className="my-5 grid grid-cols-3 gap-5">
+        <RadioGroup defaultValue="option-one">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option-one" id="option-one" />
+            <Label htmlFor="option-one">Option One</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="option-two" id="option-two" />
+            <Label htmlFor="option-two">Option Two</Label>
+          </div>
+        </RadioGroup>
+      </Container>
+      <Container className="my-5 grid grid-cols-3 gap-5">
+        <AspectRatio ratio={1 / 1}>
+          <img
+            src="/golden-hour.jpg"
+            alt="Golden Hour Pools"
+            className="h-full w-full object-cover"
+          />
+        </AspectRatio>
+      </Container>
+      <Container className="my-5" mobileFullWidth>
         <Accordion className="overflow-hidden lg:rounded-2xl lg:border" collapsible type="single">
           <AccordionItem value="item-1">
             <AccordionTrigger>What does your price include?</AccordionTrigger>
@@ -157,13 +172,6 @@ export default function Index() {
           </AccordionItem>
         </Accordion>
       </Container>
-      {/* <AspectRatio ratio={1 / 1}>
-        <img
-          src="/golden-hour.jpg"
-          alt="Golden Hour Pools"
-          className="h-full w-full object-cover"
-        />
-      </AspectRatio> */}
     </>
   );
 }
