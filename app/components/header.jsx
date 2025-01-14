@@ -1,17 +1,42 @@
+import { useEventListener } from "@/hooks";
 import { Link } from "@remix-run/react";
+import { NavLink, useMatches } from "@remix-run/react";
+import { useState, useEffect, useCallback } from "react";
 
 import { Button } from "@/components/ui/button";
 
 import { Sun } from "@/icons";
 
+import { cn } from "@/lib/utils";
+
 const Header = () => {
+  const matches = useMatches();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const isHome = matches[1]?.pathname === "/";
+  const invertColors = isHome && !isScrolled;
+
+  const scrollHandler = useCallback(() => {
+    setIsScrolled(window.scrollY > 0);
+  }, []);
+
+  useEventListener("scroll", scrollHandler);
+  useEffect(() => {
+    scrollHandler();
+  }, [scrollHandler]);
+
   return (
-    <div className="relative flex h-24 items-center justify-between bg-background px-5 lg:px-16">
+    <div
+      className={cn(
+        "relative flex h-24 items-center justify-between border-b border-ghp-250 px-5 lg:px-16",
+        !invertColors && "bg-background",
+        invertColors ? "text-white" : "text-orange",
+      )}
+    >
       <ul className="-mx-2.5">
         <li className="inline-block px-2.5 lg:hidden">
           <Link
-            className="inline-block font-serif text-orange outline-none hover:underline
-              focus-visible:underline"
+            className="inline-block font-serif outline-none hover:underline focus-visible:underline"
             prefetch="viewport"
             to="/"
           >
@@ -19,44 +44,56 @@ const Header = () => {
           </Link>
         </li>
         <li className="hidden px-2.5 lg:inline-block">
-          <Link
-            className="inline-block text-orange outline-none hover:underline
-              focus-visible:underline"
+          <NavLink
+            className={({ isActive }) =>
+              cn(
+                "inline-block outline-none hover:underline focus-visible:underline",
+                isActive && "underline",
+              )
+            }
             prefetch="viewport"
             to="/pools"
           >
             Our Pools
-          </Link>
+          </NavLink>
         </li>
         <li className="hidden px-2.5 lg:inline-block">
-          <Link
-            className="inline-block text-orange outline-none hover:underline
-              focus-visible:underline"
+          <NavLink
+            className={({ isActive }) =>
+              cn(
+                "inline-block outline-none hover:underline focus-visible:underline",
+                isActive && "underline",
+              )
+            }
             prefetch="viewport"
             to="/gallery"
           >
             Gallery
-          </Link>
+          </NavLink>
         </li>
       </ul>
       <Link
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full
-          border-black outline-none focus-visible:border"
+          border-current outline-none focus-visible:border"
         prefetch="viewport"
         to="/"
       >
-        <Sun className="animate h-12 w-12 animate-spin text-orange duration-[10000ms]" />
+        <Sun className="animate h-12 w-12 animate-spin [animation-duration:_10s]" />
       </Link>
       <ul className="-mx-2.5">
         <li className="hidden px-2.5 lg:inline-block">
-          <Link
-            className="inline-block text-orange outline-none hover:underline
-              focus-visible:underline"
+          <NavLink
+            className={({ isActive }) =>
+              cn(
+                "inline-block outline-none hover:underline focus-visible:underline",
+                isActive && "underline",
+              )
+            }
             prefetch="viewport"
             to="/faq"
           >
             FAQ
-          </Link>
+          </NavLink>
         </li>
         <li className="hidden px-2.5 lg:inline-block">
           <Button asChild kind="outline" size="sm">
@@ -65,7 +102,7 @@ const Header = () => {
         </li>
         <li className="inline-block px-2.5 lg:hidden">
           <button
-            className="inline-block cursor-pointer text-orange outline-none hover:underline
+            className="inline-block cursor-pointer outline-none hover:underline
               focus-visible:underline"
           >
             Menu

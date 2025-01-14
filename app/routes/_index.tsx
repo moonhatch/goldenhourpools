@@ -35,6 +35,13 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
+      <AspectRatio ratio={16 / 9}>
+        <img
+          src="/golden-hour.jpg"
+          alt="Golden Hour Pools"
+          className="h-full w-full object-cover"
+        />
+      </AspectRatio>
       <Container className="my-16 grid grid-cols-3 gap-5">
         <Sun className="h-16 w-16 text-orange" />
       </Container>
@@ -60,15 +67,6 @@ export default function Index() {
             <Label htmlFor="option-two">Option Two</Label>
           </div>
         </RadioGroup>
-      </Container>
-      <Container className="my-16 grid grid-cols-3 gap-5">
-        <AspectRatio ratio={1 / 1}>
-          <img
-            src="/golden-hour.jpg"
-            alt="Golden Hour Pools"
-            className="h-full w-full object-cover"
-          />
-        </AspectRatio>
       </Container>
       <Container className="my-16" mobileFullWidth>
         <Accordion className="overflow-hidden lg:rounded-2xl lg:border" collapsible type="single">
