@@ -35,13 +35,13 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <Container className="my-5 grid grid-cols-3 gap-5">
+      <Container className="my-16 grid grid-cols-3 gap-5">
         <Sun className="h-16 w-16 text-orange" />
       </Container>
-      <Container className="my-5 grid grid-cols-3 gap-5">
+      <Container className="my-16 grid grid-cols-3 gap-5">
         <Input placeholder="Phone Number*" />
       </Container>
-      <Container className="my-5 grid grid-cols-3 gap-5">
+      <Container className="my-16 grid grid-cols-3 gap-5">
         <Button>Get In Touch</Button>
         <Button size="sm">Contact</Button>
         <Button kind="outline">Explore All Pools</Button>
@@ -50,7 +50,7 @@ export default function Index() {
         </Button>
         <Button rounded="xl">Click me</Button>
       </Container>
-      <Container className="my-5 grid grid-cols-3 gap-5">
+      <Container className="my-16 grid grid-cols-3 gap-5">
         <RadioGroup defaultValue="option-one">
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="option-one" id="option-one" />
@@ -62,7 +62,7 @@ export default function Index() {
           </div>
         </RadioGroup>
       </Container>
-      <Container className="my-5 grid grid-cols-3 gap-5">
+      <Container className="my-16 grid grid-cols-3 gap-5">
         <AspectRatio ratio={1 / 1}>
           <img
             src="/golden-hour.jpg"
@@ -71,7 +71,7 @@ export default function Index() {
           />
         </AspectRatio>
       </Container>
-      <Container className="my-5" mobileFullWidth>
+      <Container className="my-16" mobileFullWidth>
         <Accordion className="overflow-hidden lg:rounded-2xl lg:border" collapsible type="single">
           <AccordionItem value="item-1">
             <AccordionTrigger>What does your price include?</AccordionTrigger>
