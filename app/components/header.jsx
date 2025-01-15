@@ -78,7 +78,7 @@ const Header = () => {
         prefetch="viewport"
         to="/"
       >
-        <Sun className="animate h-12 w-12 animate-spin [animation-duration:_10s]" />
+        <Sun className="animate h-12 w-12 animate-spin [animation-duration:_20s]" />
       </Link>
       <ul className="-mx-2.5">
         <li className="hidden px-2.5 lg:inline-block">
