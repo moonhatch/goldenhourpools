@@ -3,13 +3,13 @@ import { Link } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 
 import Container from "@/components/container";
+import Hero from "@/components/hero";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,13 +35,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <AspectRatio ratio={16 / 9}>
-        <img
-          src="/golden-hour.jpg"
-          alt="Golden Hour Pools"
-          className="h-full w-full object-cover"
-        />
-      </AspectRatio>
+      <Hero />
       <Container className="my-16 grid grid-cols-3 gap-5">
         <Sun className="h-16 w-16 text-orange" />
       </Container>

@@ -9,10 +9,10 @@ import { InnerSun, OuterGhp } from "@/icons";
 
 const Nav = () => (
   <ul className="my-6">
-    <NavItem to="/">Our Pools</NavItem>
-    <NavItem to="/">Gallery</NavItem>
-    <NavItem to="/">FAQ</NavItem>
-    <NavItem to="/">Contact</NavItem>
+    <NavItem to="/pools">Our Pools</NavItem>
+    <NavItem to="/gallery">Gallery</NavItem>
+    <NavItem to="/faq">FAQ</NavItem>
+    <NavItem to="/contact">Contact</NavItem>
   </ul>
 );
 

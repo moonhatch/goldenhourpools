@@ -28,9 +28,9 @@ const Header = () => {
   return (
     <div
       className={cn(
-        "relative flex h-24 items-center justify-between border-b border-ghp-250 px-5 lg:px-16",
+        "relative flex h-24 items-center justify-between px-5 lg:px-16",
         !invertColors && "bg-background",
-        invertColors ? "text-white" : "text-orange",
+        invertColors ? "text-white" : "border-b border-ghp-250 text-orange",
       )}
     >
       <ul className="-mx-2.5">
