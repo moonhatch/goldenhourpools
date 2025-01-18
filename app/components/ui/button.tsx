@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   `inline-flex cursor-pointer items-center gap-2 border whitespace-nowrap transition-colors
-  hover:border-black hover:bg-ghp-900 hover:text-white focus-visible:border-black
+  hover:border-yellow hover:bg-yellow hover:text-black focus-visible:border-black
   focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50
   [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0`,
   {
@@ -27,6 +27,7 @@ const buttonVariants = cva(
       size: {
         default: "h-15 px-5 py-2",
         sm: "h-8 px-3",
+        wide: "h-15 px-20 py-2",
       },
     },
     defaultVariants: {

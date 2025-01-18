@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <header className={cn("sticky top-0 z-10 w-full shrink-0", isHome && "fixed")}>
-        <Announcement>Serving Austin, TX and surrounding areas.</Announcement>
+        {isHome && <Announcement>Serving Austin, TX and surrounding areas.</Announcement>}
         <Header />
       </header>
       <main className="grow">{children}</main>
