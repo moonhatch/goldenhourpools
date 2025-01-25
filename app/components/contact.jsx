@@ -21,7 +21,7 @@ const Contact = ({ className, heading }) => {
         <Form action="/contact" method="post">
           <Input className="mt-8" name="name" placeholder="Name *" required />
           <Input className="mt-5" name="phone" placeholder="Phone Number *" required type="tel" />
-          <Button className="mt-5 w-full" kind="outline" rounded="xl">
+          <Button className="mt-5 w-full" kind="outline">
             Submit
           </Button>
         </Form>
