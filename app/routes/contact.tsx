@@ -1,12 +1,15 @@
 import type { MetaFunction } from "@remix-run/node";
 
+import Contact from "@/components/contact";
+import Container from "@/components/container";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "Contact Us - Golden Hour Pools" },
     {
       name: "description",
       content:
-        "Golden Hour Pools specializes in crafting pools at accessible rates in Austin. View our pools online and get started today.",
+        "Get in touch. Just leave us your name and number and we will contact you within 24 hours.",
     },
     {
       property: "og:image",
@@ -15,10 +18,10 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Contact() {
+export default function ContactPage() {
   return (
-    <>
-      <div>Contact Us</div>
-    </>
+    <Container className="my-12">
+      <Contact />
+    </Container>
   );
 }
