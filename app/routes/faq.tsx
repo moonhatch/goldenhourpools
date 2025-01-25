@@ -171,7 +171,7 @@ export default function FAQ() {
         </Accordion>
       </Container>
       <Container>
-        <Contact className="my-12" />
+        <Contact className="my-12" heading="We’re now accepting projects for 2025" />
       </Container>
     </>
   );
