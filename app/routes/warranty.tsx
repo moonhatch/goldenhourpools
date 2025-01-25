@@ -16,7 +16,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Warranty() {
+export default function WarrantyPage() {
   return (
     <Container className="my-24" size="sm">
       <div className="ghp-prose">

@@ -25,7 +25,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function FAQ() {
+export default function FaqPage() {
   return (
     <>
       <Container className="mb-12 lg:mt-12" mobileFullWidth>
