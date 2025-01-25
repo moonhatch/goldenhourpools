@@ -1,40 +1,51 @@
 import { useEventListener } from "@/hooks";
+import {
+  FloatingFocusManager,
+  FloatingOverlay,
+  FloatingPortal,
+  useClick,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useInteractions,
+  useRole,
+} from "@floating-ui/react";
 import { Link } from "@remix-run/react";
 import { NavLink, useMatches } from "@remix-run/react";
 import PropTypes from "prop-types";
 import { useState, useEffect, useCallback } from "react";
 
+import Announcement from "@/components/announcement";
 import { Button } from "@/components/ui/button";
 
 import { Sun } from "@/icons";
 
 import { cn } from "@/lib/utils";
 
-const MobileNavItem = ({ children, to }) => (
-  <li className="border-b border-ghp-250 bg-background">
-    <Link
-      className="block py-8 text-center font-serif text-4xl text-orange decoration-2
-        underline-offset-4 outline-none hover:underline focus-visible:underline"
-      prefetch="viewport"
-      to={to}
-    >
-      {children}
-    </Link>
-  </li>
-);
-
-MobileNavItem.propTypes = {
-  children: PropTypes.node.isRequired,
-  to: PropTypes.string.isRequired,
-};
-
 const Header = () => {
   const matches = useMatches();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const isHome = matches[1]?.pathname === "/";
-  const invertColors = isHome && !isScrolled && !menuOpen;
+  const invertColors = isHome && !isScrolled && !isOpen;
+
+  const { refs, context } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+  });
+
+  const click = useClick(context);
+  const dismiss = useDismiss(context, {
+    outsidePressEvent: "mousedown",
+    // outsidePress: true, // Dismiss when clicking outside the menu
+    // escapeKey: true, // Dismiss when pressing the Escape key
+    // referencePress: false, // Keep the menu open when clicking the button again
+  });
+  const focus = useFocus(context, { enabled: true });
+  const role = useRole(context, { role: "menu" });
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, role, dismiss, focus]);
 
   const scrollHandler = useCallback(() => {
     setIsScrolled(window.scrollY > 0);
@@ -47,6 +58,7 @@ const Header = () => {
 
   return (
     <>
+      {isHome && <Announcement>Serving Austin, TX and surrounding areas.</Announcement>}
       <div
         className={cn(
           "relative flex h-24 items-center justify-between px-5 lg:px-16",
@@ -129,25 +141,67 @@ const Header = () => {
             <button
               className="inline-block cursor-pointer underline-offset-2 outline-none hover:underline
                 focus-visible:underline"
-              onClick={() => setMenuOpen(!menuOpen)}
+              ref={refs.setReference}
+              {...getReferenceProps()}
             >
-              {menuOpen ? "Close" : "Menu"}
+              {isOpen ? "Close" : "Menu"}
             </button>
           </li>
         </ul>
       </div>
-      {menuOpen && (
-        <ul className="absolute h-dvh w-full bg-ghp-200 lg:hidden">
-          <MobileNavItem to="/pools">Our Pools</MobileNavItem>
-          <MobileNavItem to="/gallery">Gallery</MobileNavItem>
-          <MobileNavItem to="/faq">FAQ</MobileNavItem>
-          <MobileNavItem to="/contact">Contact</MobileNavItem>
-        </ul>
-      )}
+      <FloatingPortal>
+        {isOpen && (
+          <FloatingOverlay lockScroll>
+            <FloatingFocusManager context={context}>
+              <ul
+                ref={refs.setFloating}
+                className={cn(
+                  "absolute right-0 h-dvh w-full bg-ghp-200 pt-24 lg:w-md",
+                  isHome && "pt-[136px]",
+                )}
+                {...getFloatingProps()}
+              >
+                <MobileNavItem onClick={() => setIsOpen(false)} to="/pools">
+                  Our Pools
+                </MobileNavItem>
+                <MobileNavItem onClick={() => setIsOpen(false)} to="/gallery">
+                  Gallery
+                </MobileNavItem>
+                <MobileNavItem onClick={() => setIsOpen(false)} to="/faq">
+                  FAQ
+                </MobileNavItem>
+                <MobileNavItem onClick={() => setIsOpen(false)} to="/contact">
+                  Contact
+                </MobileNavItem>
+              </ul>
+            </FloatingFocusManager>
+          </FloatingOverlay>
+        )}
+      </FloatingPortal>
     </>
   );
 };
 
 Header.propTypes = {};
+
+const MobileNavItem = ({ children, onClick, to }) => (
+  <li className="border-b border-ghp-250 bg-background lg:border-x">
+    <Link
+      className="block py-8 text-center font-serif text-4xl text-orange decoration-2
+        underline-offset-4 outline-none hover:underline focus-visible:underline"
+      onClick={onClick}
+      prefetch="viewport"
+      to={to}
+    >
+      {children}
+    </Link>
+  </li>
+);
+
+MobileNavItem.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  to: PropTypes.string.isRequired,
+};
 
 export default Header;
