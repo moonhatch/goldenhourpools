@@ -15,7 +15,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Pools() {
+export default function PoolsPage() {
   return (
     <>
       <div>Pools</div>

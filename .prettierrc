@@ -4,7 +4,7 @@
   "singleQuote": false,
   "bracketSpacing": true,
   "customFunctions": ["cva", "cn"],
-  "importOrder": ["^@/components/(.*)$", "^@/hooks/(.*)$", "^@/icons", "^@/lib/(.*)$", "^[./]"],
+  "importOrder": ["^@/components/(.*)$", "^@/hooks", "^@/icons", "^@/lib/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "plugins": [
     "@trivago/prettier-plugin-sort-imports",

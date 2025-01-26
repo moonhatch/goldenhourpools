@@ -25,7 +25,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function FAQ() {
+export default function FaqPage() {
   return (
     <>
       <Container className="mb-12 lg:mt-12" mobileFullWidth>
@@ -171,7 +171,7 @@ export default function FAQ() {
         </Accordion>
       </Container>
       <Container>
-        <Contact className="my-12" heading="We’re now accepting projects for 2025" />
+        <Contact className="my-12" heading="We’re Now Accepting Projects For 2025" />
       </Container>
     </>
   );
