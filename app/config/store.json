@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "handle": "mini",
+      "name": "Mini",
+      "image": "/mini.png",
+      "price": 49000
+    },
+    {
+      "handle": "classic",
+      "name": "Classic",
+      "image": "/classic.png",
+      "price": 59000
+    },
+    {
+      "handle": "grand",
+      "name": "Grand",
+      "image": "/grand.png",
+      "price": 69000
+    }
+  ]
+}

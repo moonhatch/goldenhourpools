@@ -1,18 +1,12 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+import favicon from "@/assets/favicon.svg";
 import type { LinksFunction } from "@remix-run/node";
-import favicon from "~/assets/favicon.svg";
-import "./styles/tailwind.css";
-import PageLayout from "~/components/layout";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 
-export const links: LinksFunction = () => [
-  { rel: "icon", type: "image/svg+xml", href: favicon },
-];
+import PageLayout from "@/components/layout";
+
+import "./styles/tailwind.css";
+
+export const links: LinksFunction = () => [{ rel: "icon", type: "image/svg+xml", href: favicon }];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

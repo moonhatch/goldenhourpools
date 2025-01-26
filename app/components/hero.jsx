@@ -19,7 +19,7 @@ const Hero = () => {
             Better Prices.
           </h2>
           <Button asChild size="wide">
-            <Link to="/contact">Get in Touch</Link>
+            <Link to="/contact">Get In Touch</Link>
           </Button>
         </div>
       </div>
