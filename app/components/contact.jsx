@@ -13,7 +13,7 @@ const Contact = ({ className, heading }) => {
     >
       <div className="mx-auto max-w-sm">
         <div className="ghp-prose my-4 text-white prose-headings:text-white">
-          <h1 className="text-balance">{heading || "Get In Touch"}</h1>
+          <h2 className="text-balance">{heading || "Get In Touch"}</h2>
           <p className="text-balance">
             Just leave us your name and number and we will contact you within 24 hours.
           </p>

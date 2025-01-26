@@ -1,7 +1,10 @@
+import store from "@/config/store.json";
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
-import { ArrowRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useEffect, useState } from "react";
 
+import Card from "@/components/card";
 import Contact from "@/components/contact";
 import Container from "@/components/container";
 import Hero from "@/components/hero";
@@ -12,14 +15,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Video from "@/components/video";
 
 import { useBreakpoint } from "@/hooks";
-
-import { Sun } from "@/icons";
 
 export const meta: MetaFunction = () => {
   return [
@@ -38,39 +36,50 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const bp = useBreakpoint();
+  const [options, setOptions] = useState({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+
+  useEffect(() => {
+    setOptions((currentOptions) => ({
+      ...currentOptions,
+      active: bp !== "lg",
+    }));
+  }, [bp, emblaApi]);
 
   return (
     <>
       <Hero />
-      <Container className="my-16 grid grid-cols-3 gap-5">
-        <Sun className="h-16 w-16 text-orange" />
+      <Container className="my-12 text-center">
+        <div className="ghp-prose mx-auto prose-headings:m-0">
+          <h2>Our Pools:</h2>
+        </div>
       </Container>
-      <Container className="my-16 grid grid-cols-3 gap-5">
-        <Input placeholder="Phone Number*" />
-      </Container>
-      <Container className="my-16 grid grid-cols-3 gap-5">
-        <Button>Get In Touch</Button>
-        <Button size="sm">Contact</Button>
-        <Button kind="outline">Explore All Pools</Button>
-        <Button align="between" kind="secondary" rounded="xl">
-          Submit <ArrowRight strokeWidth={1} />
-        </Button>
-      </Container>
-      <Container className="my-16 grid grid-cols-3 gap-5">
-        <RadioGroup defaultValue="option-one">
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="option-one" id="option-one" />
-            <Label htmlFor="option-one">Option One</Label>
+      <Container className="my-12" mobileFullWidth>
+        <div className="embla" ref={emblaRef}>
+          <div className="embla__container -mx-3">
+            {store.products.map((product) => (
+              <div className="embla__slide px-3" key={product.handle}>
+                <Card product={product} />
+              </div>
+            ))}
           </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="option-two" id="option-two" />
-            <Label htmlFor="option-two">Option Two</Label>
-          </div>
-        </RadioGroup>
+        </div>
+      </Container>
+      <Container className="my-24 text-center lg:my-48">
+        <div className="ghp-prose mx-auto max-w-2xl prose-headings:text-balance">
+          <h2>
+            Our mission is simple: make building a pool easy, skip the sales gimmicks, and pass the
+            savings right to you.
+          </h2>
+          <Button asChild className="mt-8" size="wide">
+            <Link to="/pools">Explore All Pools</Link>
+          </Button>
+        </div>
       </Container>
       <Video
-        ratio={bp === "lg" ? 16 / 9 : 4 / 5}
-        src="https://player.vimeo.com/video/974252497?background=1"
+        ratio={bp === "lg" ? 16 / 9 : 9 / 16}
+        src="https://player.vimeo.com/video/1044849187?background=1"
+        // src="https://player.vimeo.com/video/1044854730?background=1"
         title="Test video"
       />
       <Container className="mb-12 lg:my-48" mobileFullWidth>
