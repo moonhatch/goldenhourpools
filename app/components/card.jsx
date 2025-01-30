@@ -1,8 +1,15 @@
+import store from "@/config/store.json";
 import { Link } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
 // import { Label } from "@/components/ui/label";
@@ -22,6 +29,8 @@ const Card = ({ className, product, type = "nav" }) => {
   const [depth, setDepth] = useState("deep");
   const [spa, setSpa] = useState(false);
   const [variant, setVariant] = useState(getVariant(product));
+
+  const descriptions = [...variant.descriptions, ...store.descriptions];
 
   useEffect(() => {
     setVariant(getVariant(product, { depth, spa }));
@@ -47,7 +56,7 @@ const Card = ({ className, product, type = "nav" }) => {
         src={variant?.image ?? "/classic.png"}
       />
       {type === "form" && (
-        <div className="grid grid-cols-2 gap-3">
+        <div className="mb-3 grid grid-cols-2 gap-3">
           <Button
             kind={depth === "deep" ? "outline" : "secondary"}
             onClick={() => setDepth("deep")}
@@ -63,6 +72,23 @@ const Card = ({ className, product, type = "nav" }) => {
             Shallow
           </Button>
         </div>
+      )}
+      {type === "form" && (
+        <Accordion collapsible type="single">
+          {descriptions.map((desc, i) => (
+            <AccordionItem
+              className={i === 0 && "border-0"}
+              layer={2}
+              key={`product-desc-${i}`}
+              value={`product-desc-${i}`}
+            >
+              <AccordionTrigger compact>{desc.name}</AccordionTrigger>
+              <AccordionContent compact className="ghp-prose -mt-5">
+                <p>{desc.value}</p>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       )}
       {type === "form" && (
         <Button asChild className="mt-3 w-full" kind="default" rounded="xl">

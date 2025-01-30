@@ -30,11 +30,11 @@ export default function FaqPage() {
     <>
       <Container className="mb-12 lg:mt-12" mobileFullWidth>
         <Accordion
-          className="overflow-hidden border-ghp-250 lg:rounded-2xl lg:border"
+          className="overflow-hidden border-b border-ghp-250 lg:rounded-2xl lg:border"
           collapsible
           type="single"
         >
-          <AccordionItem value="item-1">
+          <AccordionItem className="border-0" layer={1} value="item-1">
             <AccordionTrigger>What does your price include?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -43,7 +43,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-2">
+          <AccordionItem layer={1} value="item-2">
             <AccordionTrigger>How long does it take to build?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -53,7 +53,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem layer={1} value="item-3">
             <AccordionTrigger>Can I visit one of your pools?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -71,7 +71,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-4">
+          <AccordionItem layer={1} value="item-4">
             <AccordionTrigger>Do you make custom sizes?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -90,7 +90,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-5">
+          <AccordionItem layer={1} value="item-5">
             <AccordionTrigger>What equipment do you use?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -100,7 +100,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-6">
+          <AccordionItem layer={1} value="item-6">
             <AccordionTrigger>Are your pools pre-fabricated?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -110,7 +110,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-7">
+          <AccordionItem layer={1} value="item-7">
             <AccordionTrigger>Do you offer financing?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -128,7 +128,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-8">
+          <AccordionItem layer={1} value="item-8">
             <AccordionTrigger>What’s your warranty?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -138,7 +138,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-9">
+          <AccordionItem layer={1} value="item-9">
             <AccordionTrigger>What areas do you service?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -147,7 +147,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-10">
+          <AccordionItem layer={1} value="item-10">
             <AccordionTrigger>Do you make hot tubs?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -157,7 +157,7 @@ export default function FaqPage() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem className="lg:border-0" value="item-11">
+          <AccordionItem layer={1} value="item-11">
             <AccordionTrigger>Do you do landscaping?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>

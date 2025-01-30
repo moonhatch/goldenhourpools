@@ -125,7 +125,7 @@
   }
 
   html {
-    @apply bg-background antialiased;
+    @apply scroll-smooth bg-background antialiased;
   }
 
   body {
@@ -158,7 +158,7 @@
   * Prose as body copy
   */
   .ghp-prose {
-    @apply prose max-w-4xl prose-headings:mb-4 prose-headings:font-serif prose-headings:font-normal prose-h1:text-4xl prose-h2:text-3xl lg:prose-h2:text-4xl prose-p:leading-tight prose-a:underline prose-a:outline-none prose-a:focus-visible:underline-offset-4 prose-blockquote:not-italic prose-strong:font-bold prose-code:prose-base prose-code:font-sans prose-code:font-normal md:prose-code:prose-xl prose-ol:leading-tight prose-ul:leading-tight prose-th:pb-6 md:prose-th:pb-8 prose-td:prose-base md:prose-td:prose-xl prose-img:h-[calc(100vw-3rem)] prose-img:rounded-3xl prose-img:object-cover md:prose-img:h-auto;
+    @apply prose max-w-4xl prose-headings:mt-0 prose-headings:mb-4 prose-headings:font-serif prose-headings:font-normal prose-h1:text-4xl prose-h2:text-3xl lg:prose-h2:text-4xl prose-p:leading-tight prose-a:underline prose-a:outline-none prose-a:focus-visible:underline-offset-4 prose-blockquote:not-italic prose-strong:font-bold prose-code:prose-base prose-code:font-sans prose-code:font-normal md:prose-code:prose-xl prose-ol:leading-tight prose-ul:leading-tight prose-th:pb-6 md:prose-th:pb-8 prose-td:prose-base md:prose-td:prose-xl prose-img:h-[calc(100vw-3rem)] prose-img:rounded-3xl prose-img:object-cover md:prose-img:h-auto;
 
     --tw-prose-body: theme(--color-black);
     --tw-prose-headings: theme(--color-black);

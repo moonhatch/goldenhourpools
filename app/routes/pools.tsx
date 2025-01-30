@@ -28,7 +28,7 @@ export default function PoolsPage() {
         </div>
       </Container>
       <Container className="my-24 lg:mb-48">
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid items-start gap-6 lg:grid-cols-3">
           {store.products.map((product) => (
             <Card key={product.handle} product={product} type="form" />
           ))}
