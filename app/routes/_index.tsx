@@ -84,11 +84,11 @@ export default function Index() {
       />
       <Container className="mb-12 lg:my-48" mobileFullWidth>
         <Accordion
-          className="overflow-hidden border-ghp-250 lg:rounded-2xl lg:border"
+          className="overflow-hidden border-b border-ghp-250 lg:rounded-2xl lg:border"
           collapsible
           type="single"
         >
-          <AccordionItem value="item-1">
+          <AccordionItem layer={1} className="lg:border-0" value="item-1">
             <AccordionTrigger>What does your price include?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -97,7 +97,7 @@ export default function Index() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-2">
+          <AccordionItem layer={1} value="item-2">
             <AccordionTrigger>How long does it take to build?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -107,7 +107,7 @@ export default function Index() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem layer={1} value="item-3">
             <AccordionTrigger>Are your pools pre-fabricated?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -117,7 +117,7 @@ export default function Index() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-4">
+          <AccordionItem layer={1} value="item-4">
             <AccordionTrigger>Do you offer financing?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -135,7 +135,7 @@ export default function Index() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-5">
+          <AccordionItem layer={1} value="item-5">
             <AccordionTrigger>What’s your warranty?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
@@ -145,7 +145,7 @@ export default function Index() {
               </p>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem className="lg:border-0" value="item-6">
+          <AccordionItem layer={1} value="item-6">
             <AccordionTrigger>What areas do you service?</AccordionTrigger>
             <AccordionContent className="ghp-prose -mt-5">
               <p>
