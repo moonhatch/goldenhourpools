@@ -1,24 +1,34 @@
 {
   "addons": [
     {
-      "name": "Pool Heater",
+      "id": "heater",
+      "label": "Pool Heater",
       "price": 5000
     },
     {
-      "name": "Automation",
+      "id": "automation",
+      "label": "Automation",
       "price": 5000
     },
     {
-      "name": "Saltwater System",
+      "id": "saltwater",
+      "label": "Saltwater System",
       "price": 3000
     },
     {
-      "name": "Waterline Tile",
+      "id": "tile",
+      "label": "Waterline Tile",
       "price": 4000
     },
     {
-      "name": "Water Fountain",
+      "id": "fountain",
+      "label": "Water Fountain",
       "price": 5000
+    },
+    {
+      "id": "spa",
+      "label": "Spa",
+      "price": 20000
     }
   ],
   "descriptions": [
