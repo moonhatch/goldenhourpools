@@ -76,12 +76,19 @@ export default function Index() {
           </Button>
         </div>
       </Container>
-      <Video
-        ratio={bp === "lg" ? 16 / 9 : 9 / 16}
-        src="https://player.vimeo.com/video/1044849187?background=1"
-        // src="https://player.vimeo.com/video/1044854730?background=1"
-        title="Test video"
-      />
+      {bp === "lg" ? (
+        <Video
+          ratio={16 / 9}
+          src="https://player.vimeo.com/video/1052105649?background=1"
+          title="Test video"
+        />
+      ) : (
+        <Video
+          ratio={9 / 16}
+          src="https://player.vimeo.com/video/1052105950?background=1"
+          title="Test video"
+        />
+      )}
       <Container className="mb-12 lg:my-48" mobileFullWidth>
         <Accordion
           className="overflow-hidden border-b border-ghp-250 lg:rounded-2xl lg:border"
