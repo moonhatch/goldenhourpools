@@ -68,7 +68,7 @@ LinksItem.propTypes = {
 
 const Footer = () => {
   return (
-    <Container className="-my-px bg-ghp-200 py-px text-center text-ghp-900 lg:bg-ghp-100">
+    <Container className="-my-px py-px text-center text-ghp-900">
       <div className="mx-auto max-w-sm">
         <Logo />
         <div className="grid grid-cols-2 gap-3">

@@ -32,7 +32,7 @@ const AccordionTrigger = React.forwardRef<
         underline-offset-2 transition-all outline-none hover:underline focus-visible:underline`,
         compact
           ? "py-3"
-          : "px-5 py-4 font-serif text-lg lg:px-12 lg:py-6 [&[data-state=open]>svg]:rotate-180",
+          : "px-5 py-6 font-serif text-lg lg:px-12 [&[data-state=open]>svg]:rotate-180",
         className,
       )}
       {...props}
