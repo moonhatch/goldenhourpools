@@ -1,6 +1,6 @@
 import store from "@/config/store.json";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
@@ -37,6 +37,7 @@ const Card = ({ className, product, type = "nav" }) => {
   const [spa, setSpa] = useState(false);
   const [variant, setVariant] = useState(getVariant(product));
   const [price, setPrice] = useState(product?.price);
+  const navigate = useNavigate();
 
   const descriptions = [...variant.descriptions, ...store.descriptions];
 
@@ -55,7 +56,6 @@ const Card = ({ className, product, type = "nav" }) => {
 
   useEffect(() => {
     const newVariant = getVariant(product, { depth, spa });
-
     const newAddons = addons.filter((addon) => addon !== "spa");
     const addonsSubtotal = store?.addons.reduce((price, addon) => {
       return (price += newAddons.includes(addon.id) ? addon.price : 0);
@@ -66,7 +66,13 @@ const Card = ({ className, product, type = "nav" }) => {
   }, [addons, depth, product, spa]);
 
   const onSubmit = (addons) => {
-    console.log(product.handle, depth, addons);
+    navigate("/contact", {
+      state: {
+        product: product.handle,
+        depth,
+        addons,
+      },
+    });
   };
 
   return (
@@ -149,7 +155,10 @@ const Card = ({ className, product, type = "nav" }) => {
                 <AccordionItem layer={2} key={`product-desc-${i}`} value={`product-desc-${i}`}>
                   <AccordionTrigger compact>{desc.name}</AccordionTrigger>
                   <AccordionContent compact className="ghp-prose -mt-5">
-                    <p>{desc.value}</p>
+                    <div
+                      className="ghp-prose prose-ul:list-none prose-ul:px-0 prose-li:px-0"
+                      dangerouslySetInnerHTML={{ __html: desc.value }}
+                    />
                   </AccordionContent>
                 </AccordionItem>
               ))}

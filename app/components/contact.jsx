@@ -1,4 +1,5 @@
-import { Form } from "@remix-run/react";
+import store from "@/config/store.json";
+import { Form, useLocation } from "@remix-run/react";
 import PropTypes from "prop-types";
 
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,16 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 const Contact = ({ className, heading }) => {
+  const location = useLocation();
+
+  const { state } = location;
+  const product = store?.products?.find((product) => product.handle === state?.product) ?? {};
+
+  if (product?.handle) {
+    heading = `The ${product.name}. Good Choice.`;
+  }
+  console.log(product);
+
   return (
     <div
       className={cn("rounded-3xl bg-orange px-6 py-8 text-center text-white lg:py-20", className)}
