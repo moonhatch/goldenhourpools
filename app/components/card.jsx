@@ -65,12 +65,12 @@ const Card = ({ className, product, type = "nav" }) => {
     setPrice(newVariant?.price + addonsSubtotal);
   }, [addons, depth, product, spa]);
 
-  const onSubmit = (addons) => {
+  const onSubmit = (data) => {
     navigate("/contact", {
       state: {
-        product: product.handle,
-        depth,
-        addons,
+        product,
+        variant,
+        addons: data.addons,
       },
     });
   };

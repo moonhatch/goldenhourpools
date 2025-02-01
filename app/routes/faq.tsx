@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
-import Contact from "@/components/contact";
+import ContactForm from "@/components/contact-form";
 import Container from "@/components/container";
 import {
   Accordion,
@@ -171,7 +171,7 @@ export default function FaqPage() {
         </Accordion>
       </Container>
       <Container>
-        <Contact className="my-12" heading="We’re Now Accepting Projects For 2025" />
+        <ContactForm className="my-12" heading="We’re Now Accepting Projects For 2025" />
       </Container>
     </>
   );

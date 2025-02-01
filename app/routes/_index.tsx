@@ -5,7 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
 
 import Card from "@/components/card";
-import Contact from "@/components/contact";
+import ContactForm from "@/components/contact-form";
 import Container from "@/components/container";
 import Hero from "@/components/hero";
 import {
@@ -164,7 +164,7 @@ export default function Index() {
         </Accordion>
       </Container>
       <Container>
-        <Contact className="my-12" heading="We’re Now Accepting Projects For 2025" />
+        <ContactForm className="my-12" heading="We’re Now Accepting Projects For 2025" />
       </Container>
     </>
   );

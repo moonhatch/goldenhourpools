@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 
-import Contact from "@/components/contact";
+import ContactForm from "@/components/contact-form";
 import Container from "@/components/container";
 import Media from "@/components/media";
 import Tag from "@/components/tag";
@@ -69,7 +69,7 @@ export default function GalleryPage() {
           </Media>
         </div>
       </div>
-      <Contact className="mt-6" heading="We’re Now Accepting Projects For 2025" />
+      <ContactForm className="mt-6" heading="We’re Now Accepting Projects For 2025" />
     </Container>
   );
 }
