@@ -60,18 +60,19 @@ Add-ons: ${data?.addons ?? ""}`;
 
   console.log("Creating task", data);
 
-  tasksApiInstance.createTask(body).then(
-    (response) => {
-      console.log("Created task", response);
+  try {
+    const task = await tasksApiInstance.createTask(body);
 
-      return redirect("/thank-you");
-    },
-    (error) => {
-      console.error(error);
+    console.log("Created task", task);
 
-      return json({ error: error.response.body });
-    },
-  );
+    return redirect("/thank-you");
+  } catch (error) {
+    console.error("Task error", error);
+
+    return json({ error: error.response.body });
+  }
+
+  const task = await tasksApiInstance.createTask(body);
 
   return redirect("/thank-you");
 }
