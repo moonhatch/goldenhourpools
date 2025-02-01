@@ -1,9 +1,10 @@
-import { useEventListener } from "@/hooks";
 import { Link } from "@remix-run/react";
 import PropTypes from "prop-types";
 import { useEffect, useCallback, useRef } from "react";
 
 import Container from "@/components/container";
+
+import { useEventListener } from "@/hooks";
 
 import { InnerSun, OuterGhp } from "@/icons";
 
@@ -114,7 +115,7 @@ LinksItem.propTypes = {
 
 const Footer = () => {
   return (
-    <Container className="-my-px bg-ghp-200 py-px text-center text-ghp-900 lg:bg-background">
+    <Container className="-my-px bg-ghp-200 py-px text-center text-ghp-900 lg:bg-ghp-100">
       <Nav />
       <Action label="Call us" href="tel:+15122700428" title="(512) 270-0428" />
       <Action

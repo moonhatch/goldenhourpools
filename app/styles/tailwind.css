@@ -7,8 +7,6 @@
   --font-sans: "FriedelPro", "sans-serif";
   --font-serif: "CatalogueLL", "sans-serif";
 
-  /* --color-*: initial; */
-
   --color-white: #ffffff;
   --color-ghp-100: #f5f6f2; /* primary bg */
   --color-ghp-200: #eae9e5; /* secondary bg */
@@ -22,39 +20,9 @@
   --color-orange: #c9431c;
   --color-yellow: #e5cb67;
 
-  /*
-  * shadcn does not yet support Tailwind v4, so these values were manually copied from here.
-  * @see https://github.com/shadcn-ui/ui/discussions/2996#discussioncomment-11479872
-  */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+
   @keyframes accordion-down {
     from {
       height: 0;
@@ -70,40 +38,6 @@
     to {
       height: 0;
     }
-  }
-}
-
-/*
-* shadcn does not yet support Tailwind v4, so these values were manually copied from here.
-* @see https://github.com/shadcn-ui/ui/discussions/2996#discussioncomment-11479872
-*/
-@layer base {
-  :root {
-    --background: var(--color-ghp-100);
-    --foreground: var(--color-black);
-    --card: hsl(0 0% 100%);
-    --card-foreground: hsl(0 0% 3.9%);
-    --popover: hsl(0 0% 100%);
-    --popover-foreground: hsl(0 0% 3.9%);
-    --primary: hsl(0 0% 9%);
-    --primary-foreground: hsl(0 0% 98%);
-    --secondary: hsl(0 0% 96.1%);
-    --secondary-foreground: hsl(0 0% 9%);
-    --muted: hsl(0 0% 96.1%);
-    --muted-foreground: hsl(0 0% 45.1%);
-    --accent: hsl(0 0% 96.1%);
-    --accent-foreground: hsl(0 0% 9%);
-    --destructive: hsl(0 84.2% 60.2%);
-    --destructive-foreground: hsl(0 0% 98%);
-    --border: hsl(0 0% 89.8%);
-    --input: hsl(0 0% 89.8%);
-    --ring: hsl(0 0% 3.9%);
-    --chart-1: hsl(12 76% 61%);
-    --chart-2: hsl(173 58% 39%);
-    --chart-3: hsl(197 37% 24%);
-    --chart-4: hsl(43 74% 66%);
-    --chart-5: hsl(27 87% 67%);
-    --radius: 0.5rem;
   }
 }
 
@@ -125,32 +59,32 @@
   }
 
   html {
-    @apply scroll-smooth bg-background antialiased;
+    @apply scroll-smooth bg-ghp-100 antialiased;
   }
 
   body {
-    @apply flex min-h-dvh flex-col text-foreground;
+    @apply flex min-h-dvh flex-col text-black;
   }
 
   ::selection {
     @apply bg-yellow text-black;
   }
-}
 
-@font-face {
-  font-family: "CatalogueLL";
-  src: url("./fonts/CatalogueLL-Light.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "CatalogueLL";
+    src: url("./fonts/CatalogueLL-Light.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "FriedelPro";
-  src: url("./fonts/FriedelPro-Regular.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  @font-face {
+    font-family: "FriedelPro";
+    src: url("./fonts/FriedelPro-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 @layer components {

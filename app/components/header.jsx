@@ -1,4 +1,3 @@
-import { useEventListener } from "@/hooks";
 import {
   FloatingFocusManager,
   FloatingOverlay,
@@ -17,6 +16,8 @@ import { useState, useEffect, useCallback } from "react";
 
 import Announcement from "@/components/announcement";
 import { Button } from "@/components/ui/button";
+
+import { useEventListener } from "@/hooks";
 
 import { Sun } from "@/icons";
 
@@ -62,7 +63,7 @@ const Header = () => {
       <div
         className={cn(
           "relative flex h-24 items-center justify-between px-5 lg:px-16",
-          !invertColors && "bg-background",
+          !invertColors && "bg-ghp-100",
           invertColors ? "text-white" : "border-b border-ghp-250 text-orange",
         )}
       >
@@ -185,7 +186,7 @@ const Header = () => {
 Header.propTypes = {};
 
 const MobileNavItem = ({ children, onClick, to }) => (
-  <li className="border-b border-ghp-250 bg-background lg:border-x">
+  <li className="border-b border-ghp-250 bg-ghp-100 lg:border-x">
     <Link
       className="block py-8 text-center font-serif text-4xl text-orange decoration-2
         underline-offset-4 outline-none hover:underline focus-visible:underline"
