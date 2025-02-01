@@ -109,7 +109,23 @@ const Card = ({ className, product, type = "nav" }) => {
               </Button>
             </div>
             <Accordion collapsible type="single">
-              <AccordionItem className="border-0" layer={2} value="product-desc-addons">
+              {descriptions.map((desc, i) => (
+                <AccordionItem
+                  className={!i && "border-0"}
+                  layer={2}
+                  key={`product-desc-${i}`}
+                  value={`product-desc-${i}`}
+                >
+                  <AccordionTrigger compact>{desc.name}</AccordionTrigger>
+                  <AccordionContent compact className="ghp-prose -mt-5">
+                    <div
+                      className="ghp-prose prose-ul:list-none prose-ul:px-0 prose-li:px-0"
+                      dangerouslySetInnerHTML={{ __html: desc.value }}
+                    />
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+              <AccordionItem layer={2} value="product-desc-addons">
                 <AccordionTrigger compact>Add-ons</AccordionTrigger>
                 <AccordionContent compact className="ghp-prose -mt-5">
                   <FormField
@@ -151,17 +167,6 @@ const Card = ({ className, product, type = "nav" }) => {
                   />
                 </AccordionContent>
               </AccordionItem>
-              {descriptions.map((desc, i) => (
-                <AccordionItem layer={2} key={`product-desc-${i}`} value={`product-desc-${i}`}>
-                  <AccordionTrigger compact>{desc.name}</AccordionTrigger>
-                  <AccordionContent compact className="ghp-prose -mt-5">
-                    <div
-                      className="ghp-prose prose-ul:list-none prose-ul:px-0 prose-li:px-0"
-                      dangerouslySetInnerHTML={{ __html: desc.value }}
-                    />
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
             </Accordion>
             <Button className="mt-3 w-full" kind="default" rounded="xl" type="submit">
               Get Started
