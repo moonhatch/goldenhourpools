@@ -58,11 +58,17 @@ Add-ons: ${data?.addons ?? ""}`;
     },
   };
 
+  console.log("Creating task", data);
+
   tasksApiInstance.createTask(body).then(
-    () => {
+    (response) => {
+      console.log("Created task", response);
+
       return redirect("/thank-you");
     },
     (error) => {
+      console.error(error);
+
       return json({ error: error.response.body });
     },
   );
