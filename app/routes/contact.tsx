@@ -72,7 +72,7 @@ Add-ons: ${data?.addons ?? ""}`;
 
 export default function ContactPage() {
   return (
-    <Container className="my-12">
+    <Container className="mt-12">
       <ContactForm />
     </Container>
   );
