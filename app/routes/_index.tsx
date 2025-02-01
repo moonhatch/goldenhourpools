@@ -36,7 +36,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const bp = useBreakpoint();
-  const [options, setOptions] = useState({ loop: true });
+  const [options, setOptions] = useState({});
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Index() {
       </Container>
       <Container className="my-12" mobileFullWidth>
         <div className="embla" ref={emblaRef}>
-          <div className="embla__container -mx-3">
+          <div className="embla__container mx-3">
             {store.products.map((product) => (
               <div className="embla__slide px-3" key={product.handle}>
                 <Card product={product} />
@@ -83,11 +83,15 @@ export default function Index() {
           title="Test video"
         />
       ) : (
-        <Video
-          ratio={9 / 16}
-          src="https://player.vimeo.com/video/1052105950?background=1"
-          title="Test video"
-        />
+        <div className="overflow-hidden">
+          <div className="-my-24">
+            <Video
+              ratio={9 / 16}
+              src="https://player.vimeo.com/video/1052105950?background=1"
+              title="Test video"
+            />
+          </div>
+        </div>
       )}
       <Container className="mb-12 lg:my-48" mobileFullWidth>
         <Accordion
@@ -164,7 +168,7 @@ export default function Index() {
         </Accordion>
       </Container>
       <Container>
-        <ContactForm className="my-12" heading="We’re Now Accepting Projects For 2025" />
+        <ContactForm className="mt-12" heading="We’re Now Accepting Projects For 2025" />
       </Container>
     </>
   );

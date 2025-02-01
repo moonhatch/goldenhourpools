@@ -77,7 +77,7 @@ const Card = ({ className, product, type = "nav" }) => {
 
   return (
     <div className={cn("rounded-3xl bg-ghp-200 p-5", className)}>
-      <div className="invisible relative -top-[140px] block" id={product.handle}></div>
+      <div className="invisible relative -top-10 block" id={product.handle}></div>
       <h3 className="flex justify-between border-b border-ghp-300 pb-4 font-serif text-3xl">
         <span>{product?.name ?? "Pool"}</span>
         <span>{formatCurrency(price)}</span>
@@ -92,6 +92,7 @@ const Card = ({ className, product, type = "nav" }) => {
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="mb-3 grid grid-cols-2 gap-3">
               <Button
+                className="h-12"
                 kind={depth === "deep" ? "outline" : "secondary"}
                 onClick={() => setDepth("deep")}
                 rounded="xl"
@@ -100,6 +101,7 @@ const Card = ({ className, product, type = "nav" }) => {
                 Deep
               </Button>
               <Button
+                className="h-12"
                 kind={depth === "shallow" ? "outline" : "secondary"}
                 onClick={() => setDepth("shallow")}
                 rounded="xl"
@@ -168,7 +170,7 @@ const Card = ({ className, product, type = "nav" }) => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <Button className="mt-3 w-full" kind="default" rounded="xl" type="submit">
+            <Button className="mt-3 h-12 w-full" kind="default" rounded="xl" type="submit">
               Get Started
             </Button>
           </form>

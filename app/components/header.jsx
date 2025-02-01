@@ -1,4 +1,3 @@
-import { useEventListener } from "@/hooks";
 import {
   FloatingFocusManager,
   FloatingOverlay,
@@ -13,7 +12,7 @@ import {
 import { Link } from "@remix-run/react";
 import { NavLink, useMatches } from "@remix-run/react";
 import PropTypes from "prop-types";
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 
 import Announcement from "@/components/announcement";
 import { Button } from "@/components/ui/button";
@@ -24,11 +23,10 @@ import { cn } from "@/lib/utils";
 
 const Header = () => {
   const matches = useMatches();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const isHome = matches[1]?.pathname === "/";
-  const invertColors = isHome && !isScrolled && !isOpen;
+  const invertColors = isHome && !isOpen;
 
   const { refs, context } = useFloating({
     open: isOpen,
@@ -47,22 +45,13 @@ const Header = () => {
 
   const { getReferenceProps, getFloatingProps } = useInteractions([click, role, dismiss, focus]);
 
-  const scrollHandler = useCallback(() => {
-    setIsScrolled(window.scrollY > 0);
-  }, []);
-
-  useEventListener("scroll", scrollHandler);
-  useEffect(() => {
-    scrollHandler();
-  }, [scrollHandler]);
-
   return (
     <>
       {isHome && <Announcement>Serving Austin, TX and surrounding areas.</Announcement>}
       <div
         className={cn(
           "relative flex h-24 items-center justify-between px-5 lg:px-16",
-          !invertColors && "bg-background",
+          !invertColors && "bg-ghp-100",
           invertColors ? "text-white" : "border-b border-ghp-250 text-orange",
         )}
       >
@@ -185,7 +174,7 @@ const Header = () => {
 Header.propTypes = {};
 
 const MobileNavItem = ({ children, onClick, to }) => (
-  <li className="border-b border-ghp-250 bg-background lg:border-x">
+  <li className="border-b border-ghp-250 bg-ghp-100 lg:border-x">
     <Link
       className="block py-8 text-center font-serif text-4xl text-orange decoration-2
         underline-offset-4 outline-none hover:underline focus-visible:underline"

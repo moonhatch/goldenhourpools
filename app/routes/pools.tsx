@@ -35,7 +35,7 @@ export default function PoolsPage() {
         </div>
       </Container>
       <Container>
-        <ContactForm className="my-12" heading="We’re Now Accepting Projects For 2025" />
+        <ContactForm className="mt-12" heading="We’re Now Accepting Projects For 2025" />
       </Container>
     </>
   );

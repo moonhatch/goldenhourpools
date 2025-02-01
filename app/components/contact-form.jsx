@@ -32,7 +32,7 @@ const ContactForm = ({ className, heading }) => {
       className={cn("rounded-3xl bg-orange px-6 py-8 text-center text-white lg:py-20", className)}
     >
       <div className="mx-auto max-w-sm">
-        <div className="ghp-prose my-4 text-white prose-headings:text-white">
+        <div className="ghp-prose mt-4 mb-10 text-white prose-headings:text-white">
           <h2 className="text-balance">{heading || "Get In Touch"}</h2>
           <p className="text-balance">
             Just leave us your name and number and we will contact you within 24 hours.

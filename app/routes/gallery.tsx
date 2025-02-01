@@ -26,7 +26,7 @@ export default function GalleryPage() {
   const bp = useBreakpoint();
 
   return (
-    <Container className="my-12">
+    <Container className="mt-6 lg:mt-12">
       <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-6">
         <div className="grid gap-6 lg:col-span-2">
           <Media
