@@ -36,7 +36,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const bp = useBreakpoint();
-  const [options, setOptions] = useState({ loop: true });
+  const [options, setOptions] = useState({});
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Index() {
       </Container>
       <Container className="my-12" mobileFullWidth>
         <div className="embla" ref={emblaRef}>
-          <div className="embla__container -mx-3">
+          <div className="embla__container mx-3">
             {store.products.map((product) => (
               <div className="embla__slide px-3" key={product.handle}>
                 <Card product={product} />
