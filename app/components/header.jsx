@@ -12,12 +12,10 @@ import {
 import { Link } from "@remix-run/react";
 import { NavLink, useMatches } from "@remix-run/react";
 import PropTypes from "prop-types";
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 
 import Announcement from "@/components/announcement";
 import { Button } from "@/components/ui/button";
-
-import { useEventListener } from "@/hooks";
 
 import { Sun } from "@/icons";
 
@@ -25,11 +23,10 @@ import { cn } from "@/lib/utils";
 
 const Header = () => {
   const matches = useMatches();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const isHome = matches[1]?.pathname === "/";
-  const invertColors = isHome && !isScrolled && !isOpen;
+  const invertColors = isHome && !isOpen;
 
   const { refs, context } = useFloating({
     open: isOpen,
@@ -47,15 +44,6 @@ const Header = () => {
   const role = useRole(context, { role: "menu" });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([click, role, dismiss, focus]);
-
-  const scrollHandler = useCallback(() => {
-    setIsScrolled(window.scrollY > 0);
-  }, []);
-
-  useEventListener("scroll", scrollHandler);
-  useEffect(() => {
-    scrollHandler();
-  }, [scrollHandler]);
 
   return (
     <>
