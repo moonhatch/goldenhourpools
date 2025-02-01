@@ -2,7 +2,7 @@ import store from "@/config/store.json";
 import type { MetaFunction } from "@remix-run/node";
 
 import Card from "@/components/card";
-import Contact from "@/components/contact";
+import ContactForm from "@/components/contact-form";
 import Container from "@/components/container";
 
 export const meta: MetaFunction = () => {
@@ -35,7 +35,7 @@ export default function PoolsPage() {
         </div>
       </Container>
       <Container>
-        <Contact className="my-12" heading="We’re Now Accepting Projects For 2025" />
+        <ContactForm className="my-12" heading="We’re Now Accepting Projects For 2025" />
       </Container>
     </>
   );

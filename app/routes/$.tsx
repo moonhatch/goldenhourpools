@@ -6,7 +6,6 @@ export async function loader({ request }) {
   const pathname = url.pathname;
 
   for (const obj of redirects) {
-    console.log(obj);
     if (pathname === obj.source || pathname.match(new RegExp(obj.source))) {
       return redirect(obj.destination);
     }
