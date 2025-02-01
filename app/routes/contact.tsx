@@ -58,14 +58,21 @@ Add-ons: ${data?.addons ?? ""}`;
     },
   };
 
-  tasksApiInstance.createTask(body).then(
-    () => {
-      return redirect("/thank-you");
-    },
-    (error) => {
-      return json({ error: error.response.body });
-    },
-  );
+  console.log("Creating task", data);
+
+  try {
+    const task = await tasksApiInstance.createTask(body);
+
+    console.log("Created task", task);
+
+    return redirect("/thank-you");
+  } catch (error) {
+    console.error("Task error", error);
+
+    return json({ error: error.response.body });
+  }
+
+  const task = await tasksApiInstance.createTask(body);
 
   return redirect("/thank-you");
 }
