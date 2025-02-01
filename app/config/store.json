@@ -1,38 +1,40 @@
 {
   "addons": [
     {
-      "name": "Pool Heater",
-      "price": 5000
+      "id": "heater",
+      "label": "Heater",
+      "price": 6000
     },
     {
-      "name": "Automation",
-      "price": 5000
+      "id": "chiller",
+      "label": "Chiller",
+      "price": 6000
     },
     {
-      "name": "Saltwater System",
+      "id": "tile",
+      "label": "Waterline Tile",
       "price": 3000
     },
     {
-      "name": "Waterline Tile",
-      "price": 4000
+      "id": "fountain",
+      "label": "Fountain",
+      "price": 3000
     },
     {
-      "name": "Water Fountain",
-      "price": 5000
+      "id": "saltwater",
+      "label": "Salt Water",
+      "price": 3000
+    },
+    {
+      "id": "spa",
+      "label": "Spa",
+      "price": 20000
     }
   ],
   "descriptions": [
     {
-      "name": "Equipment",
-      "value": "Golden Hour Pools exclusively uses Pentair equipment, the industry leader in pool technology and efficiency. From advanced filtration systems to energy-saving pumps and smart automation controls, our setups are designed for reliability, performance, and seamless operation."
-    },
-    {
-      "name": "Installation Timeline",
-      "value": "The journey to your perfect pool typically spans 4-8 weeks once site work begins. Please note, this timeline can vary depending on the permitting process in your area. We strive to ensure a swift and efficient installation, while adhering to all local regulations for your peace of mind."
-    },
-    {
-      "name": "Customization",
-      "value": "We've optimized our process and design to provide high-end pools at accessible prices. While our pool design is standardized to maintain this balance, we understand the uniqueness of each space. That's why we're open to making minor adjustments in size and specifications to accommodate your specific needs. "
+      "name": "What's Included",
+      "value": "<ul><li><b>Site plans & permitting</b>: We handle the paperwork</li><li><b>All construction & finishes</b>: From excavation to final touches</li><li><b>Top-tier equipment</b>: Pentair pumps and filters, built to last</li><li><b>Start-up & maintenance</b>: Includes water balancing and 1 month of professional cleaning</li></ul>"
     }
   ],
   "products": [
@@ -53,8 +55,8 @@
           "price": 49000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 8 feet in width and 15 feet in length, and a depth range from a 4-foot shallow end to a 5.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 8’ x 15’</li><li><b>Depth</b>: 3.5’ shallow end, 5.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -69,8 +71,8 @@
           "price": 69000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 8 feet in width and 15 feet in length, and a depth range from a 4-foot shallow end to a 5.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 8’ x 21’</li><li><b>Depth</b>: 3.5’ shallow end, 5.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -85,8 +87,8 @@
           "price": 49000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 8 feet in width and 15 feet in length, and a depth range from a 3.5-foot shallow end to a 4.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 8’ x 15’</li><li><b>Depth</b>: 3.5’ shallow end, 4.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -101,8 +103,8 @@
           "price": 69000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 8 feet in width and 15 feet in length, and a depth range from a 3.5-foot shallow end to a 4.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 8’ x 21’</li><li><b>Depth</b>: 3.5’ shallow end, 4.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         }
@@ -125,8 +127,8 @@
           "price": 59000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 10 feet in width and 20 feet in length, offering a versatile depth range from a 4-foot shallow end to a 6.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 10’ x 20’</li><li><b>Depth</b>: 3.5’ shallow end, 6.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -141,8 +143,8 @@
           "price": 79000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 10 feet in width and 20 feet in length, offering a versatile depth range from a 4-foot shallow end to a 6.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 10’ x 26’</li><li><b>Depth</b>: 3.5’ shallow end, 6.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -157,8 +159,8 @@
           "price": 59000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 10 feet in width and 20 feet in length, offering a versatile depth range from a 3.5-foot shallow end to a 4.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 10’ x 20’</li><li><b>Depth</b>: 3.5’ shallow end, 4.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -173,8 +175,8 @@
           "price": 79000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 10 feet in width and 20 feet in length, offering a versatile depth range from a 3.5-foot shallow end to a 4.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 10’ x 26’</li><li><b>Depth</b>: 3.5’ shallow end, 4.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         }
@@ -197,8 +199,8 @@
           "price": 69000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 15 feet in width and 25 feet in length, offering a versatile depth range from a 3.5-foot shallow end to a 6.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 15’ x 25’</li><li><b>Depth</b>: 3.5’ shallow end, 6.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -213,8 +215,8 @@
           "price": 89000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 15 feet in width and 25 feet in length, offering a versatile depth range from a 3.5-foot shallow end to a 6.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 15’ x 31’</li><li><b>Depth</b>: 3.5’ shallow end, 6.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -229,8 +231,8 @@
           "price": 69000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 15 feet in width and 25 feet in length, offering a versatile depth range from a 3.5-foot shallow end to a 4.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 15’ x 25’</li><li><b>Depth</b>: 3.5’ shallow end, 4.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         },
@@ -245,8 +247,8 @@
           "price": 89000,
           "descriptions": [
             {
-              "name": "Size",
-              "value": "Our custom pool measures 15 feet in width and 25 feet in length, offering a versatile depth range from a 3.5-foot shallow end to a 4.5-foot deep end. It features a 12-inch wide concrete coping, and all walls of the pool are constructed with an 11-inch thickness."
+              "name": "Specifications",
+              "value": "<ul><li><b>Size</b>: 15’ x 31’</li><li><b>Depth</b>: 3.5’ shallow end, 4.5’ deep end</li><li><b>Coping</b>: 1’ concrete coping</li><li><b>Construction</b>: Reinforced concrete</li><li><b>Finish</b>: Micro pebble plaster</li><li><b>Equipment</b>: Industry-leading Pentair pumps and filters</li></ul>"
             }
           ]
         }

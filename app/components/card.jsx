@@ -1,8 +1,11 @@
 import store from "@/config/store.json";
-import { Link } from "@remix-run/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Link, useNavigate } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import {
   Accordion,
@@ -11,11 +14,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Label } from "@/components/ui/label";
 
-// import { Label } from "@/components/ui/label";
-// import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { cn, formatCurrency } from "@/lib/utils";
 
-import { cn } from "@/lib/utils";
+const formSchema = z.object({
+  addons: z.array(z.string()),
+});
 
 const getVariant = (product, options) => {
   const variant = product?.variants?.find((variant) => {
@@ -29,26 +36,51 @@ const Card = ({ className, product, type = "nav" }) => {
   const [depth, setDepth] = useState("deep");
   const [spa, setSpa] = useState(false);
   const [variant, setVariant] = useState(getVariant(product));
+  const [price, setPrice] = useState(product?.price);
+  const navigate = useNavigate();
 
   const descriptions = [...variant.descriptions, ...store.descriptions];
 
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      addons: [],
+    },
+  });
+
+  const addons = form.watch("addons");
+
   useEffect(() => {
-    setVariant(getVariant(product, { depth, spa }));
-  }, [depth, product, spa]);
+    setSpa(addons.includes("spa"));
+  }, [addons]);
+
+  useEffect(() => {
+    const newVariant = getVariant(product, { depth, spa });
+    const newAddons = addons.filter((addon) => addon !== "spa");
+    const addonsSubtotal = store?.addons.reduce((price, addon) => {
+      return (price += newAddons.includes(addon.id) ? addon.price : 0);
+    }, 0);
+
+    setVariant(newVariant);
+    setPrice(newVariant?.price + addonsSubtotal);
+  }, [addons, depth, product, spa]);
+
+  const onSubmit = (addons) => {
+    navigate("/contact", {
+      state: {
+        product: product.handle,
+        depth,
+        addons,
+      },
+    });
+  };
 
   return (
     <div className={cn("rounded-3xl bg-ghp-200 p-5", className)}>
       <div className="invisible relative -top-[140px] block" id={product.handle}></div>
       <h3 className="flex justify-between border-b border-ghp-300 pb-4 font-serif text-3xl">
         <span>{product?.name ?? "Pool"}</span>
-        <span>
-          {new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-            minimumFractionDigits: 0,
-          }).format(variant?.price ?? 0)}
-        </span>
+        <span>{formatCurrency(price)}</span>
       </h3>
       <img
         alt={product?.name ?? "Pool"}
@@ -56,44 +88,91 @@ const Card = ({ className, product, type = "nav" }) => {
         src={variant?.image ?? "/classic.png"}
       />
       {type === "form" && (
-        <div className="mb-3 grid grid-cols-2 gap-3">
-          <Button
-            kind={depth === "deep" ? "outline" : "secondary"}
-            onClick={() => setDepth("deep")}
-            rounded="xl"
-          >
-            Deep
-          </Button>
-          <Button
-            kind={depth === "shallow" ? "outline" : "secondary"}
-            onClick={() => setDepth("shallow")}
-            rounded="xl"
-          >
-            Shallow
-          </Button>
-        </div>
-      )}
-      {type === "form" && (
-        <Accordion collapsible type="single">
-          {descriptions.map((desc, i) => (
-            <AccordionItem
-              className={i === 0 && "border-0"}
-              layer={2}
-              key={`product-desc-${i}`}
-              value={`product-desc-${i}`}
-            >
-              <AccordionTrigger compact>{desc.name}</AccordionTrigger>
-              <AccordionContent compact className="ghp-prose -mt-5">
-                <p>{desc.value}</p>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      )}
-      {type === "form" && (
-        <Button asChild className="mt-3 w-full" kind="default" rounded="xl">
-          <Link to={`/contact`}>Get Started</Link>
-        </Button>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="mb-3 grid grid-cols-2 gap-3">
+              <Button
+                kind={depth === "deep" ? "outline" : "secondary"}
+                onClick={() => setDepth("deep")}
+                rounded="xl"
+                type="button"
+              >
+                Deep
+              </Button>
+              <Button
+                kind={depth === "shallow" ? "outline" : "secondary"}
+                onClick={() => setDepth("shallow")}
+                rounded="xl"
+                type="button"
+              >
+                Shallow
+              </Button>
+            </div>
+            <Accordion collapsible type="single">
+              {descriptions.map((desc, i) => (
+                <AccordionItem
+                  className={!i && "border-0"}
+                  layer={2}
+                  key={`product-desc-${i}`}
+                  value={`product-desc-${i}`}
+                >
+                  <AccordionTrigger compact>{desc.name}</AccordionTrigger>
+                  <AccordionContent compact className="ghp-prose -mt-5">
+                    <div
+                      className="ghp-prose prose-ul:list-none prose-ul:px-0 prose-li:px-0"
+                      dangerouslySetInnerHTML={{ __html: desc.value }}
+                    />
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+              <AccordionItem layer={2} value="product-desc-addons">
+                <AccordionTrigger compact>Add-ons</AccordionTrigger>
+                <AccordionContent compact className="ghp-prose -mt-5">
+                  <FormField
+                    control={form.control}
+                    name="addons"
+                    render={() => (
+                      <FormItem>
+                        <p className="grid gap-2">
+                          {store.addons.map((addon) => (
+                            <FormField
+                              key={addon.id}
+                              control={form.control}
+                              name="addons"
+                              render={({ field }) => (
+                                <FormControl>
+                                  <span className="flex items-center space-x-2">
+                                    <Checkbox
+                                      checked={field.value?.includes(addon.id)}
+                                      id={`${product.name}-${addon.id}`}
+                                      onCheckedChange={(checked) => {
+                                        return checked
+                                          ? field.onChange([...field.value, addon.id])
+                                          : field.onChange(
+                                              field.value?.filter((value) => value !== addon.id),
+                                            );
+                                      }}
+                                    />
+                                    <Label htmlFor={`${product.name}-${addon.id}`}>
+                                      {addon?.label} - {formatCurrency(addon?.price)}
+                                    </Label>
+                                  </span>
+                                </FormControl>
+                              )}
+                            />
+                          ))}
+                        </p>
+                      </FormItem>
+                    )}
+                  />
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            <Button className="mt-3 w-full" kind="default" rounded="xl" type="submit">
+              Get Started
+            </Button>
+          </form>
+        </Form>
       )}
       {type === "nav" && (
         <Button asChild align="between" className="w-full" kind="secondary" rounded="xl">
