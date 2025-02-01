@@ -83,11 +83,15 @@ export default function Index() {
           title="Test video"
         />
       ) : (
-        <Video
-          ratio={9 / 16}
-          src="https://player.vimeo.com/video/1052105950?background=1"
-          title="Test video"
-        />
+        <div className="overflow-hidden">
+          <div className="-my-24">
+            <Video
+              ratio={9 / 16}
+              src="https://player.vimeo.com/video/1052105950?background=1"
+              title="Test video"
+            />
+          </div>
+        </div>
       )}
       <Container className="mb-12 lg:my-48" mobileFullWidth>
         <Accordion
