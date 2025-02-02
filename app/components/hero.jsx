@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <div className="relative h-dvh overflow-hidden">
+    <div className="ghp-h-screen relative overflow-hidden">
       <img src="/5313-avg-g.jpg" alt="Golden Hour Pools" className="h-full w-full object-cover" />
       <div
         className="absolute top-0 left-0 h-72 w-full bg-gradient-to-b from-ghp-900 to-transparent"

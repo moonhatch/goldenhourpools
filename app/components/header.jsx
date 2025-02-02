@@ -5,7 +5,6 @@ import {
   useClick,
   useDismiss,
   useFloating,
-  useFocus,
   useInteractions,
   useRole,
 } from "@floating-ui/react";
@@ -34,16 +33,10 @@ const Header = () => {
   });
 
   const click = useClick(context);
-  const dismiss = useDismiss(context, {
-    outsidePressEvent: "mousedown",
-    // outsidePress: true, // Dismiss when clicking outside the menu
-    // escapeKey: true, // Dismiss when pressing the Escape key
-    // referencePress: false, // Keep the menu open when clicking the button again
-  });
-  const focus = useFocus(context, { enabled: true });
+  const dismiss = useDismiss(context);
   const role = useRole(context, { role: "menu" });
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([click, role, dismiss, focus]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, role, dismiss]);
 
   return (
     <>

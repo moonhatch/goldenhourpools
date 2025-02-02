@@ -62,17 +62,12 @@ Add-ons: ${data?.addons ?? ""}`;
 
   try {
     const task = await tasksApiInstance.createTask(body);
-
     console.log("Created task", task);
-
     return redirect("/thank-you");
   } catch (error) {
     console.error("Task error", error);
-
     return json({ error: error.response.body });
   }
-
-  const task = await tasksApiInstance.createTask(body);
 
   return redirect("/thank-you");
 }
