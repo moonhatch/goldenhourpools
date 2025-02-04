@@ -78,7 +78,7 @@ export default function Index() {
       </Container>
       <Media
         alt="Golden Hour Pools"
-        imgSrc="/avenue-g-classic.jpg"
+        imgSrc="/photos/ave-g-classic-2.jpg"
         ratio={bp === "lg" ? 7 / 5 : 4 / 5}
         rounded={false}
       />
