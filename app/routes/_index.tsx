@@ -8,6 +8,7 @@ import Card from "@/components/card";
 import ContactForm from "@/components/contact-form";
 import Container from "@/components/container";
 import Hero from "@/components/hero";
+import Media from "@/components/media";
 import {
   Accordion,
   AccordionContent,
@@ -15,7 +16,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import Video from "@/components/video";
 
 import { useBreakpoint } from "@/hooks";
 
@@ -76,23 +76,12 @@ export default function Index() {
           </Button>
         </div>
       </Container>
-      {bp === "lg" ? (
-        <Video
-          ratio={16 / 9}
-          src="https://player.vimeo.com/video/1052105649?background=1"
-          title="Test video"
-        />
-      ) : (
-        <div className="overflow-hidden">
-          <div className="-my-24">
-            <Video
-              ratio={9 / 16}
-              src="https://player.vimeo.com/video/1052105950?background=1"
-              title="Test video"
-            />
-          </div>
-        </div>
-      )}
+      <Media
+        alt="Golden Hour Pools"
+        imgSrc="/avenue-g-classic.jpg"
+        ratio={bp === "lg" ? 7 / 5 : 4 / 5}
+        rounded={false}
+      />
       <Container className="mb-12 lg:my-48" mobileFullWidth>
         <Accordion
           className="overflow-hidden border-b border-ghp-250 lg:rounded-2xl lg:border"

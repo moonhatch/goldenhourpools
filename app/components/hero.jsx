@@ -4,8 +4,12 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <div className="ghp-h-screen relative overflow-hidden">
-      <img src="/5313-avg-g.jpg" alt="Golden Hour Pools" className="h-full w-full object-cover" />
+    <div className="ghp-h-screen relative w-full overflow-hidden">
+      <iframe
+        className="ghp-iframe"
+        src="https://player.vimeo.com/video/1052875053?background=1"
+        title="Golden Hour Pools"
+      ></iframe>
       <div
         className="absolute top-0 left-0 h-72 w-full bg-gradient-to-b from-ghp-900 to-transparent"
       ></div>
