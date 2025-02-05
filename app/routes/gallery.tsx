@@ -31,41 +31,79 @@ export default function GalleryPage() {
         <div className="grid gap-6 lg:col-span-2">
           <Media
             alt="Golden Hour Pools"
-            imgSrc="/5315-avg-g-pool-steps.jpg"
-            ratio={bp === "lg" ? 16 / 9 : 4 / 5}
+            imgSrc="/photos/landscape-ave-g-classic.jpg"
+            ratio={16 / 9}
           >
             <Tag>Classic</Tag>
           </Media>
         </div>
         <div className="grid gap-6">
-          <Media alt="Golden Hour Pools" imgSrc="/5315-avg-g-pool-pipes.jpg" ratio={4 / 5}>
+          <Media alt="Golden Hour Pools" imgSrc="/photos/fountain.jpg" ratio={4 / 5}>
             <Tag>Classic</Tag>
           </Media>
-          <Media alt="Golden Hour Pools" imgSrc="/5315-avg-g-pool-steps.jpg" ratio={4 / 5}>
-            <Tag>Classic</Tag>
+          <Media alt="Golden Hour Pools" imgSrc="/photos/ave-g-mini-2.jpg" ratio={4 / 5}>
+            <Tag>Mini</Tag>
           </Media>
         </div>
         <div className="grid gap-6">
           <Media
             alt="Golden Hour Pools"
-            imgSrc="/5315-avg-g-pool-landscaping.jpg"
-            ratio={bp === "lg" ? 5 / 4 : 4 / 5}
-          >
-            <Tag>Grand</Tag>
-          </Media>
-          <Media
-            alt="Golden Hour Pools"
-            imgSrc="/5313-avg-g.jpg"
+            imgSrc="/photos/ave-g-classic.jpg"
             ratio={bp === "lg" ? 5 / 4 : 4 / 5}
           >
             <Tag>Classic</Tag>
           </Media>
           <Media
             alt="Golden Hour Pools"
-            imgSrc="/golden-hour-mini-pool.jpg"
+            imgSrc="/photos/ave-g-classic-2.jpg"
+            ratio={bp === "lg" ? 5 / 4 : 4 / 5}
+          >
+            <Tag>Classic</Tag>
+          </Media>
+          <Media
+            alt="Golden Hour Pools"
+            imgSrc="/photos/ave-g-mini.jpg"
             ratio={bp === "lg" ? 5 / 4 : 4 / 5}
           >
             <Tag>Mini</Tag>
+          </Media>
+        </div>
+        <div className="grid gap-6 lg:col-span-2">
+          <Media alt="Golden Hour Pools" imgSrc="/photos/landscape-ave-g-mini.jpg" ratio={16 / 9}>
+            <Tag>Mini</Tag>
+          </Media>
+        </div>
+        <div className="grid gap-6">
+          <Media alt="Golden Hour Pools" imgSrc="/photos/gonzales-mini-2.jpg" ratio={4 / 5}>
+            <Tag>Mini</Tag>
+          </Media>
+          <Media
+            alt="Golden Hour Pools"
+            imgSrc="/photos/muskdeer-classic.png"
+            ratio={bp === "lg" ? 5 / 4 : 4 / 5}
+          >
+            <Tag>Classic</Tag>
+          </Media>
+        </div>
+        <div className="grid gap-6">
+          <Media
+            alt="Golden Hour Pools"
+            imgSrc="/photos/muskdeer-classic-2.jpg"
+            ratio={bp === "lg" ? 5 / 4 : 4 / 5}
+          >
+            <Tag>Classic</Tag>
+          </Media>
+          <Media alt="Golden Hour Pools" imgSrc="/photos/gonzales-mini.jpg" ratio={4 / 5}>
+            <Tag>Mini</Tag>
+          </Media>
+        </div>
+        <div className="grid gap-6 lg:col-span-2">
+          <Media
+            alt="Golden Hour Pools"
+            imgSrc="/photos/landscape-avenue-g-classic.jpg"
+            ratio={16 / 9}
+          >
+            <Tag>Classic</Tag>
           </Media>
         </div>
       </div>

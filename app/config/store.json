@@ -41,7 +41,7 @@
     {
       "handle": "mini",
       "name": "Mini",
-      "image": "/mini.png",
+      "image": "/illustrations/mini.png",
       "price": 49000,
       "variants": [
         {
@@ -51,7 +51,7 @@
             "depth": "deep",
             "spa": false
           },
-          "image": "/mini-deep.png",
+          "image": "/illustrations/mini-deep.png",
           "price": 49000,
           "descriptions": [
             {
@@ -67,7 +67,7 @@
             "depth": "deep",
             "spa": true
           },
-          "image": "/mini-spa.png",
+          "image": "/illustrations/mini-spa.png",
           "price": 69000,
           "descriptions": [
             {
@@ -83,7 +83,7 @@
             "depth": "shallow",
             "spa": false
           },
-          "image": "/mini-shallow.png",
+          "image": "/illustrations/mini-shallow.png",
           "price": 49000,
           "descriptions": [
             {
@@ -99,7 +99,7 @@
             "depth": "shallow",
             "spa": true
           },
-          "image": "/mini-spa.png",
+          "image": "/illustrations/mini-spa.png",
           "price": 69000,
           "descriptions": [
             {
@@ -113,7 +113,7 @@
     {
       "handle": "classic",
       "name": "Classic",
-      "image": "/classic.png",
+      "image": "/illustrations/classic.png",
       "price": 59000,
       "variants": [
         {
@@ -123,7 +123,7 @@
             "depth": "deep",
             "spa": false
           },
-          "image": "/classic-deep.png",
+          "image": "/illustrations/classic-deep.png",
           "price": 59000,
           "descriptions": [
             {
@@ -139,7 +139,7 @@
             "depth": "deep",
             "spa": true
           },
-          "image": "/classic-spa.png",
+          "image": "/illustrations/classic-spa.png",
           "price": 79000,
           "descriptions": [
             {
@@ -155,7 +155,7 @@
             "depth": "shallow",
             "spa": false
           },
-          "image": "/classic-shallow.png",
+          "image": "/illustrations/classic-shallow.png",
           "price": 59000,
           "descriptions": [
             {
@@ -171,7 +171,7 @@
             "depth": "shallow",
             "spa": true
           },
-          "image": "/classic-spa.png",
+          "image": "/illustrations/classic-spa.png",
           "price": 79000,
           "descriptions": [
             {
@@ -185,7 +185,7 @@
     {
       "handle": "grand",
       "name": "Grand",
-      "image": "/grand.png",
+      "image": "/illustrations/grand.png",
       "price": 69000,
       "variants": [
         {
@@ -195,7 +195,7 @@
             "depth": "deep",
             "spa": false
           },
-          "image": "/grand-deep.png",
+          "image": "/illustrations/grand-deep.png",
           "price": 69000,
           "descriptions": [
             {
@@ -211,7 +211,7 @@
             "depth": "deep",
             "spa": true
           },
-          "image": "/grand-spa.png",
+          "image": "/illustrations/grand-spa.png",
           "price": 89000,
           "descriptions": [
             {
@@ -227,7 +227,7 @@
             "depth": "shallow",
             "spa": false
           },
-          "image": "/grand-shallow.png",
+          "image": "/illustrations/grand-shallow.png",
           "price": 69000,
           "descriptions": [
             {
@@ -243,7 +243,7 @@
             "depth": "shallow",
             "spa": true
           },
-          "image": "/grand-spa.png",
+          "image": "/illustrations/grand-spa.png",
           "price": 89000,
           "descriptions": [
             {
