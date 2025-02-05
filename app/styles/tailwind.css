@@ -133,6 +133,11 @@
     height: 100svh;
   }
 
+  .ghp-w-screen {
+    width: 100vw;
+    width: 100svw;
+  }
+
   .ghp-iframe {
     position: absolute;
     top: 50%;
