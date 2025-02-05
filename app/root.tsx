@@ -27,7 +27,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
-gtag('config', 'G-RZ7WY7ZVVZ');`,
+gtag('config', 'G-RWV1Q86WZK');`,
           }}
         />
         <Meta />
