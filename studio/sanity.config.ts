@@ -32,7 +32,7 @@ const locate: DocumentLocationResolver = (params, context) => {
             },
             {
               title: 'Posts',
-              href: `/`,
+              href: `/posts`,
             },
           ],
         }
@@ -45,7 +45,7 @@ const locate: DocumentLocationResolver = (params, context) => {
 
 export default defineConfig({
   name: 'project-name',
-  title: 'Project Name',
+  title: process.env.SANITY_STUDIO_PROJECT_TITLE || 'Project Name',
   projectId,
   dataset,
   plugins: [
