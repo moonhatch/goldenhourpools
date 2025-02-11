@@ -64,7 +64,7 @@ export default function Index() {
           </div>
         </div>
       </Container>
-      <Container className="my-24 text-center lg:my-48">
+      <Container className="my-48 text-center">
         <div className="ghp-prose mx-auto max-w-2xl prose-headings:text-balance">
           <h2>
             Our mission is simple: make building a pool easy, skip the sales gimmicks, and pass the

@@ -105,6 +105,11 @@ export default function GalleryPage() {
             <Tag>Classic</Tag>
           </Media>
         </div>
+        <div className="grid gap-6 lg:col-span-2">
+          <Media alt="Golden Hour Pools" imgSrc="/photos/castile-classic.png" ratio={16 / 9}>
+            <Tag>Classic</Tag>
+          </Media>
+        </div>
       </div>
       <ContactForm className="mt-6" heading="We’re Now Accepting Projects For 2025" />
     </Container>
