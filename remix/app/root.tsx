@@ -1,13 +1,5 @@
 import { type LinksFunction, json } from "@remix-run/node";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-} from "@remix-run/react";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from "@remix-run/react";
 import { Suspense, lazy } from "react";
 
 import favicon from "./assets/favicon.svg";
@@ -19,6 +11,7 @@ const LiveVisualEditing = lazy(() => import("./components/live-visual-editing"))
 export const loader = () => {
   return json({
     ENV: {
+      NODE_ENV: process.env.NODE_ENV,
       SANITY_STUDIO_PROJECT_ID: process.env.SANITY_STUDIO_PROJECT_ID,
       SANITY_STUDIO_DATASET: process.env.SANITY_STUDIO_DATASET,
       SANITY_STUDIO_URL: process.env.SANITY_STUDIO_URL,
@@ -37,22 +30,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script
-          type="text/javascript"
-          src="//script.crazyegg.com/pages/scripts/0128/2022.js"
-          async="async"
-        />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZ7WY7ZVVZ" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        {ENV.NODE_ENV !== "development" && (
+          <>
+            <script
+              type="text/javascript"
+              src="//script.crazyegg.com/pages/scripts/0128/2022.js"
+              async="async"
+            />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZ7WY7ZVVZ" />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
 gtag('config', 'G-RWV1Q86WZK');`,
-          }}
-        />
+              }}
+            />
+          </>
+        )}
         <Meta />
         <Links />
       </head>
@@ -70,7 +67,6 @@ gtag('config', 'G-RWV1Q86WZK');`,
           </Suspense>
         ) : null}
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
