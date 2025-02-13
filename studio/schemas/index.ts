@@ -9,6 +9,7 @@ import {imageGalleryType} from './imageGalleryType'
 import {pageType} from './pageType'
 import {textWithIllustrationType} from './textWithIllustrationType'
 import {videoType} from './videoType'
+import {redirectType} from './redirectType'
 
 export const schemaTypes = [
   post,
@@ -20,5 +21,6 @@ export const schemaTypes = [
   textWithIllustrationType,
   imageGalleryType,
   formType,
+  redirectType,
   videoType,
 ]

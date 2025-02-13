@@ -30,3 +30,10 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
 export const POSTS_QUERY = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc)`;
 
 export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]`;
+
+export const REDIRECTS_QUERY = groq`
+*[_type == "redirect" && isEnabled == true && source == $pathname][0] {
+  source,
+  destination,
+  permanent
+}`;

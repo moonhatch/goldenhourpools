@@ -2,23 +2,31 @@ import { type LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, redirect } from "@remix-run/react";
 import { useQuery } from "@sanity/react-loader";
 
-import redirects from "../redirects";
+import { fetchRedirects } from "../sanity/fetch-redirects";
 import { urlFor } from "../sanity/image";
 import { loadQuery } from "../sanity/loader.server";
 import { PAGE_QUERY } from "../sanity/queries";
-import { Page } from "../sanity/types";
+import { Page, Redirect } from "../sanity/types";
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
-  const url = new URL(request.url);
-  const pathname = url.pathname;
+  const { pathname } = new URL(request.url);
 
-  for (const obj of redirects) {
-    if (pathname === obj.source || pathname.match(new RegExp(obj.source))) {
-      return redirect(obj.destination);
-    }
+  // 1) attempt to redirect
+
+  const redirectData: Redirect = await fetchRedirects(pathname);
+  if (redirectData) {
+    const code = redirectData.permanent ? 301 : 302;
+
+    return redirectData.destination
+      ? redirect(redirectData.destination, code)
+      : redirect("/", code);
   }
 
   const initial = await loadQuery<Page>(PAGE_QUERY, params);
+
+  // 2) redirect home if no page data
+
+  if (!initial.data) return redirect("/");
 
   return { initial, query: PAGE_QUERY, params };
 };
@@ -32,11 +40,14 @@ export const meta: MetaFunction = ({ data }) => {
       name: "description",
       content: seo?.description,
     },
-    {
+  ];
+
+  if (seo?.image) {
+    meta.push({
       property: "og:image",
       content: urlFor(seo?.image).width(1200).height(630).url(),
-    },
-  ];
+    });
+  }
 
   if (seo?.noIndex) {
     meta.push({

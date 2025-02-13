@@ -77,6 +77,18 @@ export type Video = {
   url?: string;
 };
 
+export type Redirect = {
+  _id: string;
+  _type: "redirect";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  source?: string;
+  destination?: string;
+  permanent?: boolean;
+  isEnabled?: boolean;
+};
+
 export type Form = {
   _type: "form";
   label?: string;
@@ -313,6 +325,7 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | Geopoint
   | Video
+  | Redirect
   | Form
   | Gallery
   | TextWithIllustration
@@ -419,11 +432,19 @@ export type POST_QUERYResult = {
   };
   body?: BlockContent;
 } | null;
+// Variable: REDIRECTS_QUERY
+// Query: *[_type == "redirect" && isEnabled == true && source == $pathname][0] {  source,  destination,  permanent}
+export type REDIRECTS_QUERYResult = {
+  source: string | null;
+  destination: string | null;
+  permanent: boolean | null;
+} | null;
 
 declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    // "hero" in an "object" from which we can "pick" fields\n    _type == "heroWithImage" => {\n      _type,\n      heading,\n      tagline,\n      image\n    },\n    // "callToAction" is a "reference"\n    // We can resolve "itself" with the @ operator\n    _type == "callToAction" => @-> {\n      _type,\n      title,\n      link\n    }\n    // ...continue for each unique "_type"\n  },\n}': PAGE_QUERYResult;
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
+    '\n*[_type == "redirect" && isEnabled == true && source == $pathname][0] {\n  source,\n  destination,\n  permanent\n}': REDIRECTS_QUERYResult;
   }
 }

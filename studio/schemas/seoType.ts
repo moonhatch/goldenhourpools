@@ -7,7 +7,7 @@ export const seoType = defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'If provided, this will override the title field.',
+      description: 'If provided, this will override the title field',
       type: 'string',
     }),
     defineField({

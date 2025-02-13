@@ -15,7 +15,7 @@ export const formType = defineType({
     defineField({
       name: 'form',
       type: 'string',
-      description: 'Select form type.',
+      description: 'Select form type',
       options: {
         list: ['newsletter', 'register', 'contact'],
       },
