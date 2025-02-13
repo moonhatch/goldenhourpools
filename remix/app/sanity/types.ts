@@ -331,7 +331,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../remix/app/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  pageBuilder[]{    // "hero" in an "object" from which we can "pick" fields    _type == "heroWithImage" => {      _type,      heading,      tagline,      image    },    // "callToAction" is a "reference"    // We can resolve "itself" with the @ operator    _type == "callToAction" => @-> {      _type,      title,      link    }    // ...continue for each unique "_type"  },}
+// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    // "hero" in an "object" from which we can "pick" fields    _type == "heroWithImage" => {      _type,      heading,      tagline,      image    },    // "callToAction" is a "reference"    // We can resolve "itself" with the @ operator    _type == "callToAction" => @-> {      _type,      title,      link    }    // ...continue for each unique "_type"  },}
 export type PAGE_QUERYResult = {
   seo: {
     title: string | "";
@@ -349,6 +349,7 @@ export type PAGE_QUERYResult = {
     } | null;
     noIndex: boolean | false;
   };
+  title: string | null;
   pageBuilder: Array<
     | {
         _type: "heroWithImage";
@@ -421,7 +422,7 @@ export type POST_QUERYResult = {
 
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  pageBuilder[]{\n    // "hero" in an "object" from which we can "pick" fields\n    _type == "heroWithImage" => {\n      _type,\n      heading,\n      tagline,\n      image\n    },\n    // "callToAction" is a "reference"\n    // We can resolve "itself" with the @ operator\n    _type == "callToAction" => @-> {\n      _type,\n      title,\n      link\n    }\n    // ...continue for each unique "_type"\n  },\n}': PAGE_QUERYResult;
+    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    // "hero" in an "object" from which we can "pick" fields\n    _type == "heroWithImage" => {\n      _type,\n      heading,\n      tagline,\n      image\n    },\n    // "callToAction" is a "reference"\n    // We can resolve "itself" with the @ operator\n    _type == "callToAction" => @-> {\n      _type,\n      title,\n      link\n    }\n    // ...continue for each unique "_type"\n  },\n}': PAGE_QUERYResult;
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
   }

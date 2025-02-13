@@ -7,6 +7,7 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
     "image": seo.image,
     "noIndex": seo.noIndex == true
   },
+  title,
   pageBuilder[]{
     // "hero" in an "object" from which we can "pick" fields
     _type == "heroWithImage" => {
