@@ -22,6 +22,7 @@ export const pageType = defineType({
     }),
     defineField({
       name: 'seo',
+      title: 'SEO',
       type: 'seo',
     }),
     defineField({
