@@ -439,6 +439,13 @@ export type REDIRECTS_QUERYResult = {
   destination: string | null;
   permanent: boolean | null;
 } | null;
+// Variable: SITEMAP_QUERY
+// Query: *[_type in ["page"] && defined(slug.current)] {  "href": select(    _type == "page" => "/" + slug.current,    slug.current  ),  "noIndex": seo.noIndex == true,  _updatedAt}
+export type SITEMAP_QUERYResult = Array<{
+  href: string | null;
+  noIndex: boolean | false;
+  _updatedAt: string;
+}>;
 
 declare module "@sanity/client" {
   interface SanityQueries {
@@ -446,5 +453,6 @@ declare module "@sanity/client" {
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
     '\n*[_type == "redirect" && isEnabled == true && source == $pathname][0] {\n  source,\n  destination,\n  permanent\n}': REDIRECTS_QUERYResult;
+    '\n*[_type in ["page"] && defined(slug.current)] {\n  "href": select(\n    _type == "page" => "/" + slug.current,\n    slug.current\n  ),\n  "noIndex": seo.noIndex == true,\n  _updatedAt\n}\n': SITEMAP_QUERYResult;
   }
 }

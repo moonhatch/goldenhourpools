@@ -37,3 +37,14 @@ export const REDIRECTS_QUERY = groq`
   destination,
   permanent
 }`;
+
+export const SITEMAP_QUERY = groq`
+*[_type in ["page"] && defined(slug.current)] {
+  "href": select(
+    _type == "page" => "/" + slug.current,
+    slug.current
+  ),
+  "noIndex": seo.noIndex == true,
+  _updatedAt
+}
+`;
