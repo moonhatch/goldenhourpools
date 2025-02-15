@@ -1,20 +1,6 @@
-import { MetaFunction, redirect, ActionArgs, json } from "@remix-run/node";
+import { redirect, ActionArgs, json } from "@remix-run/node";
 import asana from "asana";
 import { z } from "zod";
-
-import ContactForm from "../components/contact-form";
-import Container from "../components/container";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Contact Us - Golden Hour Pools" },
-    {
-      name: "description",
-      content:
-        "Get in touch. Just leave us your name and number and we will contact you within 24 hours.",
-    },
-  ];
-};
 
 export async function action({ request }: ActionArgs) {
   const formData = Object.fromEntries(await request.formData());
@@ -66,12 +52,4 @@ Add-ons: ${data?.addons ?? ""}`;
   }
 
   return redirect("/thank-you");
-}
-
-export default function ContactPage() {
-  return (
-    <Container className="mt-6 lg:mt-12">
-      <ContactForm />
-    </Container>
-  );
 }

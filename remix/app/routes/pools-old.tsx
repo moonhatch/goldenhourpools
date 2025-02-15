@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 
+import ContactForm from "../components/blocks/contact";
 import Card from "../components/card";
-import ContactForm from "../components/contact-form";
 import Container from "../components/container";
 import store from "../config/store.json";
 

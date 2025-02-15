@@ -48,6 +48,10 @@ export const pageType = defineType({
       group: 'page',
       of: [
         defineArrayMember({
+          name: 'blockContact',
+          type: 'blockContact',
+        }),
+        defineArrayMember({
           name: 'blockContent',
           type: 'blockContent',
         }),
@@ -58,6 +62,10 @@ export const pageType = defineType({
         defineArrayMember({
           name: 'blockHeroVideo',
           type: 'blockHeroVideo',
+        }),
+        defineArrayMember({
+          name: 'blockThankYou',
+          type: 'blockThankYou',
         }),
         // defineArrayMember({
         //   name: 'textWithIllustration',

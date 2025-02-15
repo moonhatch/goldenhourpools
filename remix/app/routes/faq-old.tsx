@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
-import ContactForm from "../components/contact-form";
+import ContactForm from "../components/blocks/contact";
 import Container from "../components/container";
 import {
   Accordion,

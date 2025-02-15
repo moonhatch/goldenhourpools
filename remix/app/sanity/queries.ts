@@ -9,18 +9,16 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
   },
   title,
   pageBuilder[]{
+    _type == "blockContact" => {
+      _type,
+      _key,
+      container,
+      heading
+    },
     _type == "blockContent" => {
       _type,
       _key,
-      "container": {
-        "bottomSpacing": container.bottomSpacing,
-        "bottomSpacingDesktop": container.bottomSpacingDesktop,
-        "isCentered": container.isCentered,
-        "isMobileFullWidth": container.isMobileFullWidth,
-        "topSpacing": container.topSpacing,
-        "topSpacingDesktop": container.topSpacingDesktop,
-        "width": container.width,
-      },
+      container,
       content
     },
     _type == "blockHeroImage" => {
@@ -40,6 +38,12 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       url,
       urlTitle,
       urlThumbnail
+    },
+    _type == "blockThankYou" => {
+      _type,
+      _key,
+      container,
+      heading
     },
     // "callToAction" is a "reference"
     // We can resolve "itself" with the @ operator

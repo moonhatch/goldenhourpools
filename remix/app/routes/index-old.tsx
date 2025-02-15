@@ -3,9 +3,9 @@ import { Link } from "@remix-run/react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
 
+import ContactForm from "../components/blocks/contact";
 import Hero from "../components/blocks/hero";
 import Card from "../components/card";
-import ContactForm from "../components/contact-form";
 import Container from "../components/container";
 import Media from "../components/media";
 import {

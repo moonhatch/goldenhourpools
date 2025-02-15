@@ -1,14 +1,5 @@
 import {defineField, defineType} from 'sanity'
 
-/**
- * Margin spacing scale
- *
- * sm: 6
- * md: 12
- * lg: 24
- * xl: 48
- */
-
 export const containerType = defineType({
   name: 'container',
   title: 'Container',
@@ -36,10 +27,10 @@ export const containerType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Small', value: 'sm'},
-          {title: 'Medium', value: 'md'},
-          {title: 'Large', value: 'lg'},
-          {title: 'Extra Large', value: 'xl'},
+          {title: 'Small (6)', value: 'sm'},
+          {title: 'Medium (12)', value: 'md'},
+          {title: 'Large (24)', value: 'lg'},
+          {title: 'Extra Large (48)', value: 'xl'},
         ],
       },
     }),
@@ -50,10 +41,10 @@ export const containerType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Small', value: 'sm'},
-          {title: 'Medium', value: 'md'},
-          {title: 'Large', value: 'lg'},
-          {title: 'Extra Large', value: 'xl'},
+          {title: 'Small (6)', value: 'sm'},
+          {title: 'Medium (12)', value: 'md'},
+          {title: 'Large (24)', value: 'lg'},
+          {title: 'Extra Large (48)', value: 'xl'},
         ],
       },
     }),
@@ -63,10 +54,10 @@ export const containerType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Small', value: 'sm'},
-          {title: 'Medium', value: 'md'},
-          {title: 'Large', value: 'lg'},
-          {title: 'Extra Large', value: 'xl'},
+          {title: 'Small (6)', value: 'sm'},
+          {title: 'Medium (12)', value: 'md'},
+          {title: 'Large (24)', value: 'lg'},
+          {title: 'Extra Large (48)', value: 'xl'},
         ],
       },
     }),
@@ -77,10 +68,10 @@ export const containerType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Small', value: 'sm'},
-          {title: 'Medium', value: 'md'},
-          {title: 'Large', value: 'lg'},
-          {title: 'Extra Large', value: 'xl'},
+          {title: 'Small (6)', value: 'sm'},
+          {title: 'Medium (12)', value: 'md'},
+          {title: 'Large (24)', value: 'lg'},
+          {title: 'Extra Large (48)', value: 'xl'},
         ],
       },
     }),

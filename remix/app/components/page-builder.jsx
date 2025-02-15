@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 
+import Contact from "./blocks/contact";
 import Content from "./blocks/content";
 import Hero from "./blocks/hero";
+import ThankYou from "./blocks/thank-you";
 
 const PageBuilder = ({ content }) => {
   if (!Array.isArray(content)) {
@@ -12,12 +14,16 @@ const PageBuilder = ({ content }) => {
     <main>
       {content.map((block) => {
         switch (block._type) {
+          case "blockContact":
+            return <Contact key={block._key} {...block} />;
           case "blockContent":
             return <Content key={block._key} {...block} />;
           case "blockHeroImage":
             return <Hero key={block._key} {...block} />;
           case "blockHeroVideo":
             return <Hero key={block._key} {...block} />;
+          case "blockThankYou":
+            return <ThankYou key={block._key} {...block} />;
           default:
             // This is a fallback for when we don't have a block type
             return (

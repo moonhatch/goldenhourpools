@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 
-import ContactForm from "../components/contact-form";
+import ContactForm from "../components/blocks/contact";
 import Container from "../components/container";
 import Media from "../components/media";
 import Tag from "../components/tag";
