@@ -13,10 +13,6 @@ export const meta: MetaFunction = () => {
       content:
         "Get in touch. Just leave us your name and number and we will contact you within 24 hours.",
     },
-    {
-      property: "og:image",
-      content: "/golden-hour.jpg",
-    },
   ];
 };
 

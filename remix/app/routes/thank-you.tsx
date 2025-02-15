@@ -9,10 +9,6 @@ export const meta: MetaFunction = () => {
       name: "description",
       content: "Got it! You'll hear from us soon!",
     },
-    {
-      property: "og:image",
-      content: "/golden-hour.jpg",
-    },
   ];
 };
 

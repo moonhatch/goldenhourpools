@@ -55,6 +55,10 @@ export default defineConfig({
       resolve: {
         mainDocuments: defineDocuments([
           {
+            route: '/',
+            filter: `_type == "page" && slug.current == 'index'`,
+          },
+          {
             route: '/:slug',
             filter: `_type == "page" && slug.current == $slug`,
           },

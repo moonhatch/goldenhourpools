@@ -46,34 +46,38 @@ export const pageType = defineType({
       group: 'page',
       of: [
         defineArrayMember({
-          name: 'heroWithImage',
-          type: 'heroWithImage',
-        }),
-        defineArrayMember({
           name: 'blockContent',
           type: 'blockContent',
         }),
         defineArrayMember({
-          name: 'textWithIllustration',
-          type: 'textWithIllustration',
+          name: 'blockHeroImage',
+          type: 'blockHeroImage',
         }),
         defineArrayMember({
-          name: 'gallery',
-          type: 'gallery',
+          name: 'blockHeroVideo',
+          type: 'blockHeroVideo',
         }),
-        defineArrayMember({
-          name: 'form',
-          type: 'form',
-        }),
-        defineArrayMember({
-          name: 'video',
-          type: 'video',
-        }),
-        defineArrayMember({
-          name: 'callToAction',
-          type: 'reference',
-          to: [{type: 'promotion'}],
-        }),
+        // defineArrayMember({
+        //   name: 'textWithIllustration',
+        //   type: 'textWithIllustration',
+        // }),
+        // defineArrayMember({
+        //   name: 'gallery',
+        //   type: 'gallery',
+        // }),
+        // defineArrayMember({
+        //   name: 'form',
+        //   type: 'form',
+        // }),
+        // defineArrayMember({
+        //   name: 'video',
+        //   type: 'video',
+        // }),
+        // defineArrayMember({
+        //   name: 'callToAction',
+        //   type: 'reference',
+        //   to: [{type: 'promotion'}],
+        // }),
       ],
     }),
   ],

@@ -23,12 +23,23 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       },
       content
     },
-    // "hero" in an "object" from which we can "pick" fields
-    _type == "heroWithImage" => {
+    _type == "blockHeroImage" => {
       _type,
+      _key,
+      title,
       heading,
-      tagline,
+      button,
       image
+    },
+    _type == "blockHeroVideo" => {
+      _type,
+      _key,
+      title,
+      heading,
+      button,
+      url,
+      urlTitle,
+      urlThumbnail
     },
     // "callToAction" is a "reference"
     // We can resolve "itself" with the @ operator

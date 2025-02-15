@@ -12,10 +12,6 @@ export const meta: MetaFunction = () => {
       name: "description",
       content: "We offer three pool sizes designed to fit seamlessly into your yard.",
     },
-    {
-      property: "og:image",
-      content: "/golden-hour.jpg",
-    },
   ];
 };
 

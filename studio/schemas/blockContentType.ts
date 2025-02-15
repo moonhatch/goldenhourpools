@@ -4,7 +4,7 @@ import {BlockContentIcon} from '@sanity/icons'
 export default defineType({
   name: 'blockContent',
   type: 'object',
-  title: 'Block Content',
+  title: 'Content Block',
   icon: BlockContentIcon,
   groups: [
     {
@@ -41,8 +41,7 @@ export default defineType({
             // {title: 'H4', value: 'h4'},
             // {title: 'Quote', value: 'blockquote'},
           ],
-          lists: [],
-          // lists: [{title: 'Bullet', value: 'bullet'}],
+          lists: [{title: 'Bullet', value: 'bullet'}],
           marks: {
             decorators: [],
             // decorators: [

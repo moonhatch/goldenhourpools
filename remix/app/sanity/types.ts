@@ -153,29 +153,13 @@ export type Page = {
   pageBuilder?: Array<
     | ({
         _key: string;
-      } & HeroWithImage)
-    | ({
-        _key: string;
       } & BlockContent)
     | ({
         _key: string;
-      } & TextWithIllustration)
+      } & BlockHeroImage)
     | ({
         _key: string;
-      } & Gallery)
-    | ({
-        _key: string;
-      } & Form)
-    | ({
-        _key: string;
-      } & Video)
-    | {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        _key: string;
-        [internalGroqTypeReferenceTo]?: "promotion";
-      }
+      } & BlockHeroVideo)
   >;
 };
 
@@ -227,11 +211,32 @@ export type Gallery = {
   }>;
 };
 
-export type HeroWithImage = {
-  _type: "heroWithImage";
-  container?: Container;
+export type BlockHeroVideo = {
+  _type: "blockHeroVideo";
+  title?: string;
   heading?: string;
-  tagline?: string;
+  button?: Button;
+  url?: string;
+  urlTitle?: string;
+  urlThumbnail?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
+export type BlockHeroImage = {
+  _type: "blockHeroImage";
+  title?: string;
+  heading?: string;
+  button?: Button;
   image?: {
     asset?: {
       _ref: string;
@@ -303,6 +308,12 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
+export type Button = {
+  _type: "button";
+  text?: string;
+  to?: string;
+};
+
 export type BlockContent = {
   _type: "blockContent";
   container?: Container;
@@ -314,7 +325,7 @@ export type BlockContent = {
       _key: string;
     }>;
     style?: "normal" | "h1" | "h2";
-    listItem?: never;
+    listItem?: "bullet";
     markDefs?: Array<{
       href?: string;
       _type: "link";
@@ -353,18 +364,20 @@ export type AllSanitySchemaTypes =
   | Slug
   | Form
   | Gallery
-  | HeroWithImage
+  | BlockHeroVideo
+  | BlockHeroImage
   | SanityImageCrop
   | SanityImageHotspot
   | SanityImageAsset
   | SanityAssetSourceData
   | SanityImageMetadata
+  | Button
   | BlockContent
   | Container;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../remix/app/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    _type == "blockContent" => {      _type,      _key,      "container": {        "bottomSpacing": container.bottomSpacing,        "bottomSpacingDesktop": container.bottomSpacingDesktop,        "isCentered": container.isCentered,        "isMobileFullWidth": container.isMobileFullWidth,        "topSpacing": container.topSpacing,        "topSpacingDesktop": container.topSpacingDesktop,        "width": container.width,      },      content    },    // "hero" in an "object" from which we can "pick" fields    _type == "heroWithImage" => {      _type,      heading,      tagline,      image    },    // "callToAction" is a "reference"    // We can resolve "itself" with the @ operator    _type == "callToAction" => @-> {      _type,      title,      link    }    // ...continue for each unique "_type"  },}
+// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    _type == "blockContent" => {      _type,      _key,      "container": {        "bottomSpacing": container.bottomSpacing,        "bottomSpacingDesktop": container.bottomSpacingDesktop,        "isCentered": container.isCentered,        "isMobileFullWidth": container.isMobileFullWidth,        "topSpacing": container.topSpacing,        "topSpacingDesktop": container.topSpacingDesktop,        "width": container.width,      },      content    },    _type == "blockHeroImage" => {      _type,      _key,      title,      heading,      button,      image    },    _type == "blockHeroVideo" => {      _type,      _key,      title,      heading,      button,      url,      urlTitle,      urlThumbnail    },    // "callToAction" is a "reference"    // We can resolve "itself" with the @ operator    _type == "callToAction" => @-> {      _type,      title,      link    }    // ...continue for each unique "_type"  },}
 export type PAGE_QUERYResult = {
   seo: {
     title: string | "";
@@ -404,7 +417,7 @@ export type PAGE_QUERYResult = {
             _key: string;
           }>;
           style?: "h1" | "h2" | "normal";
-          listItem?: never;
+          listItem?: "bullet";
           markDefs?: Array<{
             href?: string;
             _type: "link";
@@ -416,9 +429,11 @@ export type PAGE_QUERYResult = {
         }> | null;
       }
     | {
-        _type: "heroWithImage";
+        _type: "blockHeroImage";
+        _key: string;
+        title: string | null;
         heading: string | null;
-        tagline: string | null;
+        button: Button | null;
         image: {
           asset?: {
             _ref: string;
@@ -432,7 +447,27 @@ export type PAGE_QUERYResult = {
           _type: "image";
         } | null;
       }
-    | {}
+    | {
+        _type: "blockHeroVideo";
+        _key: string;
+        title: string | null;
+        heading: string | null;
+        button: Button | null;
+        url: string | null;
+        urlTitle: string | null;
+        urlThumbnail: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          alt?: string;
+          _type: "image";
+        } | null;
+      }
   > | null;
 } | null;
 // Variable: POSTS_QUERY
@@ -500,7 +535,7 @@ export type SITEMAP_QUERYResult = Array<{
 
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    _type == "blockContent" => {\n      _type,\n      _key,\n      "container": {\n        "bottomSpacing": container.bottomSpacing,\n        "bottomSpacingDesktop": container.bottomSpacingDesktop,\n        "isCentered": container.isCentered,\n        "isMobileFullWidth": container.isMobileFullWidth,\n        "topSpacing": container.topSpacing,\n        "topSpacingDesktop": container.topSpacingDesktop,\n        "width": container.width,\n      },\n      content\n    },\n    // "hero" in an "object" from which we can "pick" fields\n    _type == "heroWithImage" => {\n      _type,\n      heading,\n      tagline,\n      image\n    },\n    // "callToAction" is a "reference"\n    // We can resolve "itself" with the @ operator\n    _type == "callToAction" => @-> {\n      _type,\n      title,\n      link\n    }\n    // ...continue for each unique "_type"\n  },\n}': PAGE_QUERYResult;
+    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    _type == "blockContent" => {\n      _type,\n      _key,\n      "container": {\n        "bottomSpacing": container.bottomSpacing,\n        "bottomSpacingDesktop": container.bottomSpacingDesktop,\n        "isCentered": container.isCentered,\n        "isMobileFullWidth": container.isMobileFullWidth,\n        "topSpacing": container.topSpacing,\n        "topSpacingDesktop": container.topSpacingDesktop,\n        "width": container.width,\n      },\n      content\n    },\n    _type == "blockHeroImage" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      image\n    },\n    _type == "blockHeroVideo" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      url,\n      urlTitle,\n      urlThumbnail\n    },\n    // "callToAction" is a "reference"\n    // We can resolve "itself" with the @ operator\n    _type == "callToAction" => @-> {\n      _type,\n      title,\n      link\n    }\n    // ...continue for each unique "_type"\n  },\n}': PAGE_QUERYResult;
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
     '\n*[_type == "redirect" && isEnabled == true && source == $pathname][0] {\n  source,\n  destination,\n  permanent\n}': REDIRECTS_QUERYResult;

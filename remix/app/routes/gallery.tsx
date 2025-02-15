@@ -14,10 +14,6 @@ export const meta: MetaFunction = () => {
       content:
         "Golden Hour Pools specializes in crafting pools at accessible rates in Austin. View our pools online and get started today.",
     },
-    {
-      property: "og:image",
-      content: "/golden-hour.jpg",
-    },
   ];
 };
 
