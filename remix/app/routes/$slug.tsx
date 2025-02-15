@@ -2,6 +2,7 @@ import { type LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, redirect } from "@remix-run/react";
 import { useQuery } from "@sanity/react-loader";
 
+import PageBuilder from "../components/page-builder";
 import { fetchRedirects } from "../sanity/fetch-redirects";
 import { urlFor } from "../sanity/image";
 import { loadQuery } from "../sanity/loader.server";
@@ -77,8 +78,7 @@ export default function PageRoute() {
 
   return (
     <section data-sanity={encodeDataAttribute("slug")}>
-      {data?.title && <h1 data-sanity={encodeDataAttribute("title")}>{data.title}</h1>}
-      <div>Page</div>
+      <PageBuilder content={data.pageBuilder} data-sanity={encodeDataAttribute("pageBuilder")} />
     </section>
   );
 }

@@ -48,12 +48,12 @@ export default function Index() {
   return (
     <>
       <Hero />
-      <Container className="my-12 text-center">
+      <Container className="my-12" isCentered>
         <div className="ghp-prose mx-auto prose-headings:m-0">
           <h2>Our Pools:</h2>
         </div>
       </Container>
-      <Container className="my-12" mobileFullWidth>
+      <Container className="my-12" isMobileFullWidth>
         <div className="embla" ref={emblaRef}>
           <div className="embla__container mx-3">
             {store.products.map((product) => (
@@ -64,7 +64,7 @@ export default function Index() {
           </div>
         </div>
       </Container>
-      <Container className="my-24 text-center lg:my-48">
+      <Container className="my-24 lg:my-48" isCentered>
         <div className="ghp-prose mx-auto max-w-2xl prose-headings:text-balance">
           <h2>
             Our mission is simple: make building a pool easy, skip the sales gimmicks, and pass the
@@ -81,7 +81,7 @@ export default function Index() {
         ratio={bp === "lg" ? 7 / 5 : 4 / 5}
         rounded={false}
       />
-      <Container className="mb-12 lg:my-48" mobileFullWidth>
+      <Container className="mb-12 lg:my-48" isMobileFullWidth>
         <Accordion
           className="overflow-hidden border-b border-ghp-250 lg:rounded-2xl lg:border"
           collapsible

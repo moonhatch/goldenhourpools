@@ -22,7 +22,7 @@ export const meta: MetaFunction = () => {
 export default function PoolsPage() {
   return (
     <>
-      <Container className="my-24 text-center">
+      <Container className="my-24" isCentered>
         <div className="ghp-prose mx-auto max-w-2xl prose-headings:text-balance">
           <h2>We offer three pool sizes designed to fit seamlessly into your yard.</h2>
         </div>

@@ -18,7 +18,7 @@ export const meta: MetaFunction = () => {
 
 export default function WarrantyPage() {
   return (
-    <Container className="my-24" size="sm">
+    <Container className="my-24" width="sm">
       <div className="ghp-prose">
         <h1>Warranty</h1>
         <p>At Golden Hour Pools, we stand by the quality of our pools with a robust warranty.</p>

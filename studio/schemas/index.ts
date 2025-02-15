@@ -1,4 +1,4 @@
-import blockContent from './blockContent'
+import blockContentType from './blockContentType'
 import post from './post'
 import {seoType} from './seoType'
 import {pageType} from './pageType'
@@ -10,17 +10,19 @@ import {pageType} from './pageType'
 import {textWithIllustrationType} from './textWithIllustrationType'
 import {videoType} from './videoType'
 import {redirectType} from './redirectType'
+import {containerType} from './containerType'
 
 export const schemaTypes = [
-  post,
-  blockContent,
-  pageType,
-  seoType,
+  containerType,
+  blockContentType,
   heroWithImageType,
-  promotionType,
-  textWithIllustrationType,
   imageGalleryType,
   formType,
+  pageType,
+  post,
+  promotionType,
+  seoType,
+  textWithIllustrationType,
   redirectType,
   videoType,
 ]

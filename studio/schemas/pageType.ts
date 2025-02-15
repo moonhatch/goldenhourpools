@@ -50,6 +50,10 @@ export const pageType = defineType({
           type: 'heroWithImage',
         }),
         defineArrayMember({
+          name: 'blockContent',
+          type: 'blockContent',
+        }),
+        defineArrayMember({
           name: 'textWithIllustration',
           type: 'textWithIllustration',
         }),

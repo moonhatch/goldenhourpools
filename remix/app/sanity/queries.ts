@@ -9,6 +9,20 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
   },
   title,
   pageBuilder[]{
+    _type == "blockContent" => {
+      _type,
+      _key,
+      "container": {
+        "bottomSpacing": container.bottomSpacing,
+        "bottomSpacingDesktop": container.bottomSpacingDesktop,
+        "isCentered": container.isCentered,
+        "isMobileFullWidth": container.isMobileFullWidth,
+        "topSpacing": container.topSpacing,
+        "topSpacingDesktop": container.topSpacingDesktop,
+        "width": container.width,
+      },
+      content
+    },
     // "hero" in an "object" from which we can "pick" fields
     _type == "heroWithImage" => {
       _type,

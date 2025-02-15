@@ -89,30 +89,6 @@ export type Redirect = {
   isEnabled?: boolean;
 };
 
-export type Form = {
-  _type: "form";
-  label?: string;
-  heading?: string;
-  form?: "newsletter" | "register" | "contact";
-};
-
-export type Gallery = {
-  _type: "gallery";
-  images?: Array<{
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-};
-
 export type TextWithIllustration = {
   _type: "textWithIllustration";
   heading?: string;
@@ -142,11 +118,16 @@ export type Promotion = {
   link?: string;
 };
 
-export type HeroWithImage = {
-  _type: "heroWithImage";
-  heading?: string;
-  tagline?: string;
-  image?: {
+export type Post = {
+  _id: string;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  excerpt?: string;
+  mainImage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -155,9 +136,9 @@ export type HeroWithImage = {
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt?: string;
     _type: "image";
   };
+  body?: BlockContent;
 };
 
 export type Page = {
@@ -173,6 +154,9 @@ export type Page = {
     | ({
         _key: string;
       } & HeroWithImage)
+    | ({
+        _key: string;
+      } & BlockContent)
     | ({
         _key: string;
       } & TextWithIllustration)
@@ -213,35 +197,22 @@ export type Seo = {
   noIndex?: boolean;
 };
 
-export type BlockContent = Array<{
-  children?: Array<{
-    marks?: Array<string>;
-    text?: string;
-    _type: "span";
-    _key: string;
-  }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-  listItem?: "bullet";
-  markDefs?: Array<{
-    href?: string;
-    _type: "link";
-    _key: string;
-  }>;
-  level?: number;
-  _type: "block";
-  _key: string;
-}>;
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
 
-export type Post = {
-  _id: string;
-  _type: "post";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  excerpt?: string;
-  mainImage?: {
+export type Form = {
+  _type: "form";
+  label?: string;
+  heading?: string;
+  form?: "newsletter" | "register" | "contact";
+};
+
+export type Gallery = {
+  _type: "gallery";
+  images?: Array<{
     asset?: {
       _ref: string;
       _type: "reference";
@@ -250,9 +221,29 @@ export type Post = {
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
+export type HeroWithImage = {
+  _type: "heroWithImage";
+  container?: Container;
+  heading?: string;
+  tagline?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
   };
-  body?: BlockContent;
 };
 
 export type SanityImageCrop = {
@@ -312,10 +303,38 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
+export type BlockContent = {
+  _type: "blockContent";
+  container?: Container;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2";
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
+export type Container = {
+  _type: "container";
+  width?: "sm" | "md" | "lg";
+  topSpacing?: "sm" | "md" | "lg" | "xl";
+  topSpacingDesktop?: "sm" | "md" | "lg" | "xl";
+  bottomSpacing?: "sm" | "md" | "lg" | "xl";
+  bottomSpacingDesktop?: "sm" | "md" | "lg" | "xl";
+  isCentered?: boolean;
+  isMobileFullWidth?: boolean;
 };
 
 export type AllSanitySchemaTypes =
@@ -326,25 +345,26 @@ export type AllSanitySchemaTypes =
   | Geopoint
   | Video
   | Redirect
-  | Form
-  | Gallery
   | TextWithIllustration
   | Promotion
-  | HeroWithImage
+  | Post
   | Page
   | Seo
-  | BlockContent
-  | Post
+  | Slug
+  | Form
+  | Gallery
+  | HeroWithImage
   | SanityImageCrop
   | SanityImageHotspot
   | SanityImageAsset
   | SanityAssetSourceData
   | SanityImageMetadata
-  | Slug;
+  | BlockContent
+  | Container;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../remix/app/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    // "hero" in an "object" from which we can "pick" fields    _type == "heroWithImage" => {      _type,      heading,      tagline,      image    },    // "callToAction" is a "reference"    // We can resolve "itself" with the @ operator    _type == "callToAction" => @-> {      _type,      title,      link    }    // ...continue for each unique "_type"  },}
+// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    _type == "blockContent" => {      _type,      _key,      "container": {        "bottomSpacing": container.bottomSpacing,        "bottomSpacingDesktop": container.bottomSpacingDesktop,        "isCentered": container.isCentered,        "isMobileFullWidth": container.isMobileFullWidth,        "topSpacing": container.topSpacing,        "topSpacingDesktop": container.topSpacingDesktop,        "width": container.width,      },      content    },    // "hero" in an "object" from which we can "pick" fields    _type == "heroWithImage" => {      _type,      heading,      tagline,      image    },    // "callToAction" is a "reference"    // We can resolve "itself" with the @ operator    _type == "callToAction" => @-> {      _type,      title,      link    }    // ...continue for each unique "_type"  },}
 export type PAGE_QUERYResult = {
   seo: {
     title: string | "";
@@ -364,6 +384,37 @@ export type PAGE_QUERYResult = {
   };
   title: string | null;
   pageBuilder: Array<
+    | {
+        _type: "blockContent";
+        _key: string;
+        container: {
+          bottomSpacing: "lg" | "md" | "sm" | "xl" | null;
+          bottomSpacingDesktop: "lg" | "md" | "sm" | "xl" | null;
+          isCentered: boolean | null;
+          isMobileFullWidth: boolean | null;
+          topSpacing: "lg" | "md" | "sm" | "xl" | null;
+          topSpacingDesktop: "lg" | "md" | "sm" | "xl" | null;
+          width: "lg" | "md" | "sm" | null;
+        };
+        content: Array<{
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?: "h1" | "h2" | "normal";
+          listItem?: never;
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }> | null;
+      }
     | {
         _type: "heroWithImage";
         heading: string | null;
@@ -449,7 +500,7 @@ export type SITEMAP_QUERYResult = Array<{
 
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    // "hero" in an "object" from which we can "pick" fields\n    _type == "heroWithImage" => {\n      _type,\n      heading,\n      tagline,\n      image\n    },\n    // "callToAction" is a "reference"\n    // We can resolve "itself" with the @ operator\n    _type == "callToAction" => @-> {\n      _type,\n      title,\n      link\n    }\n    // ...continue for each unique "_type"\n  },\n}': PAGE_QUERYResult;
+    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    _type == "blockContent" => {\n      _type,\n      _key,\n      "container": {\n        "bottomSpacing": container.bottomSpacing,\n        "bottomSpacingDesktop": container.bottomSpacingDesktop,\n        "isCentered": container.isCentered,\n        "isMobileFullWidth": container.isMobileFullWidth,\n        "topSpacing": container.topSpacing,\n        "topSpacingDesktop": container.topSpacingDesktop,\n        "width": container.width,\n      },\n      content\n    },\n    // "hero" in an "object" from which we can "pick" fields\n    _type == "heroWithImage" => {\n      _type,\n      heading,\n      tagline,\n      image\n    },\n    // "callToAction" is a "reference"\n    // We can resolve "itself" with the @ operator\n    _type == "callToAction" => @-> {\n      _type,\n      title,\n      link\n    }\n    // ...continue for each unique "_type"\n  },\n}': PAGE_QUERYResult;
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
     '\n*[_type == "redirect" && isEnabled == true && source == $pathname][0] {\n  source,\n  destination,\n  permanent\n}': REDIRECTS_QUERYResult;
