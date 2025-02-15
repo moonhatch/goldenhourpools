@@ -108,6 +108,41 @@ export type TextWithIllustration = {
   };
 };
 
+export type SiteSettings = {
+  _id: string;
+  _type: "siteSettings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  announcement?: string;
+  navLinksPrimary?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+  navLinksSecondary?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+  footerLinksPrimary?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+  footerLinksSecondary?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+  footerLinksTertiary?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+};
+
 export type Promotion = {
   _id: string;
   _type: "promotion";
@@ -187,11 +222,10 @@ export type Slug = {
   source?: string;
 };
 
-export type Form = {
-  _type: "form";
-  label?: string;
-  heading?: string;
-  form?: "newsletter" | "register" | "contact";
+export type Link = {
+  _type: "link";
+  text?: string;
+  to?: string;
 };
 
 export type Gallery = {
@@ -209,6 +243,13 @@ export type Gallery = {
     _type: "image";
     _key: string;
   }>;
+};
+
+export type Form = {
+  _type: "form";
+  label?: string;
+  heading?: string;
+  form?: "newsletter" | "register" | "contact";
 };
 
 export type BlockHeroVideo = {
@@ -357,13 +398,15 @@ export type AllSanitySchemaTypes =
   | Video
   | Redirect
   | TextWithIllustration
+  | SiteSettings
   | Promotion
   | Post
   | Page
   | Seo
   | Slug
-  | Form
+  | Link
   | Gallery
+  | Form
   | BlockHeroVideo
   | BlockHeroImage
   | SanityImageCrop
@@ -532,6 +575,37 @@ export type SITEMAP_QUERYResult = Array<{
   noIndex: boolean | false;
   _updatedAt: string;
 }>;
+// Variable: SITE_SETTINGS_QUERY
+// Query: *[_type == "siteSettings"][0]{  title,  announcement,  navLinksPrimary,  navLinksSecondary,  footerLinksPrimary,  footerLinksSecondary,  footerLinksTertiary}
+export type SITE_SETTINGS_QUERYResult = {
+  title: string | null;
+  announcement: string | null;
+  navLinksPrimary: Array<
+    {
+      _key: string;
+    } & Link
+  > | null;
+  navLinksSecondary: Array<
+    {
+      _key: string;
+    } & Link
+  > | null;
+  footerLinksPrimary: Array<
+    {
+      _key: string;
+    } & Link
+  > | null;
+  footerLinksSecondary: Array<
+    {
+      _key: string;
+    } & Link
+  > | null;
+  footerLinksTertiary: Array<
+    {
+      _key: string;
+    } & Link
+  > | null;
+} | null;
 
 declare module "@sanity/client" {
   interface SanityQueries {
@@ -539,6 +613,7 @@ declare module "@sanity/client" {
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
     '\n*[_type == "redirect" && isEnabled == true && source == $pathname][0] {\n  source,\n  destination,\n  permanent\n}': REDIRECTS_QUERYResult;
-    '\n*[_type in ["page"] && defined(slug.current)] {\n  "href": select(\n    _type == "page" => "/" + slug.current,\n    slug.current\n  ),\n  "noIndex": seo.noIndex == true,\n  _updatedAt\n}\n': SITEMAP_QUERYResult;
+    '\n*[_type in ["page"] && defined(slug.current)] {\n  "href": select(\n    _type == "page" => "/" + slug.current,\n    slug.current\n  ),\n  "noIndex": seo.noIndex == true,\n  _updatedAt\n}': SITEMAP_QUERYResult;
+    '\n*[_type == "siteSettings"][0]{\n  title,\n  announcement,\n  navLinksPrimary,\n  navLinksSecondary,\n  footerLinksPrimary,\n  footerLinksSecondary,\n  footerLinksTertiary\n}': SITE_SETTINGS_QUERYResult;
   }
 }

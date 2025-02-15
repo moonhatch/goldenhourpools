@@ -36,14 +36,6 @@ const Logo = () => {
   );
 };
 
-const Links = () => (
-  <ul className="my-14">
-    <LinksItem to="/">©Golden Hour {new Date().getFullYear()}</LinksItem>
-    <LinksItem to="/privacy">Privacy</LinksItem>
-    <LinksItem to="/warranty">Warranty</LinksItem>
-  </ul>
-);
-
 const LinksItem = ({ children, to }) => (
   <li
     className="relative mx-1 inline-block px-1 text-ghp-400 before:absolute before:-left-1.5
@@ -64,54 +56,46 @@ LinksItem.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-const Footer = () => {
+const Footer = ({ siteData }) => {
+  const { footerLinksPrimary, footerLinksSecondary, footerLinksTertiary, title } = siteData;
+
   return (
     <Container className="-my-px py-px text-center text-ghp-900">
       <div className="mx-auto max-w-sm">
         <Logo />
         <div className="grid grid-cols-2 gap-3">
-          <Button asChild className="col-span-2 w-full" kind="tertiary">
-            <Link target="_blank" rel="noreferrer" to="tel:+15122700428">
-              Call: (512) 270-0428
-            </Link>
-          </Button>
-          <Button asChild className="col-span-2 w-full" kind="tertiary">
-            <Link target="_blank" rel="noreferrer" to="mailto:hello@goldenhourpools.com">
-              Email: hello@goldenhourpools.com
-            </Link>
-          </Button>
-          <Button asChild className="col-span-2 w-full" kind="tertiary">
-            <Link target="_blank" rel="noreferrer" to="https://www.instagram.com/goldenhourpools">
-              Instagram: @goldenhourpools
-            </Link>
-          </Button>
-          <Button asChild className="w-full" kind="secondary">
-            <Link prefetch="viewport" to="/pools">
-              Our Pools
-            </Link>
-          </Button>
-          <Button asChild className="w-full" kind="secondary">
-            <Link prefetch="viewport" to="/gallery">
-              Gallery
-            </Link>
-          </Button>
-          <Button asChild className="w-full" kind="secondary">
-            <Link prefetch="viewport" to="/faq">
-              FAQ
-            </Link>
-          </Button>
-          <Button asChild className="w-full" kind="secondary">
-            <Link prefetch="viewport" to="/contact">
-              Contact
-            </Link>
-          </Button>
+          {footerLinksPrimary?.map((link) => (
+            <Button asChild key={link._key} className="col-span-2 w-full" kind="tertiary">
+              <Link target="_blank" rel="noreferrer" to={link.to}>
+                {link.text}
+              </Link>
+            </Button>
+          ))}
+          {footerLinksSecondary?.map((link) => (
+            <Button asChild key={link._key} className="w-full" kind="secondary">
+              <Link prefetch="viewport" to={link.to}>
+                {link.text}
+              </Link>
+            </Button>
+          ))}
         </div>
       </div>
-      <Links />
+      <ul className="my-14">
+        <LinksItem to="/">
+          ©{title} {new Date().getFullYear()}
+        </LinksItem>
+        {footerLinksTertiary?.map((link) => (
+          <LinksItem key={link._key} to={link.to}>
+            {link.text}
+          </LinksItem>
+        ))}
+      </ul>
     </Container>
   );
 };
 
-Footer.propTypes = {};
+Footer.propTypes = {
+  siteData: PropTypes.object,
+};
 
 export default Footer;

@@ -71,5 +71,15 @@ export const SITEMAP_QUERY = groq`
   ),
   "noIndex": seo.noIndex == true,
   _updatedAt
-}
-`;
+}`;
+
+export const SITE_SETTINGS_QUERY = groq`
+*[_type == "siteSettings"][0]{
+  title,
+  announcement,
+  navLinksPrimary,
+  navLinksSecondary,
+  footerLinksPrimary,
+  footerLinksSecondary,
+  footerLinksTertiary
+}`;

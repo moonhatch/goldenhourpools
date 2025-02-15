@@ -18,17 +18,13 @@ export const meta: MetaFunction = () => {
       content:
         "What does your price include? How long does it take to build? Can I visit one of your pools? Do you make custom sizes? What equipment do you use? Are your pools pre-fabricated? Do you offer financing? What's your warranty? What areas do you service? Do you make hot tubs? Do you do landscaping?",
     },
-    {
-      property: "og:image",
-      content: "/golden-hour.jpg",
-    },
   ];
 };
 
 export default function FaqPage() {
   return (
     <>
-      <Container className="mb-12 lg:mt-12" mobileFullWidth>
+      <Container className="mb-12 lg:mt-12" isMobileFullWidth>
         <Accordion
           className="overflow-hidden border-b border-ghp-250 lg:rounded-2xl lg:border"
           collapsible

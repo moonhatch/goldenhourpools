@@ -47,7 +47,7 @@ const Hero = ({ ...rest }) => {
       ></div>
       <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center px-5">
         {title && (
-          <h1 className="mt-36 hidden shrink-0 font-serif leading-4 text-white lg:block">
+          <h1 className="mt-32 hidden shrink-0 font-serif leading-4 text-white lg:block">
             {title}
           </h1>
         )}

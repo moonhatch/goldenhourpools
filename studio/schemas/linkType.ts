@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'button',
-  title: 'Button',
+  name: 'link',
+  title: 'Link',
   type: 'object',
   fields: [
     defineField({

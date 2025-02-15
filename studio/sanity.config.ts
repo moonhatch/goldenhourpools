@@ -1,9 +1,11 @@
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
+// import {structureTool} from 'sanity/structure'
+import {deskTool} from 'sanity/desk'
 import {schemaTypes} from './schemas'
 import {presentationTool, DocumentLocationResolver, defineDocuments} from 'sanity/presentation'
 import {Observable, map} from 'rxjs'
+import {structure} from './src/structure'
 
 export const projectId = process.env.SANITY_STUDIO_PROJECT_ID!
 export const dataset = process.env.SANITY_STUDIO_DATASET!
@@ -49,7 +51,10 @@ export default defineConfig({
   projectId,
   dataset,
   plugins: [
-    structureTool(),
+    deskTool({
+      structure,
+    }),
+    // structureTool(),
     presentationTool({
       previewUrl: process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000',
       resolve: {
