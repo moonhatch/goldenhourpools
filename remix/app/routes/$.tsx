@@ -23,6 +23,11 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       : redirect("/", code);
   }
 
+  params = {
+    ...params,
+    slug: params["*"],
+  };
+
   const initial = await loadQuery<Page>(PAGE_QUERY, params);
 
   // 2) redirect home if no page data
