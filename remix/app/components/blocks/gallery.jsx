@@ -12,9 +12,9 @@ const Gallery = ({ ...rest }) => {
 
   return (
     <Container {...cleanObject(container)}>
-      <div className="grid grid-cols-1 gap-y-6 lg:grid-cols-2 lg:gap-x-6">
+      <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
         {galleryColumns.map((column) => (
-          <div className={cn("grid gap-6", column.span === 2 && "lg:col-span-2")} key={column._key}>
+          <div className={cn("grid gap-6", column.span === 2 && "sm:col-span-2")} key={column._key}>
             {column.media.map((media) => (
               <Media
                 key={media._key}

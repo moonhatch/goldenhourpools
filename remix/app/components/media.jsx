@@ -16,7 +16,14 @@ const Media = ({
 }) => {
   return (
     <AspectRatio className={cn("relative overflow-hidden", rounded && "rounded-3xl")} ratio={ratio}>
-      {videoUrl && showVideo && <iframe className="ghp-iframe" src={videoUrl} title={videoTitle} />}
+      {videoUrl && showVideo && (
+        <iframe
+          className="absolute top-[50%] left-[50%] h-[10000%] w-full -translate-x-[50%]
+            -translate-y-[50%] transform"
+          src={videoUrl}
+          title={videoTitle}
+        />
+      )}
       {image && !showVideo && (
         <img
           alt={image.alt}
@@ -29,12 +36,30 @@ const Media = ({
             (max-width: 2400px) 100vw,
             2400px`}
           src={urlFor(image).url()}
-          srcSet={`${urlFor(image).width(320).height(568).url()} 320w,
-            ${urlFor(image).width(480).height(584).url()} 480w,
-            ${urlFor(image).width(768).height(1366).url()} 768w,
-            ${urlFor(image).width(1024).height(1820).url()} 1024w,
-            ${urlFor(image).width(1600).url()} 1600w,
-            ${urlFor(image).width(2400).url()} 2400w`}
+          srcSet={`${urlFor(image)
+            .width(320)
+            .height(320 / ratio)
+            .url()} 320w,
+            ${urlFor(image)
+              .width(480)
+              .height(480 / ratio)
+              .url()} 480w,
+            ${urlFor(image)
+              .width(768)
+              .height(768 / ratio)
+              .url()} 768w,
+            ${urlFor(image)
+              .width(1024)
+              .height(1024 / ratio)
+              .url()} 1024w,
+            ${urlFor(image)
+              .width(1600)
+              .height(1600 / ratio)
+              .url()} 1600w,
+            ${urlFor(image)
+              .width(2400)
+              .height(2400 / ratio)
+              .url()} 2400w`}
         />
       )}
       {tag && (

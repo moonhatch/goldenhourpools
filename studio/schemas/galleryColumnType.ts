@@ -38,7 +38,7 @@ export default defineType({
     prepare(selection) {
       const {image, media, span} = selection
       return {
-        title: `${span} Column, ${media.length} Media`,
+        title: `Spans ${span} Column${span > 1 ? 's' : ''} With ${media.length} Media`,
         subtitle: 'Gallery Column',
         media: image ?? InlineIcon,
       }
