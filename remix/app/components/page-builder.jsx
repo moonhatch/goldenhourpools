@@ -4,6 +4,7 @@ import Contact from "./blocks/contact";
 import Content from "./blocks/content";
 import FAQ from "./blocks/faq";
 import Hero from "./blocks/hero";
+import Media from "./blocks/media";
 import ThankYou from "./blocks/thank-you";
 
 const PageBuilder = ({ content }) => {
@@ -25,6 +26,8 @@ const PageBuilder = ({ content }) => {
             return <Hero key={block._key} {...block} />;
           case "blockHeroVideo":
             return <Hero key={block._key} {...block} />;
+          case "blockMedia":
+            return <Media key={block._key} {...block} />;
           case "blockThankYou":
             return <ThankYou key={block._key} {...block} />;
           default:

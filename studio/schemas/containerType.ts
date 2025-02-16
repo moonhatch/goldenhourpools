@@ -17,6 +17,7 @@ export const containerType = defineType({
           {title: 'Small', value: 'sm'},
           {title: 'Medium', value: 'md'},
           {title: 'Large', value: 'lg'},
+          {title: 'Max', value: 'max'},
         ],
         layout: 'radio',
       },

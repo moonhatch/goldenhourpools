@@ -51,7 +51,7 @@ const FAQ = ({ ...rest }) => {
 
 FAQ.propTypes = {
   className: PropTypes.string,
-  faqs: PropTypes.object,
+  faqs: PropTypes.array,
 };
 
 export default FAQ;

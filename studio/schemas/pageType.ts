@@ -68,6 +68,10 @@ export const pageType = defineType({
           type: 'blockHeroVideo',
         }),
         defineArrayMember({
+          name: 'blockMedia',
+          type: 'blockMedia',
+        }),
+        defineArrayMember({
           name: 'blockThankYou',
           type: 'blockThankYou',
         }),

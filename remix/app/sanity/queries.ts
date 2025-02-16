@@ -45,6 +45,12 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       urlTitle,
       urlThumbnail
     },
+    _type == "blockMedia" => {
+      _type,
+      _key,
+      container,
+      media
+    },
     _type == "blockThankYou" => {
       _type,
       _key,
