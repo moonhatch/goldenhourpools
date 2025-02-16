@@ -1,7 +1,8 @@
 import { PortableText } from "@portabletext/react";
 
-import { cleanObject } from "@/lib/utils";
+import { cleanObject, cn } from "@/lib/utils";
 
+import { components } from "../../sanity/portable-text";
 import Container from "../container";
 
 const Content = ({ ...rest }) => {
@@ -9,7 +10,9 @@ const Content = ({ ...rest }) => {
 
   return (
     <Container {...cleanObject(container)}>
-      <div className="ghp-prose">{content && <PortableText value={content} />}</div>
+      <div className={cn("ghp-prose", container.isCentered && "mx-auto")}>
+        {content && <PortableText value={content} components={components} />}
+      </div>
     </Container>
   );
 };

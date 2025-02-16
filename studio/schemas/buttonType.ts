@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {SquareIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'button',
   title: 'Button',
   type: 'object',
+  icon: SquareIcon,
   fields: [
     defineField({
       name: 'text',

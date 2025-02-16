@@ -1,5 +1,7 @@
 import { Link } from "@remix-run/react";
 
+import { Button } from "../components/ui/button";
+
 export const components = {
   marks: {
     link: ({ children, value }) => {
@@ -17,6 +19,15 @@ export const components = {
         <a href={value.href} rel={rel}>
           {children}
         </a>
+      );
+    },
+  },
+  types: {
+    button: ({ value }) => {
+      return (
+        <Button asChild className="mt-8" size="wide">
+          <Link to={value.to}>{value.text}</Link>
+        </Button>
       );
     },
   },
