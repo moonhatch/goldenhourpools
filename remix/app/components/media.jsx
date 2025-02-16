@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 import { cn } from "../lib/utils";
 import { urlFor } from "../sanity/image";
+import Tag from "./tag";
 import { AspectRatio } from "./ui/aspect-ratio";
 
 const Media = ({
@@ -36,7 +37,11 @@ const Media = ({
             ${urlFor(image).width(2400).url()} 2400w`}
         />
       )}
-      {tag && <div className="absolute bottom-0 left-0 p-6">{tag}</div>}
+      {tag && (
+        <div className="absolute bottom-0 left-0 p-6">
+          <Tag>{tag}</Tag>
+        </div>
+      )}
     </AspectRatio>
   );
 };
