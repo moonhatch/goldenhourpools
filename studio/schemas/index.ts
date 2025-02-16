@@ -1,30 +1,27 @@
 import blockContactType from './blockContactType'
 import blockContentType from './blockContentType'
 import blockFAQType from './blockFAQType'
+import blockGalleryType from './blockGalleryType'
 import blockHeroImageType from './blockHeroImageType'
 import blockHeroVideoType from './blockHeroVideoType'
 import blockMediaType from './blockMediaType'
 import blockThankYouType from './blockThankYouType'
+import buttonType from './buttonType'
+import containerType from './containerType'
 import faqType from './faqType'
+import galleryColumnType from './galleryColumnType'
 import linkType from './linkType'
 import mediaType from './mediaType'
+import pageType from './pageType'
+import seoType from './seoType'
 import siteSettingsType from './setSettingsType'
-import {seoType} from './seoType'
-import buttonType from './buttonType'
-import {pageType} from './pageType'
-import {promotionType} from './promotionType'
-import {formType} from './formType'
-
-import {imageGalleryType} from './imageGalleryType'
-import {textWithIllustrationType} from './textWithIllustrationType'
-import {videoType} from './videoType'
-import {redirectType} from './redirectType'
-import {containerType} from './containerType'
+import redirectType from './redirectType'
 
 export const schemaTypes = [
   blockContactType,
   blockContentType,
   blockFAQType,
+  blockGalleryType,
   blockHeroImageType,
   blockHeroVideoType,
   blockMediaType,
@@ -32,15 +29,11 @@ export const schemaTypes = [
   buttonType,
   containerType,
   faqType,
-  formType,
-  imageGalleryType,
+  galleryColumnType,
   linkType,
   mediaType,
   pageType,
-  promotionType,
   seoType,
   siteSettingsType,
-  textWithIllustrationType,
   redirectType,
-  videoType,
 ]

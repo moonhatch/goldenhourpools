@@ -1,7 +1,7 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import {DocumentIcon} from '@sanity/icons'
 
-export const pageType = defineType({
+export default defineType({
   name: 'page',
   title: 'Page',
   type: 'document',
@@ -60,6 +60,10 @@ export const pageType = defineType({
           type: 'blockFAQ',
         }),
         defineArrayMember({
+          name: 'blockGallery',
+          type: 'blockGallery',
+        }),
+        defineArrayMember({
           name: 'blockHeroImage',
           type: 'blockHeroImage',
         }),
@@ -75,27 +79,6 @@ export const pageType = defineType({
           name: 'blockThankYou',
           type: 'blockThankYou',
         }),
-        // defineArrayMember({
-        //   name: 'textWithIllustration',
-        //   type: 'textWithIllustration',
-        // }),
-        // defineArrayMember({
-        //   name: 'gallery',
-        //   type: 'gallery',
-        // }),
-        // defineArrayMember({
-        //   name: 'form',
-        //   type: 'form',
-        // }),
-        // defineArrayMember({
-        //   name: 'video',
-        //   type: 'video',
-        // }),
-        // defineArrayMember({
-        //   name: 'callToAction',
-        //   type: 'reference',
-        //   to: [{type: 'promotion'}],
-        // }),
       ],
     }),
   ],

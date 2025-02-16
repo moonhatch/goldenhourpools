@@ -1,6 +1,6 @@
 import {defineField, defineType} from 'sanity'
 
-export const containerType = defineType({
+export default defineType({
   name: 'container',
   title: 'Container',
   type: 'object',

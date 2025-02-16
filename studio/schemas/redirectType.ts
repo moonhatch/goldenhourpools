@@ -25,7 +25,7 @@ function isValidUrl(value: string | undefined) {
   }
 }
 
-export const redirectType = defineType({
+export default defineType({
   name: 'redirect',
   title: 'Redirect',
   type: 'document',

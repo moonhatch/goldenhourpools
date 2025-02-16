@@ -27,6 +27,12 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       container,
       faqs
     },
+    _type == "blockGallery" => {
+      _type,
+      _key,
+      container,
+      galleryColumns
+    },
     _type == "blockHeroImage" => {
       _type,
       _key,
