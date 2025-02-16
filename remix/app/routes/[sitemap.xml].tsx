@@ -9,10 +9,12 @@ export const loader = async () => {
   const paths = await client.fetch(SITEMAP_QUERY);
 
   const pathContent = paths.map((path) => {
+    const url = path?.href === "/index" ? baseUrl : new URL(path.href, baseUrl).toString();
+
     return path.noIndex
       ? ""
       : `<url>
-    <loc>${new URL(path.href!, baseUrl).toString()}/</loc>
+    <loc>${url}/</loc>
     <lastmod>${new Date(path._updatedAt)}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>

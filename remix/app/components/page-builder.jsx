@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 import Contact from "./blocks/contact";
 import Content from "./blocks/content";
+import FAQ from "./blocks/faq";
 import Hero from "./blocks/hero";
 import ThankYou from "./blocks/thank-you";
 
@@ -18,6 +19,8 @@ const PageBuilder = ({ content }) => {
             return <Contact key={block._key} {...block} />;
           case "blockContent":
             return <Content key={block._key} {...block} />;
+          case "blockFAQ":
+            return <FAQ key={block._key} {...block} />;
           case "blockHeroImage":
             return <Hero key={block._key} {...block} />;
           case "blockHeroVideo":

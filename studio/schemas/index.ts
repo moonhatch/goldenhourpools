@@ -1,8 +1,10 @@
 import blockContactType from './blockContactType'
 import blockContentType from './blockContentType'
+import blockFAQType from './blockFAQType'
 import blockHeroImageType from './blockHeroImageType'
 import blockHeroVideoType from './blockHeroVideoType'
 import blockThankYouType from './blockThankYouType'
+import faqType from './faqType'
 import linkType from './linkType'
 import siteSettingsType from './setSettingsType'
 import {seoType} from './seoType'
@@ -20,11 +22,13 @@ import {containerType} from './containerType'
 export const schemaTypes = [
   blockContactType,
   blockContentType,
+  blockFAQType,
   blockHeroImageType,
   blockHeroVideoType,
   blockThankYouType,
   buttonType,
   containerType,
+  faqType,
   formType,
   imageGalleryType,
   linkType,

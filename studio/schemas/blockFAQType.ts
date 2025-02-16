@@ -1,11 +1,11 @@
 import {defineField, defineType} from 'sanity'
-import {EnvelopeIcon} from '@sanity/icons'
+import {BookIcon} from '@sanity/icons'
 
 export default defineType({
-  name: 'blockContact',
+  name: 'blockFAQ',
   type: 'object',
-  title: 'Contact Block',
-  icon: EnvelopeIcon,
+  title: 'FAQ Block',
+  icon: BookIcon,
   groups: [
     {
       name: 'component',
@@ -25,22 +25,23 @@ export default defineType({
       group: 'container',
     }),
     defineField({
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
+      name: 'faqs',
+      title: 'FAQs',
+      type: 'array',
       group: 'component',
+      of: [{type: 'faq'}],
     }),
   ],
   preview: {
     select: {
-      heading: 'heading',
+      faqs: 'faqs',
     },
     prepare(selection) {
-      const {heading} = selection
+      const {faqs} = selection
       return {
-        title: heading ?? 'Block Contact',
-        subtitle: 'Block Contact',
-        media: EnvelopeIcon,
+        title: faqs[0]?.question ?? 'Block FAQ',
+        subtitle: 'Block FAQ',
+        media: BookIcon,
       }
     },
   },
