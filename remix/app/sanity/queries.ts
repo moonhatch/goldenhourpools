@@ -86,7 +86,26 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       _type,
       _key,
       container,
-      pools[]->
+      pools[]-> {
+        _type,
+        _key,
+        image,
+        price,
+        variants[] {
+          _type,
+          _key,
+          image,
+          addons[]->,
+          description,
+          title,
+          slug,
+          depth,
+          price,
+          hasSpa
+        },
+        title,
+        slug
+      }
     },
     _type == "blockThankYou" => {
       _type,

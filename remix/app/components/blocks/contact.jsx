@@ -23,10 +23,14 @@ const Contact = ({ className, ...rest }) => {
     heading = `The ${cleanObject(state?.product).title}. Good Choice.`;
   }
 
-  const addons = state?.addons.reduce((str, addon) => {
-    const { title } = state.variant.addons.find((a) => a.slug.current === addon);
-    return !str ? title : (str += `, ${title}`);
-  }, "");
+  let addons = "";
+
+  if (state?.addons && state?.variant?.addons) {
+    addons = state.addons.reduce((str, addon) => {
+      const { title } = state.variant.addons.find((a) => a.slug.current === addon);
+      return !str ? title : (str += `, ${title}`);
+    }, "");
+  }
 
   return (
     <Container {...cleanObject(container)}>

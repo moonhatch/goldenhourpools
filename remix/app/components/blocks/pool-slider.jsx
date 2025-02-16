@@ -42,7 +42,7 @@ const PoolSlider = ({ ...rest }) => {
       <div className="embla" ref={emblaRef}>
         <div className="embla__container mx-3">
           {products.map((product) => (
-            <div className="embla__slide px-3" key={product._key}>
+            <div className="embla__slide px-3" key={product.handle}>
               <Card product={product} />
             </div>
           ))}
