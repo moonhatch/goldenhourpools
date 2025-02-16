@@ -38,27 +38,27 @@ const Media = ({
           src={urlFor(image).url()}
           srcSet={`${urlFor(image)
             .width(320)
-            .height(320 / ratio)
+            .height(parseInt(320 / ratio, 10))
             .url()} 320w,
             ${urlFor(image)
               .width(480)
-              .height(480 / ratio)
+              .height(parseInt(480 / ratio, 10))
               .url()} 480w,
             ${urlFor(image)
               .width(768)
-              .height(768 / ratio)
+              .height(parseInt(768 / ratio, 10))
               .url()} 768w,
             ${urlFor(image)
               .width(1024)
-              .height(1024 / ratio)
+              .height(parseInt(1024 / ratio, 10))
               .url()} 1024w,
             ${urlFor(image)
               .width(1600)
-              .height(1600 / ratio)
+              .height(parseInt(1600 / ratio, 10))
               .url()} 1600w,
             ${urlFor(image)
               .width(2400)
-              .height(2400 / ratio)
+              .height(parseInt(2400 / ratio, 10))
               .url()} 2400w`}
         />
       )}
