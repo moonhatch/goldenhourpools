@@ -5,7 +5,8 @@
     "build": "sanity build",
     "dev": "sanity dev",
     "format": "prettier --cache --write .",
-    "start": "sanity start"
+    "start": "sanity start",
+    "typegen": "sanity schema extract && sanity typegen generate"
   },
   "prettier": "@sanity/prettier-config",
   "dependencies": {

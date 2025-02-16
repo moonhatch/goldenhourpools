@@ -1,17 +1,18 @@
 export const loader = () => {
-  const allowAll = `
+  const allow = process.env.NODE_ENV !== "development" ? "Allow: /" : "Disallow: /";
+
+  const url = process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000";
+
+  const content = `
 User-agent: *
-Allow: /
+${allow}
+
+Sitemap: ${url}/sitemap.xml
 `;
 
-  const disallowAll = `
-User-agent: *
-Disallow: /
-`;
-
-  const robotText = process.env.SANITY_STUDIO_STEGA_ENABLED === "true" ? disallowAll : allowAll;
-
-  return new Response(robotText, {
+  return new Response(content, {
     status: 200,
     headers: {
       "Content-Type": "text/plain",

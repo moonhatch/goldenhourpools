@@ -21,3 +21,14 @@ export function formatDate(date: string) {
     year: "numeric",
   });
 }
+
+export function cleanObject(obj = {}) {
+  for (const key in obj) {
+    if (typeof obj[key] === "string") {
+      obj[key] = obj[key].replace(/[\u200B-\u200D\uFEFF]/g, "");
+    } else if (typeof obj[key] === "object" && obj[key] !== null) {
+      cleanObject(obj[key]); // Recursive call for nested objects
+    }
+  }
+  return obj;
+}
