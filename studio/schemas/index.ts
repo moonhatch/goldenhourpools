@@ -6,6 +6,8 @@ import blockGalleryType from './blockGalleryType'
 import blockHeroImageType from './blockHeroImageType'
 import blockHeroVideoType from './blockHeroVideoType'
 import blockMediaType from './blockMediaType'
+import blockPoolGridType from './blockPoolGridType'
+import blockPoolSliderType from './blockPoolSliderType'
 import blockThankYouType from './blockThankYouType'
 import buttonType from './buttonType'
 import containerType from './containerType'
@@ -30,6 +32,8 @@ export const schemaTypes = [
   blockHeroImageType,
   blockHeroVideoType,
   blockMediaType,
+  blockPoolGridType,
+  blockPoolSliderType,
   blockThankYouType,
   buttonType,
   containerType,

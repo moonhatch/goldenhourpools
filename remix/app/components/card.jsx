@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { PortableText } from "@portabletext/react";
 import { Link, useNavigate } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 import PropTypes from "prop-types";
@@ -6,8 +7,11 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import store from "../config/store.json";
+import { cleanObject } from "@/lib/utils";
+
 import { cn, formatCurrency } from "../lib/utils";
+import { urlFor } from "../sanity/image";
+import { components } from "../sanity/portable-text";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
@@ -20,7 +24,7 @@ const formSchema = z.object({
 
 const getVariant = (product, options) => {
   const variant = product?.variants?.find((variant) => {
-    return JSON.stringify(variant.options) === JSON.stringify(options);
+    return JSON.stringify(cleanObject(variant.options)) === JSON.stringify(options);
   });
 
   return variant || product.variants[0];
@@ -32,8 +36,6 @@ const Card = ({ className, product, type = "nav" }) => {
   const [variant, setVariant] = useState(getVariant(product));
   const [price, setPrice] = useState(product?.price);
   const navigate = useNavigate();
-
-  const descriptions = [...variant.descriptions, ...store.descriptions];
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -51,8 +53,8 @@ const Card = ({ className, product, type = "nav" }) => {
   useEffect(() => {
     const newVariant = getVariant(product, { depth, spa });
     const newAddons = addons.filter((addon) => addon !== "spa");
-    const addonsSubtotal = store?.addons.reduce((price, addon) => {
-      return (price += newAddons.includes(addon.id) ? addon.price : 0);
+    const addonsSubtotal = newVariant?.addons.reduce((price, addon) => {
+      return (price += newAddons.includes(addon.slug.current) ? addon.price : 0);
     }, 0);
 
     setVariant(newVariant);
@@ -73,13 +75,13 @@ const Card = ({ className, product, type = "nav" }) => {
     <div className={cn("rounded-3xl bg-ghp-200 p-5", className)}>
       <div className="invisible relative -top-10 block" id={product.handle}></div>
       <h3 className="flex justify-between border-b border-ghp-300 pb-4 font-serif text-3xl">
-        <span>{product?.name ?? "Pool"}</span>
+        <span>{product?.title ?? "Pool"}</span>
         <span>{formatCurrency(price)}</span>
       </h3>
       <img
-        alt={product?.name ?? "Pool"}
+        alt={variant?.image?.alt ?? "Pool"}
         className="w-full"
-        src={variant?.image ?? "/classic.png"}
+        src={urlFor(variant?.image).url()}
       />
       {type === "form" && (
         <Form {...form}>
@@ -105,7 +107,7 @@ const Card = ({ className, product, type = "nav" }) => {
               </Button>
             </div>
             <Accordion collapsible type="single">
-              {descriptions.map((desc, i) => (
+              {variant.description.map((desc, i) => (
                 <AccordionItem
                   className={!i && "border-0"}
                   layer={2}
@@ -114,10 +116,9 @@ const Card = ({ className, product, type = "nav" }) => {
                 >
                   <AccordionTrigger compact>{desc.name}</AccordionTrigger>
                   <AccordionContent compact className="ghp-prose -mt-5">
-                    <div
-                      className="ghp-prose prose-ul:list-none prose-ul:px-0 prose-li:px-0"
-                      dangerouslySetInnerHTML={{ __html: desc.value }}
-                    />
+                    <div className="ghp-prose prose-ul:list-none prose-ul:px-0 prose-li:px-0">
+                      <PortableText value={desc.value} components={components} />
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -130,27 +131,31 @@ const Card = ({ className, product, type = "nav" }) => {
                     render={() => (
                       <FormItem>
                         <p className="grid gap-2">
-                          {store.addons.map((addon) => (
+                          {variant.addons.map((addon) => (
                             <FormField
-                              key={addon.id}
+                              key={addon.slug.current}
                               control={form.control}
                               name="addons"
                               render={({ field }) => (
                                 <FormControl>
                                   <span className="flex items-center space-x-2">
                                     <Checkbox
-                                      checked={field.value?.includes(addon.id)}
-                                      id={`${product.name}-${addon.id}`}
+                                      checked={field.value?.includes(addon.slug.current)}
+                                      id={`${variant.slug.current}-${addon.slug.current}`}
                                       onCheckedChange={(checked) => {
                                         return checked
-                                          ? field.onChange([...field.value, addon.id])
+                                          ? field.onChange([...field.value, addon.slug.current])
                                           : field.onChange(
-                                              field.value?.filter((value) => value !== addon.id),
+                                              field.value?.filter(
+                                                (value) => value !== addon.slug.current,
+                                              ),
                                             );
                                       }}
                                     />
-                                    <Label htmlFor={`${product.name}-${addon.id}`}>
-                                      {addon?.label} - {formatCurrency(addon?.price)}
+                                    <Label
+                                      htmlFor={`${variant.slug.current}-${addon.slug.current}`}
+                                    >
+                                      {addon?.title} - {formatCurrency(addon?.price)}
                                     </Label>
                                   </span>
                                 </FormControl>

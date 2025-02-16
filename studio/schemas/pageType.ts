@@ -76,6 +76,14 @@ export default defineType({
           type: 'blockMedia',
         }),
         defineArrayMember({
+          name: 'blockPoolGrid',
+          type: 'blockPoolGrid',
+        }),
+        defineArrayMember({
+          name: 'blockPoolSlider',
+          type: 'blockPoolSlider',
+        }),
+        defineArrayMember({
           name: 'blockThankYou',
           type: 'blockThankYou',
         }),

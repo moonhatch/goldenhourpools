@@ -57,20 +57,43 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       container,
       media
     },
+    _type == "blockPoolGrid" => {
+      _type,
+      _key,
+      container,
+      pools[]-> {
+        _type,
+        _key,
+        image,
+        price,
+        variants[] {
+          _type,
+          _key,
+          image,
+          addons[]->,
+          description,
+          title,
+          slug,
+          depth,
+          price,
+          hasSpa
+        },
+        title,
+        slug
+      }
+    },
+    _type == "blockPoolSlider" => {
+      _type,
+      _key,
+      container,
+      pools[]->
+    },
     _type == "blockThankYou" => {
       _type,
       _key,
       container,
       heading
     },
-    // "callToAction" is a "reference"
-    // We can resolve "itself" with the @ operator
-    _type == "callToAction" => @-> {
-      _type,
-      title,
-      link
-    }
-    // ...continue for each unique "_type"
   },
 }`;
 

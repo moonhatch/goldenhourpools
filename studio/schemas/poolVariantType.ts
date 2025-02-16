@@ -67,6 +67,21 @@ export default defineType({
       type: 'array',
       of: [{type: 'poolDescription'}],
     }),
+    defineField({
+      name: 'addons',
+      title: 'Add-ons',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'addon',
+            },
+          ],
+        },
+      ],
+    }),
   ],
   preview: {
     select: {

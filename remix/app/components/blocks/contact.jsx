@@ -1,10 +1,7 @@
 import { Form, useLocation, useActionData } from "@remix-run/react";
 import PropTypes from "prop-types";
 
-import { cleanObject } from "@/lib/utils";
-
-import store from "../../config/store.json";
-import { cn } from "../../lib/utils";
+import { cn, cleanObject } from "../../lib/utils";
 import Container from "../container";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -22,13 +19,13 @@ const Contact = ({ className, ...rest }) => {
 
   const { state } = location;
 
-  if (state?.product?.name) {
-    heading = `The ${state?.product.name}. Good Choice.`;
+  if (state?.product?.title) {
+    heading = `The ${cleanObject(state?.product).title}. Good Choice.`;
   }
 
   const addons = state?.addons.reduce((str, addon) => {
-    const { label } = store.addons.find((a) => a.id === addon);
-    return !str ? label : (str += `, ${label}`);
+    const { title } = state.variant.addons.find((a) => a.slug.current === addon);
+    return !str ? title : (str += `, ${title}`);
   }, "");
 
   return (
@@ -49,13 +46,13 @@ const Contact = ({ className, ...rest }) => {
             <Input
               name="product"
               placeholder="Product"
-              defaultValue={state?.product?.name ?? ""}
+              defaultValue={state?.product?.title ?? ""}
               hidden
             />
             <Input
               name="variant"
               placeholder="Variant"
-              defaultValue={state?.variant?.name ?? ""}
+              defaultValue={state?.variant?.title ?? ""}
               hidden
             />
             <Input name="addons" placeholder="Add-ons" defaultValue={addons ?? ""} hidden />

@@ -6,6 +6,8 @@ import FAQ from "./blocks/faq";
 import Gallery from "./blocks/gallery";
 import Hero from "./blocks/hero";
 import Media from "./blocks/media";
+import PoolGrid from "./blocks/pool-grid";
+import PoolSlider from "./blocks/pool-slider";
 import ThankYou from "./blocks/thank-you";
 
 const PageBuilder = ({ content }) => {
@@ -31,16 +33,14 @@ const PageBuilder = ({ content }) => {
             return <Hero key={block._key} {...block} />;
           case "blockMedia":
             return <Media key={block._key} {...block} />;
+          case "blockPoolGrid":
+            return <PoolGrid key={block._key} {...block} />;
+          case "blockPoolSlider":
+            return <PoolSlider key={block._key} {...block} />;
           case "blockThankYou":
             return <ThankYou key={block._key} {...block} />;
           default:
-            // This is a fallback for when we don't have a block type
-            return (
-              <div key={block._key}>
-                <div>Block not found:</div>
-                <pre>{JSON.stringify(block, null, 2)}</pre>
-              </div>
-            );
+            return null;
         }
       })}
     </main>
