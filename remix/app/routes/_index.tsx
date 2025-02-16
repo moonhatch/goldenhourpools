@@ -4,7 +4,7 @@ import { useQuery } from "@sanity/react-loader";
 
 import PageBuilder from "../components/page-builder";
 import { urlFor } from "../sanity/image";
-import { loadQuery } from "../sanity/loader.server";
+import { loadQuery } from "../sanity/loader-server";
 import { PAGE_QUERY } from "../sanity/queries";
 import { Page } from "../sanity/types";
 

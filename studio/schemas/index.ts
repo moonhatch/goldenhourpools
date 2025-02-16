@@ -1,3 +1,4 @@
+import addonType from './addonType'
 import blockContactType from './blockContactType'
 import blockContentType from './blockContentType'
 import blockFAQType from './blockFAQType'
@@ -13,11 +14,15 @@ import galleryColumnType from './galleryColumnType'
 import linkType from './linkType'
 import mediaType from './mediaType'
 import pageType from './pageType'
+import poolDescriptionType from './poolDescriptionType'
+import poolType from './poolType'
+import poolVariantType from './poolVariantType'
 import seoType from './seoType'
 import siteSettingsType from './setSettingsType'
 import redirectType from './redirectType'
 
 export const schemaTypes = [
+  addonType,
   blockContactType,
   blockContentType,
   blockFAQType,
@@ -33,6 +38,9 @@ export const schemaTypes = [
   linkType,
   mediaType,
   pageType,
+  poolDescriptionType,
+  poolType,
+  poolVariantType,
   seoType,
   siteSettingsType,
   redirectType,

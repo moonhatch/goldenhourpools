@@ -5,7 +5,7 @@ import { Suspense, lazy } from "react";
 
 import favicon from "./assets/favicon.svg";
 import PageLayout from "./components/layout";
-import { loadQuery } from "./sanity/loader.server";
+import { loadQuery } from "./sanity/loader-server";
 import { SITE_SETTINGS_QUERY } from "./sanity/queries";
 import { SiteSettings } from "./sanity/types";
 import "./styles/tailwind.css";
