@@ -1,5 +1,12 @@
 export const loader = () => {
-  const allow = process.env.NODE_ENV !== "development" ? "Allow: /" : "Disallow: /";
+  let allow = "Allow: /";
+
+  if (
+    process.env.NODE_ENV === "development" ||
+    process.env.SANITY_STUDIO_STEGA_ENABLED === "true"
+  ) {
+    allow = "Disallow: /";
+  }
 
   const url = process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
