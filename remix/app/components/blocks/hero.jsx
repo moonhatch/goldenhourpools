@@ -43,7 +43,8 @@ const Hero = ({ ...rest }) => {
         </>
       )}
       <div
-        className="absolute top-0 left-0 h-72 w-full bg-gradient-to-b from-ghp-900 to-transparent"
+        className="absolute top-0 left-0 h-72 w-full bg-gradient-to-b from-ghp-900/50
+          to-transparent"
       ></div>
       <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center px-5">
         {title && (
