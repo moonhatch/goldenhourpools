@@ -48,6 +48,10 @@ export default defineType({
       group: 'page',
       of: [
         defineArrayMember({
+          name: 'blockCalendly',
+          type: 'blockCalendly',
+        }),
+        defineArrayMember({
           name: 'blockContact',
           type: 'blockContact',
         }),
