@@ -9,6 +9,12 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
   },
   title,
   pageBuilder[]{
+    _type == "blockCalendly" => {
+      _type,
+      _key,
+      container,
+      embedId
+    },
     _type == "blockContact" => {
       _type,
       _key,

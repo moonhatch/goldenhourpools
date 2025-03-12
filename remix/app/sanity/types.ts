@@ -210,6 +210,9 @@ export type Page = {
   pageBuilder?: Array<
     | ({
         _key: string;
+      } & BlockCalendly)
+    | ({
+        _key: string;
       } & BlockContact)
     | ({
         _key: string;
@@ -532,6 +535,12 @@ export type BlockContact = {
   heading?: string;
 };
 
+export type BlockCalendly = {
+  _type: "blockCalendly";
+  container?: Container;
+  embedId?: string;
+};
+
 export type Container = {
   _type: "container";
   width?: "sm" | "md" | "lg" | "max";
@@ -593,13 +602,14 @@ export type AllSanitySchemaTypes =
   | BlockFAQ
   | BlockContent
   | BlockContact
+  | BlockCalendly
   | Container
   | Addon
   | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../remix/app/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    _type == "blockContact" => {      _type,      _key,      container,      heading    },    _type == "blockContent" => {      _type,      _key,      container,      content    },    _type == "blockFAQ" => {      _type,      _key,      container,      faqs    },    _type == "blockGallery" => {      _type,      _key,      container,      galleryColumns    },    _type == "blockHeroImage" => {      _type,      _key,      title,      heading,      button,      image    },    _type == "blockHeroVideo" => {      _type,      _key,      title,      heading,      button,      url,      urlTitle,      urlThumbnail    },    _type == "blockMedia" => {      _type,      _key,      container,      media    },    _type == "blockPoolGrid" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasSpa        },        title,        slug      }    },    _type == "blockPoolSlider" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasSpa        },        title,        slug      }    },    _type == "blockThankYou" => {      _type,      _key,      container,      heading    },  },}
+// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    _type == "blockCalendly" => {      _type,      _key,      container,      embedId    },    _type == "blockContact" => {      _type,      _key,      container,      heading    },    _type == "blockContent" => {      _type,      _key,      container,      content    },    _type == "blockFAQ" => {      _type,      _key,      container,      faqs    },    _type == "blockGallery" => {      _type,      _key,      container,      galleryColumns    },    _type == "blockHeroImage" => {      _type,      _key,      title,      heading,      button,      image    },    _type == "blockHeroVideo" => {      _type,      _key,      title,      heading,      button,      url,      urlTitle,      urlThumbnail    },    _type == "blockMedia" => {      _type,      _key,      container,      media    },    _type == "blockPoolGrid" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasSpa        },        title,        slug      }    },    _type == "blockPoolSlider" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasSpa        },        title,        slug      }    },    _type == "blockThankYou" => {      _type,      _key,      container,      heading    },  },}
 export type PAGE_QUERYResult = {
   seo: {
     title: string | "";
@@ -619,6 +629,12 @@ export type PAGE_QUERYResult = {
   };
   title: string | null;
   pageBuilder: Array<
+    | {
+        _type: "blockCalendly";
+        _key: string;
+        container: Container | null;
+        embedId: string | null;
+      }
     | {
         _type: "blockContact";
         _key: string;
@@ -901,7 +917,7 @@ export type SITE_SETTINGS_QUERYResult = {
 
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    _type == "blockContact" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n    _type == "blockContent" => {\n      _type,\n      _key,\n      container,\n      content\n    },\n    _type == "blockFAQ" => {\n      _type,\n      _key,\n      container,\n      faqs\n    },\n    _type == "blockGallery" => {\n      _type,\n      _key,\n      container,\n      galleryColumns\n    },\n    _type == "blockHeroImage" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      image\n    },\n    _type == "blockHeroVideo" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      url,\n      urlTitle,\n      urlThumbnail\n    },\n    _type == "blockMedia" => {\n      _type,\n      _key,\n      container,\n      media\n    },\n    _type == "blockPoolGrid" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockPoolSlider" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockThankYou" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n  },\n}': PAGE_QUERYResult;
+    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    _type == "blockCalendly" => {\n      _type,\n      _key,\n      container,\n      embedId\n    },\n    _type == "blockContact" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n    _type == "blockContent" => {\n      _type,\n      _key,\n      container,\n      content\n    },\n    _type == "blockFAQ" => {\n      _type,\n      _key,\n      container,\n      faqs\n    },\n    _type == "blockGallery" => {\n      _type,\n      _key,\n      container,\n      galleryColumns\n    },\n    _type == "blockHeroImage" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      image\n    },\n    _type == "blockHeroVideo" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      url,\n      urlTitle,\n      urlThumbnail\n    },\n    _type == "blockMedia" => {\n      _type,\n      _key,\n      container,\n      media\n    },\n    _type == "blockPoolGrid" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockPoolSlider" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockThankYou" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n  },\n}': PAGE_QUERYResult;
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
     '\n*[_type == "redirect" && isEnabled == true && source == $pathname][0] {\n  source,\n  destination,\n  permanent\n}': REDIRECTS_QUERYResult;

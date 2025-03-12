@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 
+import Calendly from "./blocks/calendly";
 import Contact from "./blocks/contact";
 import Content from "./blocks/content";
 import FAQ from "./blocks/faq";
@@ -19,6 +20,8 @@ const PageBuilder = ({ content }) => {
     <main>
       {content.map((block) => {
         switch (block._type) {
+          case "blockCalendly":
+            return <Calendly key={block._key} {...block} />;
           case "blockContact":
             return <Contact key={block._key} {...block} />;
           case "blockContent":

@@ -1,4 +1,5 @@
 import addonType from './addonType'
+import blockCalendlyType from './blockCalendlyType'
 import blockContactType from './blockContactType'
 import blockContentType from './blockContentType'
 import blockFAQType from './blockFAQType'
@@ -25,6 +26,7 @@ import redirectType from './redirectType'
 
 export const schemaTypes = [
   addonType,
+  blockCalendlyType,
   blockContactType,
   blockContentType,
   blockFAQType,
