@@ -49,7 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               src="//script.crazyegg.com/pages/scripts/0128/2022.js"
               async="async"
             />
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZ7WY7ZVVZ" />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWV1Q86WZK" />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
