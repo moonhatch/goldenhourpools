@@ -32,7 +32,7 @@ export default function ContactSuccess() {
   useEffect(() => {
     // Push form submission event to GTM
     pushEvent("contactSubmission", {
-      formData: {
+      contactData: {
         name: formData.name,
         phone: formData.phone,
         product: formData.product,
