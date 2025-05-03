@@ -1,7 +1,9 @@
 import { Form, useLocation, useActionData } from "@remix-run/react";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 import { cn, cleanObject } from "../../lib/utils";
+import { getStoredUtmParams } from "../../lib/utm";
 import Container from "../container";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -9,6 +11,13 @@ import { Input } from "../ui/input";
 const Contact = ({ className, ...rest }) => {
   const location = useLocation();
   const data = useActionData();
+  // Add state for UTM parameters
+  const [utmParams, setUtmParams] = useState({});
+
+  // Get stored UTM parameters on component mount
+  useEffect(() => {
+    setUtmParams(getStoredUtmParams());
+  }, []);
 
   let { container, heading } = rest;
 
@@ -60,6 +69,14 @@ const Contact = ({ className, ...rest }) => {
               hidden
             />
             <Input name="addons" placeholder="Add-ons" defaultValue={addons ?? ""} hidden />
+
+            {/* Add UTM parameter hidden fields */}
+            <Input name="utm_source" defaultValue={utmParams.utm_source || ""} hidden />
+            <Input name="utm_medium" defaultValue={utmParams.utm_medium || ""} hidden />
+            <Input name="utm_campaign" defaultValue={utmParams.utm_campaign || ""} hidden />
+            <Input name="utm_term" defaultValue={utmParams.utm_term || ""} hidden />
+            <Input name="utm_content" defaultValue={utmParams.utm_content || ""} hidden />
+
             <Button className="mt-5 w-full" kind="outline">
               Submit
             </Button>
