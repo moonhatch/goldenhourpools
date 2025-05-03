@@ -4,6 +4,8 @@ import { useQuery } from "@sanity/react-loader";
 import { Suspense, lazy } from "react";
 
 import favicon from "./assets/favicon.svg";
+import CrazyEgg from "./components/crazy-egg";
+import GoogleAnalytics from "./components/google-analytics";
 import PageLayout from "./components/layout";
 import { loadQuery } from "./sanity/loader-server";
 import { SITE_SETTINGS_QUERY } from "./sanity/queries";
@@ -42,26 +44,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {ENV.NODE_ENV !== "development" && (
-          <>
-            <script
-              type="text/javascript"
-              src="//script.crazyegg.com/pages/scripts/0128/2022.js"
-              async="async"
-            />
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWV1Q86WZK" />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-RWV1Q86WZK');`,
-              }}
-            />
-          </>
-        )}
         <Meta />
         <Links />
       </head>
@@ -79,6 +61,12 @@ gtag('config', 'G-RWV1Q86WZK');`,
           </Suspense>
         ) : null}
         <Scripts />
+        {ENV.NODE_ENV !== "development" && (
+          <>
+            <CrazyEgg scriptId="0128/2022" />
+            <GoogleAnalytics gaId="G-RWV1Q86WZK" />
+          </>
+        )}
       </body>
     </html>
   );
