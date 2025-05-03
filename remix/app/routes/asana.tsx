@@ -45,11 +45,14 @@ Add-ons: ${data?.addons ?? ""}`;
   try {
     const task = await tasksApiInstance.createTask(body);
     console.log("Created task", task);
-    return redirect("/thank-you");
+
+    // Redirect to contact-success page with form data as URL parameters
+    // This allows us to send the data to GTM before redirecting to thank-you
+    return redirect(
+      `/contact-success?name=${encodeURIComponent(data.name)}&phone=${encodeURIComponent(data.phone)}&product=${encodeURIComponent(data.product)}&variant=${encodeURIComponent(data.variant)}&addons=${encodeURIComponent(data.addons)}`,
+    );
   } catch (error) {
     console.error("Task error", error);
     return json({ error: error.response.body });
   }
-
-  return redirect("/thank-you");
 }

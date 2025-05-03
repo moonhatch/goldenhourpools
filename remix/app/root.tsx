@@ -6,6 +6,7 @@ import { Suspense, lazy } from "react";
 import favicon from "./assets/favicon.svg";
 import CrazyEgg from "./components/crazy-egg";
 import GoogleAnalytics from "./components/google-analytics";
+import GoogleTagManager from "./components/google-tag-manager";
 import PageLayout from "./components/layout";
 import { loadQuery } from "./sanity/loader-server";
 import { SITE_SETTINGS_QUERY } from "./sanity/queries";
@@ -65,6 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <>
             <CrazyEgg scriptId="0128/2022" />
             <GoogleAnalytics gaId="G-RWV1Q86WZK" />
+            <GoogleTagManager gtmId="GTM-WW4QR3W4" />
           </>
         )}
       </body>
