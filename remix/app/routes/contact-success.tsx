@@ -10,6 +10,11 @@ interface FormData {
   product: string;
   variant: string;
   addons: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_term?: string;
+  utm_content?: string;
 }
 
 export async function loader({ request }: LoaderArgs) {
@@ -20,6 +25,11 @@ export async function loader({ request }: LoaderArgs) {
     product: url.searchParams.get("product") || "",
     variant: url.searchParams.get("variant") || "",
     addons: url.searchParams.get("addons") || "",
+    utm_source: url.searchParams.get("utm_source") || undefined,
+    utm_medium: url.searchParams.get("utm_medium") || undefined,
+    utm_campaign: url.searchParams.get("utm_campaign") || undefined,
+    utm_term: url.searchParams.get("utm_term") || undefined,
+    utm_content: url.searchParams.get("utm_content") || undefined,
   };
 
   return json({ formData });
@@ -30,7 +40,7 @@ export default function ContactSuccess() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Push form submission event to GTM
+    // Push form submission event to GTM with UTM parameters
     pushEvent("contactSubmission", {
       contactData: {
         name: formData.name,
@@ -38,6 +48,13 @@ export default function ContactSuccess() {
         product: formData.product,
         variant: formData.variant,
         addons: formData.addons,
+      },
+      utmData: {
+        utm_source: formData.utm_source,
+        utm_medium: formData.utm_medium,
+        utm_campaign: formData.utm_campaign,
+        utm_term: formData.utm_term,
+        utm_content: formData.utm_content,
       },
     });
 
