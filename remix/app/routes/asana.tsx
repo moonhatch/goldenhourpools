@@ -2,6 +2,8 @@ import { redirect, ActionArgs, json } from "@remix-run/node";
 import asana from "asana";
 import { z } from "zod";
 
+import { subscribeToKlaviyoList } from "../lib/klaviyo";
+
 export async function action({ request }: ActionArgs) {
   const formData = Object.fromEntries(await request.formData());
 
@@ -55,6 +57,16 @@ UTM Content: ${data?.utm_content ?? ""}`;
   try {
     const task = await tasksApiInstance.createTask(body);
     console.log("Created task", task);
+
+    // Subscribe to Klaviyo list
+    try {
+      await subscribeToKlaviyoList(data.name, data.phone);
+      console.log("Subscribed to Klaviyo list");
+    } catch (klaviyoError) {
+      // Log the error but continue with the form submission
+      console.error("Klaviyo subscription error:", klaviyoError);
+      // We don't want to fail the whole submission if Klaviyo fails
+    }
 
     // Redirect to contact-success page with form data and UTM parameters as URL parameters
     // This allows us to send the data to GTM before redirecting to thank-you
