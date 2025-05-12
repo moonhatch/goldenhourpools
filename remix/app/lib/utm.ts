@@ -8,6 +8,8 @@ export interface UtmParams {
   utm_campaign?: string;
   utm_term?: string;
   utm_content?: string;
+  ga_source?: string;
+  gad_campaign?: string;
 }
 
 /**
@@ -29,6 +31,12 @@ export function extractUtmParams(url: URL): UtmParams {
     params.utm_term = url.searchParams.get("utm_term") || undefined;
   if (url.searchParams.has("utm_content"))
     params.utm_content = url.searchParams.get("utm_content") || undefined;
+
+  // Extract additional parameters
+  if (url.searchParams.has("ga_source"))
+    params.ga_source = url.searchParams.get("ga_source") || undefined;
+  if (url.searchParams.has("gad_campaign"))
+    params.gad_campaign = url.searchParams.get("gad_campaign") || undefined;
 
   return params;
 }
@@ -61,6 +69,8 @@ export function getStoredUtmParams(): UtmParams {
   params.utm_campaign = sessionStorage.getItem("utm_campaign") || undefined;
   params.utm_term = sessionStorage.getItem("utm_term") || undefined;
   params.utm_content = sessionStorage.getItem("utm_content") || undefined;
+  params.ga_source = sessionStorage.getItem("ga_source") || undefined;
+  params.gad_campaign = sessionStorage.getItem("gad_campaign") || undefined;
 
   return params;
 }
