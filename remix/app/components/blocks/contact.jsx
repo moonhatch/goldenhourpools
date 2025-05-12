@@ -76,6 +76,8 @@ const Contact = ({ className, ...rest }) => {
             <Input name="utm_campaign" defaultValue={utmParams.utm_campaign || ""} hidden />
             <Input name="utm_term" defaultValue={utmParams.utm_term || ""} hidden />
             <Input name="utm_content" defaultValue={utmParams.utm_content || ""} hidden />
+            <Input name="ga_source" defaultValue={utmParams.ga_source || ""} hidden />
+            <Input name="gad_campaign" defaultValue={utmParams.gad_campaign || ""} hidden />
 
             <Button className="mt-5 w-full" kind="outline">
               Submit

@@ -18,6 +18,8 @@ export async function action({ request }: ActionArgs) {
     utm_campaign: z.string().optional(),
     utm_term: z.string().optional(),
     utm_content: z.string().optional(),
+    ga_source: z.string().optional(),
+    gad_campaign: z.string().optional(),
   });
 
   const parsed = schema.safeParse(formData);
@@ -41,7 +43,9 @@ UTM Source: ${data?.utm_source ?? ""}
 UTM Medium: ${data?.utm_medium ?? ""}
 UTM Campaign: ${data?.utm_campaign ?? ""}
 UTM Term: ${data?.utm_term ?? ""}
-UTM Content: ${data?.utm_content ?? ""}`;
+UTM Content: ${data?.utm_content ?? ""}
+GA Source: ${data?.ga_source ?? ""}
+GAd Campaign: ${data?.gad_campaign ?? ""}`;
 
   const tasksApiInstance = new asana.TasksApi();
   const body = {
@@ -71,7 +75,7 @@ UTM Content: ${data?.utm_content ?? ""}`;
     // Redirect to contact-success page with form data and UTM parameters as URL parameters
     // This allows us to send the data to GTM before redirecting to thank-you
     return redirect(
-      `/contact-success?name=${encodeURIComponent(data.name)}&phone=${encodeURIComponent(data.phone)}&product=${encodeURIComponent(data.product)}&variant=${encodeURIComponent(data.variant)}&addons=${encodeURIComponent(data.addons)}&utm_source=${encodeURIComponent(data.utm_source || "")}&utm_medium=${encodeURIComponent(data.utm_medium || "")}&utm_campaign=${encodeURIComponent(data.utm_campaign || "")}&utm_term=${encodeURIComponent(data.utm_term || "")}&utm_content=${encodeURIComponent(data.utm_content || "")}`,
+      `/contact-success?name=${encodeURIComponent(data.name)}&phone=${encodeURIComponent(data.phone)}&product=${encodeURIComponent(data.product)}&variant=${encodeURIComponent(data.variant)}&addons=${encodeURIComponent(data.addons)}&utm_source=${encodeURIComponent(data.utm_source || "")}&utm_medium=${encodeURIComponent(data.utm_medium || "")}&utm_campaign=${encodeURIComponent(data.utm_campaign || "")}&utm_term=${encodeURIComponent(data.utm_term || "")}&utm_content=${encodeURIComponent(data.utm_content || "")}&ga_source=${encodeURIComponent(data.ga_source || "")}&gad_campaign=${encodeURIComponent(data.gad_campaign || "")}`,
     );
   } catch (error) {
     console.error("Task error", error);
