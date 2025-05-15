@@ -25,7 +25,7 @@ const PoolGrid = ({ ...rest }) => {
 
   return (
     <Container {...cleanObject(container)}>
-      <div className="grid items-start gap-6 lg:grid-cols-3">
+      <div className="grid items-start gap-6 lg:grid-cols-2">
         {products.map((product) => (
           <Card key={product.handle} product={product} type="form" />
         ))}
