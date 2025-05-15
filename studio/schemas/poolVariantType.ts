@@ -34,7 +34,6 @@ export default defineType({
         ],
         layout: 'radio',
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'hasSpa',
