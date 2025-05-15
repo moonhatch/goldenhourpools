@@ -86,26 +86,28 @@ const Card = ({ className, product, type = "nav" }) => {
       {type === "form" && (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="mb-3 grid grid-cols-2 gap-3">
-              <Button
-                className="h-12"
-                kind={depth === "deep" ? "outline" : "secondary"}
-                onClick={() => setDepth("deep")}
-                rounded="xl"
-                type="button"
-              >
-                Deep
-              </Button>
-              <Button
-                className="h-12"
-                kind={depth === "shallow" ? "outline" : "secondary"}
-                onClick={() => setDepth("shallow")}
-                rounded="xl"
-                type="button"
-              >
-                Shallow
-              </Button>
-            </div>
+            {variant.depth && (
+              <div className="mb-3 grid grid-cols-2 gap-3">
+                <Button
+                  className="h-12"
+                  kind={depth === "deep" ? "outline" : "secondary"}
+                  onClick={() => setDepth("deep")}
+                  rounded="xl"
+                  type="button"
+                >
+                  Deep
+                </Button>
+                <Button
+                  className="h-12"
+                  kind={depth === "shallow" ? "outline" : "secondary"}
+                  onClick={() => setDepth("shallow")}
+                  rounded="xl"
+                  type="button"
+                >
+                  Shallow
+                </Button>
+              </div>
+            )}
             <Accordion collapsible type="single">
               {variant.description.map((desc, i) => (
                 <AccordionItem
