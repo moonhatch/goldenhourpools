@@ -32,6 +32,7 @@ const getVariant = (product, options) => {
 
 const Card = ({ className, product, type = "nav" }) => {
   const [depth, setDepth] = useState("deep");
+  const [ledge, setLedge] = useState(false);
   const [spa, setSpa] = useState(false);
   const [variant, setVariant] = useState(getVariant(product));
   const [price, setPrice] = useState(product?.price);
@@ -47,19 +48,23 @@ const Card = ({ className, product, type = "nav" }) => {
   const addons = form.watch("addons");
 
   useEffect(() => {
+    setLedge(addons.includes("ledge"));
+  }, [addons]);
+
+  useEffect(() => {
     setSpa(addons.includes("spa"));
   }, [addons]);
 
   useEffect(() => {
-    const newVariant = getVariant(product, { depth, spa });
-    const newAddons = addons.filter((addon) => addon !== "spa");
+    const newVariant = getVariant(product, { depth, ledge, spa });
+    const newAddons = addons.filter((addon) => addon !== "ledge" && addon !== "spa");
     const addonsSubtotal = newVariant?.addons.reduce((price, addon) => {
       return (price += newAddons.includes(addon.slug.current) ? addon.price : 0);
     }, 0);
 
     setVariant(newVariant);
     setPrice(newVariant?.price + addonsSubtotal);
-  }, [addons, depth, product, spa]);
+  }, [addons, depth, ledge, product, spa]);
 
   const onSubmit = (data) => {
     navigate("/contact", {

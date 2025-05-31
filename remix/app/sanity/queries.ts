@@ -82,6 +82,7 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
           slug,
           depth,
           price,
+          hasLedge,
           hasSpa
         },
         title,
@@ -107,6 +108,7 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
           slug,
           depth,
           price,
+          hasLedge,
           hasSpa
         },
         title,

@@ -36,6 +36,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'hasLedge',
+      title: 'Has Ledge',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'hasSpa',
       title: 'Has Spa',
       type: 'boolean',

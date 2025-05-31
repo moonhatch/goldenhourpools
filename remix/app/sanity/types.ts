@@ -16,61 +16,6 @@ import "@sanity/client";
  */
 
 // Source: schema.json
-export type SanityImagePaletteSwatch = {
-  _type: "sanity.imagePaletteSwatch";
-  background?: string;
-  foreground?: string;
-  population?: number;
-  title?: string;
-};
-
-export type SanityImagePalette = {
-  _type: "sanity.imagePalette";
-  darkMuted?: SanityImagePaletteSwatch;
-  lightVibrant?: SanityImagePaletteSwatch;
-  darkVibrant?: SanityImagePaletteSwatch;
-  vibrant?: SanityImagePaletteSwatch;
-  dominant?: SanityImagePaletteSwatch;
-  lightMuted?: SanityImagePaletteSwatch;
-  muted?: SanityImagePaletteSwatch;
-};
-
-export type SanityImageDimensions = {
-  _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
-};
-
-export type SanityFileAsset = {
-  _id: string;
-  _type: "sanity.fileAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  source?: SanityAssetSourceData;
-};
-
-export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
-};
-
 export type Redirect = {
   _id: string;
   _type: "redirect";
@@ -123,6 +68,7 @@ export type PoolVariant = {
   title?: string;
   slug?: Slug;
   depth?: "deep" | "shallow";
+  hasLedge?: boolean;
   hasSpa?: boolean;
   price?: number;
   image?: {
@@ -459,63 +405,6 @@ export type BlockGallery = {
   >;
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-};
-
-export type SanityImageAsset = {
-  _id: string;
-  _type: "sanity.imageAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  metadata?: SanityImageMetadata;
-  source?: SanityAssetSourceData;
-};
-
-export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
-
-export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
-
 export type BlockFAQ = {
   _type: "blockFAQ";
   container?: Container;
@@ -588,18 +477,125 @@ export type Addon = {
   price?: number;
 };
 
+export type SanityImagePaletteSwatch = {
+  _type: "sanity.imagePaletteSwatch";
+  background?: string;
+  foreground?: string;
+  population?: number;
+  title?: string;
+};
+
+export type SanityImagePalette = {
+  _type: "sanity.imagePalette";
+  darkMuted?: SanityImagePaletteSwatch;
+  lightVibrant?: SanityImagePaletteSwatch;
+  darkVibrant?: SanityImagePaletteSwatch;
+  vibrant?: SanityImagePaletteSwatch;
+  dominant?: SanityImagePaletteSwatch;
+  lightMuted?: SanityImagePaletteSwatch;
+  muted?: SanityImagePaletteSwatch;
+};
+
+export type SanityImageDimensions = {
+  _type: "sanity.imageDimensions";
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityFileAsset = {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
+};
+
+export type SanityImageAsset = {
+  _id: string;
+  _type: "sanity.imageAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  metadata?: SanityImageMetadata;
+  source?: SanityAssetSourceData;
+};
+
+export type SanityImageMetadata = {
+  _type: "sanity.imageMetadata";
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
+};
+
+export type Geopoint = {
+  _type: "geopoint";
+  lat?: number;
+  lng?: number;
+  alt?: number;
+};
+
 export type Slug = {
   _type: "slug";
   current?: string;
   source?: string;
 };
 
+export type SanityAssetSourceData = {
+  _type: "sanity.assetSourceData";
+  name?: string;
+  id?: string;
+  url?: string;
+};
+
 export type AllSanitySchemaTypes =
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityFileAsset
-  | Geopoint
   | Redirect
   | SiteSettings
   | PoolVariant
@@ -621,22 +617,27 @@ export type AllSanitySchemaTypes =
   | BlockHeroImage
   | Button
   | BlockGallery
-  | SanityImageCrop
-  | SanityImageHotspot
-  | SanityImageAsset
-  | SanityAssetSourceData
-  | SanityImageMetadata
   | BlockFAQ
   | BlockContent
   | BlockContact
   | BlockCalendly
   | Container
   | Addon
-  | Slug;
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageHotspot
+  | SanityImageCrop
+  | SanityFileAsset
+  | SanityImageAsset
+  | SanityImageMetadata
+  | Geopoint
+  | Slug
+  | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../remix/app/sanity/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    _type == "blockCalendly" => {      _type,      _key,      container,      embedId    },    _type == "blockContact" => {      _type,      _key,      container,      heading    },    _type == "blockContent" => {      _type,      _key,      container,      content    },    _type == "blockFAQ" => {      _type,      _key,      container,      faqs    },    _type == "blockGallery" => {      _type,      _key,      container,      galleryColumns    },    _type == "blockHeroImage" => {      _type,      _key,      title,      heading,      button,      image    },    _type == "blockHeroVideo" => {      _type,      _key,      title,      heading,      button,      url,      urlTitle,      urlThumbnail    },    _type == "blockMedia" => {      _type,      _key,      container,      media    },    _type == "blockPoolGrid" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasSpa        },        title,        slug      }    },    _type == "blockPoolSlider" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasSpa        },        title,        slug      }    },    _type == "blockThankYou" => {      _type,      _key,      container,      heading    },  },}
+// Query: *[_type == "page" && slug.current == $slug][0]{  "seo": {    "title": coalesce(seo.title, title, ""),    "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },  title,  pageBuilder[]{    _type == "blockCalendly" => {      _type,      _key,      container,      embedId    },    _type == "blockContact" => {      _type,      _key,      container,      heading    },    _type == "blockContent" => {      _type,      _key,      container,      content    },    _type == "blockFAQ" => {      _type,      _key,      container,      faqs    },    _type == "blockGallery" => {      _type,      _key,      container,      galleryColumns    },    _type == "blockHeroImage" => {      _type,      _key,      title,      heading,      button,      image    },    _type == "blockHeroVideo" => {      _type,      _key,      title,      heading,      button,      url,      urlTitle,      urlThumbnail    },    _type == "blockMedia" => {      _type,      _key,      container,      media    },    _type == "blockPoolGrid" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasLedge,          hasSpa        },        title,        slug      }    },    _type == "blockPoolSlider" => {      _type,      _key,      container,      pools[]-> {        _type,        _key,        image,        price,        variants[] {          _type,          _key,          image,          addons[]->,          description,          title,          slug,          depth,          price,          hasLedge,          hasSpa        },        title,        slug      }    },    _type == "blockThankYou" => {      _type,      _key,      container,      heading    },    _type == "blockZohoBooking" => {      _type,      _key,      container,      iframeSrc    },    _type == "blockZohoForm" => {      _type,      _key,      container,      formId,      formPermaId    },  },}
 export type PAGE_QUERYResult = {
   seo: {
     title: string | "";
@@ -821,6 +822,7 @@ export type PAGE_QUERYResult = {
             slug: Slug | null;
             depth: "deep" | "shallow" | null;
             price: number | null;
+            hasLedge: boolean | null;
             hasSpa: boolean | null;
           }> | null;
           title: string | null;
@@ -883,6 +885,7 @@ export type PAGE_QUERYResult = {
             slug: Slug | null;
             depth: "deep" | "shallow" | null;
             price: number | null;
+            hasLedge: boolean | null;
             hasSpa: boolean | null;
           }> | null;
           title: string | null;
@@ -895,7 +898,19 @@ export type PAGE_QUERYResult = {
         container: Container | null;
         heading: string | null;
       }
-    | {}
+    | {
+        _type: "blockZohoBooking";
+        _key: string;
+        container: Container | null;
+        iframeSrc: string | null;
+      }
+    | {
+        _type: "blockZohoForm";
+        _key: string;
+        container: Container | null;
+        formId: string | null;
+        formPermaId: string | null;
+      }
   > | null;
 } | null;
 // Variable: POSTS_QUERY
@@ -952,7 +967,7 @@ export type SITE_SETTINGS_QUERYResult = {
 
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    _type == "blockCalendly" => {\n      _type,\n      _key,\n      container,\n      embedId\n    },\n    _type == "blockContact" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n    _type == "blockContent" => {\n      _type,\n      _key,\n      container,\n      content\n    },\n    _type == "blockFAQ" => {\n      _type,\n      _key,\n      container,\n      faqs\n    },\n    _type == "blockGallery" => {\n      _type,\n      _key,\n      container,\n      galleryColumns\n    },\n    _type == "blockHeroImage" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      image\n    },\n    _type == "blockHeroVideo" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      url,\n      urlTitle,\n      urlThumbnail\n    },\n    _type == "blockMedia" => {\n      _type,\n      _key,\n      container,\n      media\n    },\n    _type == "blockPoolGrid" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockPoolSlider" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockThankYou" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n  },\n}': PAGE_QUERYResult;
+    '*[_type == "page" && slug.current == $slug][0]{\n  "seo": {\n    "title": coalesce(seo.title, title, ""),\n    "description": coalesce(seo.description,  ""),\n    "image": seo.image,\n    "noIndex": seo.noIndex == true\n  },\n  title,\n  pageBuilder[]{\n    _type == "blockCalendly" => {\n      _type,\n      _key,\n      container,\n      embedId\n    },\n    _type == "blockContact" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n    _type == "blockContent" => {\n      _type,\n      _key,\n      container,\n      content\n    },\n    _type == "blockFAQ" => {\n      _type,\n      _key,\n      container,\n      faqs\n    },\n    _type == "blockGallery" => {\n      _type,\n      _key,\n      container,\n      galleryColumns\n    },\n    _type == "blockHeroImage" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      image\n    },\n    _type == "blockHeroVideo" => {\n      _type,\n      _key,\n      title,\n      heading,\n      button,\n      url,\n      urlTitle,\n      urlThumbnail\n    },\n    _type == "blockMedia" => {\n      _type,\n      _key,\n      container,\n      media\n    },\n    _type == "blockPoolGrid" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasLedge,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockPoolSlider" => {\n      _type,\n      _key,\n      container,\n      pools[]-> {\n        _type,\n        _key,\n        image,\n        price,\n        variants[] {\n          _type,\n          _key,\n          image,\n          addons[]->,\n          description,\n          title,\n          slug,\n          depth,\n          price,\n          hasLedge,\n          hasSpa\n        },\n        title,\n        slug\n      }\n    },\n    _type == "blockThankYou" => {\n      _type,\n      _key,\n      container,\n      heading\n    },\n    _type == "blockZohoBooking" => {\n      _type,\n      _key,\n      container,\n      iframeSrc\n    },\n    _type == "blockZohoForm" => {\n      _type,\n      _key,\n      container,\n      formId,\n      formPermaId\n    },\n  },\n}': PAGE_QUERYResult;
     '*[_type == "post" && defined(slug.current)] | order(publishedAt desc)': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]': POST_QUERYResult;
     '\n*[_type == "redirect" && isEnabled == true && source == $pathname][0] {\n  source,\n  destination,\n  permanent\n}': REDIRECTS_QUERYResult;
