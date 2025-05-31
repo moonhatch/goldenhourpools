@@ -18,6 +18,7 @@ const PoolGrid = ({ ...rest }) => {
         handle: variant.slug.current,
         options: {
           depth: variant.depth,
+          ledge: !!variant.hasLedge,
           spa: !!variant.hasSpa,
         },
       })) ?? [],

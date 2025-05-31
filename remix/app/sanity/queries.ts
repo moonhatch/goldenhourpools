@@ -82,6 +82,7 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
           slug,
           depth,
           price,
+          hasLedge,
           hasSpa
         },
         title,
@@ -107,6 +108,7 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
           slug,
           depth,
           price,
+          hasLedge,
           hasSpa
         },
         title,
@@ -118,6 +120,19 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       _key,
       container,
       heading
+    },
+    _type == "blockZohoBooking" => {
+      _type,
+      _key,
+      container,
+      iframeSrc
+    },
+    _type == "blockZohoForm" => {
+      _type,
+      _key,
+      container,
+      formId,
+      formPermaId
     },
   },
 }`;
