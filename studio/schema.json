@@ -645,6 +645,13 @@
                 },
                 "optional": true
               },
+              "media": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "unknown"
+                },
+                "optional": true
+              },
               "hotspot": {
                 "type": "objectAttribute",
                 "value": {
@@ -837,6 +844,13 @@
                   }
                 },
                 "dereferencesTo": "sanity.imageAsset"
+              },
+              "optional": true
+            },
+            "media": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "unknown"
               },
               "optional": true
             },
@@ -1267,6 +1281,36 @@
                   "type": "inline",
                   "name": "blockThankYou"
                 }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "inline",
+                  "name": "blockZohoBooking"
+                }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "inline",
+                  "name": "blockZohoForm"
+                }
               }
             ]
           }
@@ -1334,6 +1378,13 @@
                     }
                   },
                   "dereferencesTo": "sanity.imageAsset"
+                },
+                "optional": true
+              },
+              "media": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "unknown"
                 },
                 "optional": true
               },
@@ -1625,6 +1676,75 @@
     }
   },
   {
+    "name": "blockZohoForm",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "blockZohoForm"
+          }
+        },
+        "container": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "container"
+          },
+          "optional": true
+        },
+        "formId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "formPermaId": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "blockZohoBooking",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "blockZohoBooking"
+          }
+        },
+        "container": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "container"
+          },
+          "optional": true
+        },
+        "iframeSrc": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "blockThankYou",
     "type": "type",
     "value": {
@@ -1885,6 +2005,13 @@
                 },
                 "optional": true
               },
+              "media": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "unknown"
+                },
+                "optional": true
+              },
               "hotspot": {
                 "type": "objectAttribute",
                 "value": {
@@ -2117,6 +2244,13 @@
                 },
                 "optional": true
               },
+              "media": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "unknown"
+                },
+                "optional": true
+              },
               "hotspot": {
                 "type": "objectAttribute",
                 "value": {
@@ -2221,6 +2355,13 @@
                     }
                   },
                   "dereferencesTo": "sanity.imageAsset"
+                },
+                "optional": true
+              },
+              "media": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "unknown"
                 },
                 "optional": true
               },

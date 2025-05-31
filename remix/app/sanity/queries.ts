@@ -119,6 +119,19 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       container,
       heading
     },
+    _type == "blockZohoBooking" => {
+      _type,
+      _key,
+      container,
+      iframeSrc
+    },
+    _type == "blockZohoForm" => {
+      _type,
+      _key,
+      container,
+      formId,
+      formPermaId
+    },
   },
 }`;
 

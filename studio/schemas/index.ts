@@ -10,6 +10,8 @@ import blockMediaType from './blockMediaType'
 import blockPoolGridType from './blockPoolGridType'
 import blockPoolSliderType from './blockPoolSliderType'
 import blockThankYouType from './blockThankYouType'
+import blockZohoBookingType from './blockZohoBookingType'
+import blockZohoFormType from './blockZohoFormType'
 import buttonType from './buttonType'
 import containerType from './containerType'
 import faqType from './faqType'
@@ -37,6 +39,8 @@ export const schemaTypes = [
   blockPoolGridType,
   blockPoolSliderType,
   blockThankYouType,
+  blockZohoBookingType,
+  blockZohoFormType,
   buttonType,
   containerType,
   faqType,

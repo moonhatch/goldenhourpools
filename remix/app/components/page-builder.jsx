@@ -10,6 +10,8 @@ import Media from "./blocks/media";
 import PoolGrid from "./blocks/pool-grid";
 import PoolSlider from "./blocks/pool-slider";
 import ThankYou from "./blocks/thank-you";
+import ZohoBooking from "./blocks/zoho-booking";
+import ZohoForm from "./blocks/zoho-form";
 
 const PageBuilder = ({ content }) => {
   if (!Array.isArray(content)) {
@@ -42,6 +44,10 @@ const PageBuilder = ({ content }) => {
             return <PoolSlider key={block._key} {...block} />;
           case "blockThankYou":
             return <ThankYou key={block._key} {...block} />;
+          case "blockZohoBooking":
+            return <ZohoBooking key={block._key} {...block} />;
+          case "blockZohoForm":
+            return <ZohoForm key={block._key} {...block} />;
           default:
             return null;
         }

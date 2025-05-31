@@ -132,6 +132,7 @@ export type PoolVariant = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -167,6 +168,7 @@ export type Pool = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -241,6 +243,12 @@ export type Page = {
     | ({
         _key: string;
       } & BlockThankYou)
+    | ({
+        _key: string;
+      } & BlockZohoBooking)
+    | ({
+        _key: string;
+      } & BlockZohoForm)
   >;
 };
 
@@ -255,6 +263,7 @@ export type Seo = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -299,6 +308,19 @@ export type Faq = {
     _type: "block";
     _key: string;
   }>;
+};
+
+export type BlockZohoForm = {
+  _type: "blockZohoForm";
+  container?: Container;
+  formId?: string;
+  formPermaId?: string;
+};
+
+export type BlockZohoBooking = {
+  _type: "blockZohoBooking";
+  container?: Container;
+  iframeSrc?: string;
 };
 
 export type BlockThankYou = {
@@ -348,6 +370,7 @@ export type Media = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -392,6 +415,7 @@ export type BlockHeroVideo = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -411,6 +435,7 @@ export type BlockHeroImage = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -585,6 +610,8 @@ export type AllSanitySchemaTypes =
   | Link
   | GalleryColumn
   | Faq
+  | BlockZohoForm
+  | BlockZohoBooking
   | BlockThankYou
   | BlockPoolSlider
   | BlockPoolGrid
@@ -621,6 +648,7 @@ export type PAGE_QUERYResult = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       _type: "image";
@@ -702,6 +730,7 @@ export type PAGE_QUERYResult = {
             _weak?: boolean;
             [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
           };
+          media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           alt?: string;
@@ -723,6 +752,7 @@ export type PAGE_QUERYResult = {
             _weak?: boolean;
             [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
           };
+          media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           alt?: string;
@@ -749,6 +779,7 @@ export type PAGE_QUERYResult = {
               _weak?: boolean;
               [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
             };
+            media?: unknown;
             hotspot?: SanityImageHotspot;
             crop?: SanityImageCrop;
             alt?: string;
@@ -765,6 +796,7 @@ export type PAGE_QUERYResult = {
                 _weak?: boolean;
                 [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
               };
+              media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
               alt?: string;
@@ -809,6 +841,7 @@ export type PAGE_QUERYResult = {
               _weak?: boolean;
               [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
             };
+            media?: unknown;
             hotspot?: SanityImageHotspot;
             crop?: SanityImageCrop;
             alt?: string;
@@ -825,6 +858,7 @@ export type PAGE_QUERYResult = {
                 _weak?: boolean;
                 [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
               };
+              media?: unknown;
               hotspot?: SanityImageHotspot;
               crop?: SanityImageCrop;
               alt?: string;
@@ -861,6 +895,7 @@ export type PAGE_QUERYResult = {
         container: Container | null;
         heading: string | null;
       }
+    | {}
   > | null;
 } | null;
 // Variable: POSTS_QUERY

@@ -91,6 +91,14 @@ export default defineType({
           name: 'blockThankYou',
           type: 'blockThankYou',
         }),
+        defineArrayMember({
+          name: 'blockZohoBooking',
+          type: 'blockZohoBooking',
+        }),
+        defineArrayMember({
+          name: 'blockZohoForm',
+          type: 'blockZohoForm',
+        }),
       ],
     }),
   ],
