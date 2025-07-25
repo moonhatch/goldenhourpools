@@ -35,6 +35,7 @@ const Container = ({
         topSpacingDesktop === "md" && "lg:mt-12",
         topSpacingDesktop === "lg" && "lg:mt-24",
         topSpacingDesktop === "xl" && "lg:mt-48",
+        width === "xs" && "max-w-2xl",
         width === "sm" && "max-w-3xl",
         width === "md" && "max-w-5xl",
         width === "max" && "max-w-none px-0 lg:px-0",
@@ -55,7 +56,7 @@ Container.propTypes = {
   isMobileFullWidth: PropTypes.bool,
   topSpacing: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   topSpacingDesktop: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
-  width: PropTypes.oneOf(["sm", "md", "lg", "max"]),
+  width: PropTypes.oneOf(["xs", "sm", "md", "lg", "max"]),
 };
 
 export default Container;
