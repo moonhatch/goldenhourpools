@@ -77,9 +77,9 @@ const Card = ({ className, product, type = "nav" }) => {
   };
 
   return (
-    <div className={cn("rounded-3xl bg-ghp-200 p-5", className)}>
+    <div className={cn("rounded-3xl bg-stone-200 p-5", className)}>
       <div className="invisible relative -top-10 block" id={product.handle}></div>
-      <h3 className="flex justify-between border-b border-ghp-300 pb-4 font-serif text-3xl">
+      <h3 className="flex justify-between border-b border-stone-300 pb-4 font-serif text-3xl">
         <span>{product?.title ?? "Pool"}</span>
         <span>{formatCurrency(price)}</span>
       </h3>

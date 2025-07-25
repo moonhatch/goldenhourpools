@@ -45,14 +45,14 @@ const Header = ({ siteData }) => {
         className={cn(
           "relative flex h-24 items-center justify-between px-5 lg:px-16",
           !invertColors && "bg-ghp-100",
-          invertColors ? "text-white" : "border-b border-ghp-250 text-orange",
+          invertColors ? "text-white" : "border-b border-dashed border-black text-orange",
         )}
       >
         <ul className="-mx-2.5">
           <li className="inline-block px-2.5 lg:hidden">
             <Link
-              className="inline-block font-serif underline-offset-2 outline-none hover:underline
-                focus-visible:underline"
+              className="inline-block font-serif text-xl uppercase underline-offset-2 outline-none
+                hover:underline focus-visible:underline"
               prefetch="viewport"
               to="/"
             >
@@ -64,8 +64,8 @@ const Header = ({ siteData }) => {
               <NavLink
                 className={({ isActive }) =>
                   cn(
-                    `inline-block underline-offset-2 outline-none hover:underline
-                    focus-visible:underline`,
+                    `inline-block font-serif text-xl uppercase underline-offset-2 outline-none
+                    hover:underline focus-visible:underline`,
                     isActive && "underline",
                   )
                 }
@@ -83,14 +83,14 @@ const Header = ({ siteData }) => {
           prefetch="viewport"
           to="/"
         >
-          <Sun className="animate h-12 w-12 animate-spin [animation-duration:_20s]" />
+          <Sun className="animate h-9 w-9 animate-spin [animation-duration:_20s]" />
         </Link>
         <ul className="-mx-2.5">
           {navLinksSecondary?.map((link, i) => {
             if (i === navLinksSecondary.length - 1) {
               return (
                 <li key={link._key} className="hidden px-2.5 lg:inline-block">
-                  <Button asChild kind="outline" size="sm">
+                  <Button asChild className="font-serif text-xl uppercase" kind="outline" size="sm">
                     <Link to={link.to}>{link.text}</Link>
                   </Button>
                 </li>
@@ -101,8 +101,8 @@ const Header = ({ siteData }) => {
                   <NavLink
                     className={({ isActive }) =>
                       cn(
-                        `inline-block underline-offset-2 outline-none hover:underline
-                        focus-visible:underline`,
+                        `inline-block font-serif text-xl uppercase underline-offset-2 outline-none
+                        hover:underline focus-visible:underline`,
                         isActive && "underline",
                       )
                     }
@@ -117,8 +117,8 @@ const Header = ({ siteData }) => {
           })}
           <li className="inline-block px-2.5 lg:hidden">
             <button
-              className="inline-block cursor-pointer underline-offset-2 outline-none hover:underline
-                focus-visible:underline"
+              className="inline-block cursor-pointer font-serif text-xl uppercase underline-offset-2
+                outline-none hover:underline focus-visible:underline"
               ref={refs.setReference}
               {...getReferenceProps()}
             >
@@ -134,7 +134,7 @@ const Header = ({ siteData }) => {
               <ul
                 ref={refs.setFloating}
                 className={cn(
-                  "absolute right-0 h-dvh w-full bg-ghp-200 pt-24 lg:w-md",
+                  "absolute right-0 h-dvh w-full bg-stone-200 pt-24 lg:w-md",
                   isHome && "pt-[136px]",
                 )}
                 {...getFloatingProps()}
@@ -161,9 +161,9 @@ const Header = ({ siteData }) => {
 Header.propTypes = { siteData: PropTypes.object };
 
 const MobileNavItem = ({ children, onClick, to }) => (
-  <li className="border-b border-ghp-250 bg-ghp-100 lg:border-x">
+  <li className="border-stone-250 border-b bg-stone-100 lg:border-x">
     <Link
-      className="block py-8 text-center font-serif text-4xl text-orange decoration-2
+      className="block py-8 text-center font-serif text-4xl text-orange uppercase decoration-2
         underline-offset-4 outline-none hover:underline focus-visible:underline"
       onClick={onClick}
       prefetch="viewport"

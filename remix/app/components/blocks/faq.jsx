@@ -32,7 +32,7 @@ const FAQ = ({ ...rest }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
       />
       <Accordion
-        className="overflow-hidden border-b border-ghp-250 lg:rounded-2xl lg:border"
+        className="border-stone-250 overflow-hidden border-b lg:rounded-2xl lg:border"
         collapsible
         type="single"
       >
