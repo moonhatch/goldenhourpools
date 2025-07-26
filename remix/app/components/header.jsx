@@ -45,7 +45,7 @@ const Header = ({ siteData }) => {
         className={cn(
           "relative flex h-24 items-center justify-between px-5 lg:px-16",
           !invertColors && "bg-ghp-100",
-          invertColors ? "text-white" : "border-b border-dashed border-black text-orange",
+          invertColors ? "text-white" : "border-b border-dashed border-ghp-300 text-orange",
         )}
       >
         <ul className="-mx-2.5">

@@ -42,7 +42,7 @@ const Contact = ({ className, ...rest }) => {
   }
 
   return (
-    <Container {...cleanObject(container)} width="xs" topSpacing="lg" topSpacingDesktop="lg">
+    <Container {...cleanObject(container)}>
       <div className={cn("rotate-1 bg-ghp-50 px-6 py-12 text-center lg:pb-16", className)}>
         <div className="mx-auto max-w-sm">
           <div className="ghp-prose mt-4 mb-10">

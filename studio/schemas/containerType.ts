@@ -14,6 +14,7 @@ export default defineType({
       type: 'string',
       options: {
         list: [
+          {title: 'Extra Small', value: 'xs'},
           {title: 'Small', value: 'sm'},
           {title: 'Medium', value: 'md'},
           {title: 'Large', value: 'lg'},
