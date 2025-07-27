@@ -45,7 +45,7 @@ const Header = ({ siteData }) => {
         className={cn(
           "relative flex h-24 items-center justify-between px-5 lg:px-16",
           !invertColors && "bg-ghp-100",
-          invertColors ? "text-white" : "border-b border-dashed border-ghp-300 text-orange",
+          invertColors ? "text-white" : "border-b border-dashed border-black text-orange",
         )}
       >
         <ul className="-mx-2.5">
@@ -131,25 +131,30 @@ const Header = ({ siteData }) => {
         {isOpen && (
           <FloatingOverlay lockScroll>
             <FloatingFocusManager context={context}>
-              <ul
+              <div
                 ref={refs.setFloating}
                 className={cn(
-                  "absolute right-0 h-dvh w-full bg-stone-200 pt-24 lg:w-md",
+                  "absolute right-0 h-dvh w-full bg-ghp-100 pt-24 lg:w-md",
                   isHome && "pt-[136px]",
                 )}
                 {...getFloatingProps()}
               >
-                {navLinksPrimary?.map((link) => (
-                  <MobileNavItem key={link._key} onClick={() => setIsOpen(false)} to={link.to}>
-                    {link.text}
-                  </MobileNavItem>
-                ))}
-                {navLinksSecondary?.map((link) => (
-                  <MobileNavItem key={link._key} onClick={() => setIsOpen(false)} to={link.to}>
-                    {link.text}
-                  </MobileNavItem>
-                ))}
-              </ul>
+                <div className="grid grid-cols-1">
+                  {[...navLinksPrimary, ...navLinksSecondary]?.map((link) => (
+                    <Button
+                      asChild
+                      key={link._key}
+                      className="-mt-px h-[72px] w-full border-x-0 hover:relative"
+                      kind="outline"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Link prefetch="viewport" to={link.to}>
+                        {link.text}
+                      </Link>
+                    </Button>
+                  ))}
+                </div>
+              </div>
             </FloatingFocusManager>
           </FloatingOverlay>
         )}

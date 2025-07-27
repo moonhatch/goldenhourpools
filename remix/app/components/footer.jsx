@@ -29,7 +29,7 @@ const Footer = ({ siteData }) => {
 
   return (
     <Container className="-my-px py-px text-center text-stone-900">
-      <div className="mx-auto mt-24 max-w-sm">
+      <div className="mx-auto mt-24 max-w-sm md:mt-48">
         <div className="grid grid-cols-2">
           {footerLinksPrimary?.map((link) => (
             <Button
@@ -57,7 +57,7 @@ const Footer = ({ siteData }) => {
           ))}
         </div>
       </div>
-      <ul className="my-12 mb-24">
+      <ul className="my-12 mb-24 max-sm:text-sm">
         <LinksItem to="/">
           ©{title} {new Date().getFullYear()}
         </LinksItem>
