@@ -97,7 +97,6 @@ const Card = ({ className, product, type = "nav" }) => {
                   className="h-12"
                   kind={depth === "deep" ? "secondary" : "outline"}
                   onClick={() => setDepth("deep")}
-                  rounded="xl"
                   type="button"
                 >
                   Deep
@@ -106,7 +105,6 @@ const Card = ({ className, product, type = "nav" }) => {
                   className="h-12"
                   kind={depth === "shallow" ? "secondary" : "outline"}
                   onClick={() => setDepth("shallow")}
-                  rounded="xl"
                   type="button"
                 >
                   Shallow
