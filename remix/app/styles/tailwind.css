@@ -175,9 +175,6 @@
 
   .embla__container {
     @apply flex;
-    @variant md {
-      @apply overflow-x-hidden;
-    }
   }
 
   .embla__slide {
