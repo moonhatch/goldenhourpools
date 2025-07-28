@@ -134,7 +134,8 @@ const Header = ({ siteData }) => {
               <div
                 ref={refs.setFloating}
                 className={cn(
-                  "absolute right-0 h-dvh w-full bg-ghp-100 pt-24 lg:w-md",
+                  `absolute right-0 h-dvh w-full bg-ghp-100 pt-24 lg:w-md lg:border-l
+                  lg:border-dashed lg:border-black`,
                   isHome && "pt-[136px]",
                 )}
                 {...getFloatingProps()}
@@ -164,25 +165,5 @@ const Header = ({ siteData }) => {
 };
 
 Header.propTypes = { siteData: PropTypes.object };
-
-const MobileNavItem = ({ children, onClick, to }) => (
-  <li className="border-stone-250 border-b bg-stone-100 lg:border-x">
-    <Link
-      className="block py-8 text-center font-serif text-4xl text-orange uppercase decoration-2
-        underline-offset-4 outline-none hover:underline focus-visible:underline"
-      onClick={onClick}
-      prefetch="viewport"
-      to={to}
-    >
-      {children}
-    </Link>
-  </li>
-);
-
-MobileNavItem.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
-  to: PropTypes.string.isRequired,
-};
 
 export default Header;

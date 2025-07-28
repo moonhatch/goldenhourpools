@@ -28,7 +28,7 @@ const Footer = ({ siteData }) => {
   const { footerLinksPrimary, footerLinksSecondary, footerLinksTertiary, title } = siteData;
 
   return (
-    <Container className="-my-px py-px text-center text-stone-900">
+    <Container className="-my-px py-px text-center">
       <div className="mx-auto mt-24 max-w-sm md:mt-48">
         <div className="grid grid-cols-2">
           {footerLinksPrimary?.map((link) => (

@@ -30,7 +30,9 @@ const AccordionTrigger = React.forwardRef<
       className={cn(
         `group relative flex flex-1 cursor-pointer items-center justify-between text-left
         underline-offset-2 transition-all outline-none hover:underline focus-visible:underline`,
-        compact ? "py-3" : "px-5 py-6 font-normal lg:px-12 [&[data-state=open]>svg]:rotate-180",
+        compact
+          ? "py-3 font-normal"
+          : "px-5 py-6 font-normal lg:px-12 [&[data-state=open]>svg]:rotate-180",
         className,
       )}
       {...props}
@@ -38,10 +40,10 @@ const AccordionTrigger = React.forwardRef<
       {children}
       {compact ? (
         <>
-          <Plus className="h-4 w-4 shrink-0 group-[[data-state=open]]:hidden" strokeWidth={1} />
+          <Plus className="h-4 w-4 shrink-0 group-[[data-state=open]]:hidden" strokeWidth={1.5} />
           <Minus
             className="hidden h-4 w-4 shrink-0 group-[[data-state=open]]:inline-block"
-            strokeWidth={1}
+            strokeWidth={1.5}
           />
         </>
       ) : (

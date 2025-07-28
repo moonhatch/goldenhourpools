@@ -77,9 +77,9 @@ const Card = ({ className, product, type = "nav" }) => {
   };
 
   return (
-    <div className={cn("rounded-3xl bg-stone-200 p-5", className)}>
+    <div className={cn("bg-ghp-50 p-5", className)}>
       <div className="invisible relative -top-10 block" id={product.handle}></div>
-      <h3 className="flex justify-between border-b border-stone-300 pb-4 font-serif text-3xl">
+      <h3 className="flex justify-between border-b border-dashed border-ghp-300 pb-4 text-xl">
         <span>{product?.title ?? "Pool"}</span>
         <span>{formatCurrency(price)}</span>
       </h3>
@@ -95,7 +95,7 @@ const Card = ({ className, product, type = "nav" }) => {
               <div className="mb-3 grid grid-cols-2 gap-3">
                 <Button
                   className="h-12"
-                  kind={depth === "deep" ? "outline" : "secondary"}
+                  kind={depth === "deep" ? "secondary" : "outline"}
                   onClick={() => setDepth("deep")}
                   rounded="xl"
                   type="button"
@@ -104,7 +104,7 @@ const Card = ({ className, product, type = "nav" }) => {
                 </Button>
                 <Button
                   className="h-12"
-                  kind={depth === "shallow" ? "outline" : "secondary"}
+                  kind={depth === "shallow" ? "secondary" : "outline"}
                   onClick={() => setDepth("shallow")}
                   rounded="xl"
                   type="button"
@@ -176,16 +176,16 @@ const Card = ({ className, product, type = "nav" }) => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <Button className="mt-3 h-12 w-full" kind="default" rounded="xl" type="submit">
+            <Button className="mt-3 h-12 w-full" kind="default" type="submit">
               Get Started
             </Button>
           </form>
         </Form>
       )}
       {type === "nav" && (
-        <Button asChild align="between" className="w-full" kind="secondary" rounded="xl">
+        <Button asChild align="between" className="w-full" kind="outline">
           <Link to={`/pools#${product?.handle ?? ""}`}>
-            Learn More <ArrowRight strokeWidth={1} />
+            Learn More <ArrowRight strokeWidth={1.5} />
           </Link>
         </Button>
       )}
