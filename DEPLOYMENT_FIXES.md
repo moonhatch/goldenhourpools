@@ -4,6 +4,8 @@
 
 **Problem**: Production app was receiving console error "Error loading route module `/assets/_index-BPY8y4p3.js`, reloading page..." causing infinite reload loops.
 
+**Additional Issue**: Vercel deployment error "If `rewrites`, `redirects`, `headers`, `cleanUrls` or `trailingSlash` are used, then `routes` cannot be present."
+
 ## Root Cause
 
 1. **TypeScript Import Error**: The `_index.tsx` route was missing the `MetaFunction` import from `@remix-run/node`, causing compilation errors that resulted in malformed JavaScript output.
@@ -44,7 +46,14 @@
 - **Purpose**: Configure proper caching at the CDN level
 - **Changes**: Added headers configuration to prevent HTML caching while keeping asset caching
 
-### 5. Added Build Verification Script
+### 5. Fixed Vercel Configuration Conflict
+
+- **File**: `vercel.json`
+- **Issue**: Cannot use both `routes` and `headers` in the same configuration
+- **Solution**: Replaced `routes` array with `rewrites` array to use modern Vercel configuration
+- **Result**: Maintains all routing functionality while allowing headers configuration
+
+### 6. Added Build Verification Script
 
 - **File**: `remix/scripts/verify-build.js`
 - **Purpose**: Verify that all required assets are generated during build

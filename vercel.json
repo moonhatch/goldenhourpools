@@ -8,17 +8,10 @@
       "runtime": "nodejs20.x"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/build/(.*)",
-      "dest": "/build/$1"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/remix/build/server/index.js"
+      "source": "/(.*)",
+      "destination": "/remix/build/server/index.js"
     }
   ],
   "headers": [
