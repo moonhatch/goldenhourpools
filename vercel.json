@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd remix && npm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "remix/build/client",
-  "installCommand": "cd remix && npm install",
+  "installCommand": "npm install",
   "framework": null,
   "functions": {
     "remix/build/server/index.js": {
