@@ -35,7 +35,8 @@ const Footer = ({ siteData }) => {
             <Button
               asChild
               key={link._key}
-              className="w-[calc(100% + 1px)] col-span-2 -mt-px -mr-px hover:relative"
+              className="w-[calc(100% + 1px)] col-span-2 -mt-px -mr-px hover:relative
+                focus-visible:relative"
               kind="outline"
             >
               <Link target="_blank" rel="noreferrer" to={link.to}>
@@ -47,7 +48,7 @@ const Footer = ({ siteData }) => {
             <Button
               asChild
               key={link._key}
-              className="w-[calc(100% + 1px)] -mt-px -mr-px hover:relative"
+              className="w-[calc(100% + 1px)] -mt-px -mr-px hover:relative focus-visible:relative"
               kind="outline"
             >
               <Link prefetch="viewport" to={link.to}>

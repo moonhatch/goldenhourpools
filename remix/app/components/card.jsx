@@ -92,7 +92,7 @@ const Card = ({ className, product, type = "nav" }) => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             {variant.depth && (
-              <div className="mb-3 grid grid-cols-2 gap-3">
+              <div className="mb-3 grid grid-cols-2 gap-5">
                 <Button
                   className="h-12"
                   kind={depth === "deep" ? "secondary" : "outline"}

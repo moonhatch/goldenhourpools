@@ -426,7 +426,7 @@ export type BlockContent = {
           _type: "span";
           _key: string;
         }>;
-        style?: "normal" | "h1" | "h2";
+        style?: "normal" | "h1" | "h2" | "h3";
         listItem?: "bullet";
         markDefs?: Array<{
           href?: string;
@@ -457,7 +457,7 @@ export type BlockCalendly = {
 
 export type Container = {
   _type: "container";
-  width?: "sm" | "md" | "lg" | "max";
+  width?: "xs" | "sm" | "md" | "lg" | "max";
   topSpacing?: "sm" | "md" | "lg" | "xl";
   topSpacingDesktop?: "sm" | "md" | "lg" | "xl";
   bottomSpacing?: "sm" | "md" | "lg" | "xl";
@@ -685,7 +685,7 @@ export type PAGE_QUERYResult = {
                 _type: "span";
                 _key: string;
               }>;
-              style?: "h1" | "h2" | "normal";
+              style?: "h1" | "h2" | "h3" | "normal";
               listItem?: "bullet";
               markDefs?: Array<{
                 href?: string;
