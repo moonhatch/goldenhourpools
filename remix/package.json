@@ -7,6 +7,7 @@
   "scripts": {
     "build": "remix vite:build",
     "build:svg": "svgr --filename-case kebab --no-dimensions --replace-attr-values '#000'='currentColor' --jsx-runtime automatic --ext jsx --out-dir app/icons svg --no-prettier",
+    "build:verify": "node scripts/verify-build.js",
     "dev": "remix vite:dev --host --port 3000",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "format": "prettier --cache --write .",
