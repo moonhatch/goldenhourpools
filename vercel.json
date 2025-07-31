@@ -1,11 +1,11 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "remix/build/client",
+  "outputDirectory": "remix/build",
   "installCommand": "npm install",
   "framework": null,
   "functions": {
     "remix/build/server/index.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "nodejs22.x"
     }
   },
   "rewrites": [
