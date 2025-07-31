@@ -43,19 +43,17 @@ const Contact = ({ className, ...rest }) => {
 
   return (
     <Container {...cleanObject(container)}>
-      <div
-        className={cn("rounded-3xl bg-orange px-6 py-8 text-center text-white lg:py-20", className)}
-      >
+      <div className={cn("rotate-1 bg-ghp-50 px-6 py-12 text-center lg:pb-16", className)}>
         <div className="mx-auto max-w-sm">
-          <div className="ghp-prose mt-4 mb-10 text-white prose-headings:text-white">
-            <h2 className="text-balance">{heading || "Get In Touch"}</h2>
+          <div className="ghp-prose mt-4 mb-10">
+            <h2 className="text-balance uppercase">{heading || "Get In Touch"}</h2>
             <p className="text-balance">
               Just leave us your name and number and we will contact you within 24 hours.
             </p>
           </div>
           <Form action="/asana" method="post">
-            <Input className="mt-8" name="name" placeholder="Name *" required />
-            <Input className="mt-5" name="phone" placeholder="Phone Number *" required type="tel" />
+            <Input className="mt-8" name="name" placeholder="Name*" required />
+            <Input className="mt-5" name="phone" placeholder="Phone Number*" required type="tel" />
             <Input
               name="product"
               placeholder="Product"

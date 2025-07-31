@@ -9,7 +9,7 @@ const ThankYou = ({ ...rest }) => {
 
   return (
     <Container {...cleanObject(container)}>
-      <div className="rounded-3xl bg-yellow px-6 py-36 text-center text-white lg:py-64">
+      <div className="rounded-3xl bg-orange px-6 py-36 text-center text-white lg:py-64">
         <div
           className="ghp-prose mx-auto my-4 w-full max-w-none text-white prose-headings:text-white"
         >

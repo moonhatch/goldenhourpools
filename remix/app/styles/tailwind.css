@@ -4,21 +4,18 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: "FriedelPro", "sans-serif";
-  --font-serif: "CatalogueLL", "sans-serif";
+  --font-sans: "ABCDiatypeMono", "sans-serif";
+  --font-serif: "BasteB", "sans-serif";
 
   --color-white: #ffffff;
-  --color-ghp-100: #f5f6f2; /* primary bg */
-  --color-ghp-200: #eae9e5; /* secondary bg */
-  --color-ghp-250: #e0e0de; /* light border */
-  --color-ghp-300: #bbbbb8; /* borders */
-  --color-ghp-400: #908f8d; /* placeholder */
-  --color-ghp-800: #393939; /* tertiary */
-  --color-ghp-900: #252525; /* secondary */
-  --color-black: #000000;
+  --color-ghp-50: #eae9e5;
+  --color-ghp-100: #cec7bb;
+  --color-ghp-300: #918c83;
+  --color-ghp-500: #797367;
+  --color-black: #2d2d2d;
 
-  --color-orange: #c9431c;
-  --color-yellow: #e5cb67;
+  --color-blue: #5ba8ea;
+  --color-orange: #f35f2a;
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -55,7 +52,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-ghp-300, currentColor);
+    border-color: var(--color-stone-700, currentColor);
   }
 
   html {
@@ -63,24 +60,32 @@
   }
 
   body {
-    @apply flex min-h-dvh flex-col text-black;
+    @apply flex min-h-dvh flex-col font-light text-black;
   }
 
   ::selection {
-    @apply bg-yellow text-black;
+    @apply bg-blue text-white;
   }
 
   @font-face {
-    font-family: "CatalogueLL";
-    src: url("./fonts/CatalogueLL-Light.otf") format("opentype");
-    font-weight: normal;
+    font-family: "ABCDiatypeMono";
+    src: url("./fonts/ABCDiatypeMono-Light.otf") format("opentype");
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "FriedelPro";
-    src: url("./fonts/FriedelPro-Regular.otf") format("opentype");
+    font-family: "ABCDiatypeMono";
+    src: url("./fonts/ABCDiatypeMono-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BasteB";
+    src: url("./fonts/BasteB-Regular.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -92,7 +97,7 @@
   * Prose as body copy
   */
   .ghp-prose {
-    @apply prose max-w-4xl prose-headings:mt-0 prose-headings:mb-4 prose-headings:font-serif prose-headings:font-normal prose-h1:text-4xl prose-h2:text-3xl lg:prose-h2:text-4xl prose-p:leading-tight prose-a:underline prose-a:outline-none prose-a:focus-visible:underline-offset-4 prose-blockquote:not-italic prose-strong:font-bold prose-code:prose-base prose-code:font-sans prose-code:font-normal md:prose-code:prose-xl prose-ol:leading-tight prose-ul:leading-tight prose-th:pb-6 md:prose-th:pb-8 prose-td:prose-base md:prose-td:prose-xl prose-img:h-[calc(100vw-3rem)] prose-img:rounded-3xl prose-img:object-cover md:prose-img:h-auto;
+    @apply prose max-w-4xl prose-headings:mt-0 prose-headings:mb-4 prose-headings:font-serif prose-headings:font-normal prose-headings:uppercase prose-h1:text-4xl prose-h2:text-3xl lg:prose-h2:text-4xl prose-h3:font-sans prose-h3:text-xl prose-h3:font-light prose-h3:normal-case lg:prose-h3:text-2xl prose-p:leading-tight prose-a:font-normal prose-a:underline prose-a:underline-offset-2 prose-a:outline-none prose-a:focus-visible:underline-offset-4 prose-blockquote:not-italic prose-strong:font-bold prose-code:prose-base prose-code:font-sans prose-code:font-normal md:prose-code:prose-xl prose-ol:leading-tight prose-ul:leading-tight prose-th:pb-6 md:prose-th:pb-8 prose-td:prose-base md:prose-td:prose-xl prose-img:h-[calc(100vw-3rem)] prose-img:rounded-3xl prose-img:object-cover md:prose-img:h-auto;
 
     --tw-prose-body: theme(--color-black);
     --tw-prose-headings: theme(--color-black);

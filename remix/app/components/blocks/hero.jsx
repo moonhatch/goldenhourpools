@@ -8,7 +8,7 @@ const Hero = ({ ...rest }) => {
   const { button, heading, image, title, url, urlTitle, urlThumbnail } = rest;
 
   return (
-    <div className="ghp-h-screen relative w-full overflow-hidden bg-ghp-900">
+    <div className="ghp-h-screen relative w-full overflow-hidden bg-stone-900">
       {image && (
         <img
           alt={image.alt}
@@ -43,18 +43,24 @@ const Hero = ({ ...rest }) => {
         </>
       )}
       <div
-        className="absolute top-0 left-0 h-72 w-full bg-gradient-to-b from-ghp-900/50
+        className="absolute top-0 left-0 h-72 w-full bg-gradient-to-b from-stone-900/50
           to-transparent"
       ></div>
       <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center px-5">
         {title && (
-          <h1 className="mt-32 hidden shrink-0 font-serif leading-4 text-white lg:block">
+          <h1
+            className="mt-32 hidden shrink-0 font-serif text-xl leading-4 text-white uppercase
+              lg:block"
+          >
             {title}
           </h1>
         )}
         <div className="flex grow flex-col items-center justify-center gap-6 lg:gap-8">
           {heading && (
-            <h2 className="text-center font-serif text-4xl text-balance text-white sm:text-5xl">
+            <h2
+              className="text-center font-serif text-4xl text-balance text-white uppercase
+                sm:text-5xl"
+            >
               {heading}
             </h2>
           )}

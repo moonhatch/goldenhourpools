@@ -1,21 +1,12 @@
 import PropTypes from "prop-types";
 
-import { cn } from "../lib/utils";
 import { urlFor } from "../sanity/image";
 import Tag from "./tag";
 import { AspectRatio } from "./ui/aspect-ratio";
 
-const Media = ({
-  image,
-  ratio,
-  rounded = false,
-  showVideo = false,
-  tag,
-  videoUrl,
-  videoTitle = "",
-}) => {
+const Media = ({ image, ratio, showVideo = false, tag, videoUrl, videoTitle = "" }) => {
   return (
-    <AspectRatio className={cn("relative overflow-hidden", rounded && "rounded-3xl")} ratio={ratio}>
+    <AspectRatio className="relative overflow-hidden" ratio={ratio}>
       {videoUrl && showVideo && (
         <iframe
           className="absolute top-[50%] left-[50%] h-[10000%] w-full -translate-x-[50%]
@@ -74,7 +65,6 @@ const Media = ({
 Media.propTypes = {
   image: PropTypes.object,
   ratio: PropTypes.number,
-  rounded: PropTypes.bool,
   showVideo: PropTypes.bool,
   tag: PropTypes.string,
   videoUrl: PropTypes.string,

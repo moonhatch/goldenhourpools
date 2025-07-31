@@ -45,14 +45,14 @@ const Header = ({ siteData }) => {
         className={cn(
           "relative flex h-24 items-center justify-between px-5 lg:px-16",
           !invertColors && "bg-ghp-100",
-          invertColors ? "text-white" : "border-b border-ghp-250 text-orange",
+          invertColors ? "text-white" : "border-b border-dashed border-black text-orange",
         )}
       >
         <ul className="-mx-2.5">
           <li className="inline-block px-2.5 lg:hidden">
             <Link
-              className="inline-block font-serif underline-offset-2 outline-none hover:underline
-                focus-visible:underline"
+              className="inline-block font-serif text-xl uppercase underline-offset-2 outline-none
+                hover:underline focus-visible:underline"
               prefetch="viewport"
               to="/"
             >
@@ -64,8 +64,8 @@ const Header = ({ siteData }) => {
               <NavLink
                 className={({ isActive }) =>
                   cn(
-                    `inline-block underline-offset-2 outline-none hover:underline
-                    focus-visible:underline`,
+                    `inline-block font-serif text-xl uppercase underline-offset-2 outline-none
+                    hover:underline focus-visible:underline`,
                     isActive && "underline",
                   )
                 }
@@ -83,14 +83,14 @@ const Header = ({ siteData }) => {
           prefetch="viewport"
           to="/"
         >
-          <Sun className="animate h-12 w-12 animate-spin [animation-duration:_20s]" />
+          <Sun className="animate h-9 w-9 animate-spin [animation-duration:_20s]" />
         </Link>
         <ul className="-mx-2.5">
           {navLinksSecondary?.map((link, i) => {
             if (i === navLinksSecondary.length - 1) {
               return (
                 <li key={link._key} className="hidden px-2.5 lg:inline-block">
-                  <Button asChild kind="outline" size="sm">
+                  <Button asChild className="font-serif text-xl uppercase" kind="outline" size="sm">
                     <Link to={link.to}>{link.text}</Link>
                   </Button>
                 </li>
@@ -101,8 +101,8 @@ const Header = ({ siteData }) => {
                   <NavLink
                     className={({ isActive }) =>
                       cn(
-                        `inline-block underline-offset-2 outline-none hover:underline
-                        focus-visible:underline`,
+                        `inline-block font-serif text-xl uppercase underline-offset-2 outline-none
+                        hover:underline focus-visible:underline`,
                         isActive && "underline",
                       )
                     }
@@ -117,8 +117,8 @@ const Header = ({ siteData }) => {
           })}
           <li className="inline-block px-2.5 lg:hidden">
             <button
-              className="inline-block cursor-pointer underline-offset-2 outline-none hover:underline
-                focus-visible:underline"
+              className="inline-block cursor-pointer font-serif text-xl uppercase underline-offset-2
+                outline-none hover:underline focus-visible:underline"
               ref={refs.setReference}
               {...getReferenceProps()}
             >
@@ -131,25 +131,31 @@ const Header = ({ siteData }) => {
         {isOpen && (
           <FloatingOverlay lockScroll>
             <FloatingFocusManager context={context}>
-              <ul
+              <div
                 ref={refs.setFloating}
                 className={cn(
-                  "absolute right-0 h-dvh w-full bg-ghp-200 pt-24 lg:w-md",
+                  `absolute right-0 h-dvh w-full bg-ghp-100 pt-24 lg:w-md lg:border-l
+                  lg:border-dashed lg:border-black`,
                   isHome && "pt-[136px]",
                 )}
                 {...getFloatingProps()}
               >
-                {navLinksPrimary?.map((link) => (
-                  <MobileNavItem key={link._key} onClick={() => setIsOpen(false)} to={link.to}>
-                    {link.text}
-                  </MobileNavItem>
-                ))}
-                {navLinksSecondary?.map((link) => (
-                  <MobileNavItem key={link._key} onClick={() => setIsOpen(false)} to={link.to}>
-                    {link.text}
-                  </MobileNavItem>
-                ))}
-              </ul>
+                <div className="grid grid-cols-1">
+                  {[...navLinksPrimary, ...navLinksSecondary]?.map((link) => (
+                    <Button
+                      asChild
+                      key={link._key}
+                      className="-mt-px h-[72px] w-full border-x-0 hover:relative"
+                      kind="outline"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Link prefetch="viewport" to={link.to}>
+                        {link.text}
+                      </Link>
+                    </Button>
+                  ))}
+                </div>
+              </div>
             </FloatingFocusManager>
           </FloatingOverlay>
         )}
@@ -159,25 +165,5 @@ const Header = ({ siteData }) => {
 };
 
 Header.propTypes = { siteData: PropTypes.object };
-
-const MobileNavItem = ({ children, onClick, to }) => (
-  <li className="border-b border-ghp-250 bg-ghp-100 lg:border-x">
-    <Link
-      className="block py-8 text-center font-serif text-4xl text-orange decoration-2
-        underline-offset-4 outline-none hover:underline focus-visible:underline"
-      onClick={onClick}
-      prefetch="viewport"
-      to={to}
-    >
-      {children}
-    </Link>
-  </li>
-);
-
-MobileNavItem.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
-  to: PropTypes.string.isRequired,
-};
 
 export default Header;

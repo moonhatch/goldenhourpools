@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 
 const Announcement = ({ children }) => {
-  return <div className="h-10 bg-yellow px-1 py-2 text-center">{children}</div>;
+  return (
+    <div className="h-10 bg-orange px-1 py-3 text-center text-sm font-normal text-white">
+      {children}
+    </div>
+  );
 };
 
 Announcement.propTypes = {

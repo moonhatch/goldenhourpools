@@ -14,7 +14,7 @@ const AccordionItem = React.forwardRef<
 >(({ className, layer, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("border-t", layer === 1 && "border-ghp-250", className)}
+    className={cn("border-t border-dashed", layer === 1 && "border-ghp-300", className)}
     {...props}
   />
 ));
@@ -28,11 +28,11 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        `group flex flex-1 cursor-pointer items-center justify-between text-left text-ghp-900
+        `group relative flex flex-1 cursor-pointer items-center justify-between text-left
         underline-offset-2 transition-all outline-none hover:underline focus-visible:underline`,
         compact
-          ? "py-3"
-          : "px-5 py-6 font-serif text-lg lg:px-12 [&[data-state=open]>svg]:rotate-180",
+          ? "py-3 font-normal"
+          : "px-5 py-6 font-normal lg:px-12 [&[data-state=open]>svg]:rotate-180",
         className,
       )}
       {...props}
@@ -40,16 +40,16 @@ const AccordionTrigger = React.forwardRef<
       {children}
       {compact ? (
         <>
-          <Plus className="h-4 w-4 shrink-0 group-[[data-state=open]]:hidden" strokeWidth={1} />
+          <Plus className="h-4 w-4 shrink-0 group-[[data-state=open]]:hidden" strokeWidth={1.5} />
           <Minus
             className="hidden h-4 w-4 shrink-0 group-[[data-state=open]]:inline-block"
-            strokeWidth={1}
+            strokeWidth={1.5}
           />
         </>
       ) : (
         <ChevronDown
-          className="h-5 w-5 shrink-0 transition-transform duration-200"
-          strokeWidth={1}
+          className="h-6 w-6 shrink-0 transition-transform duration-200"
+          strokeWidth={1.5}
         />
       )}
     </AccordionPrimitive.Trigger>
@@ -67,7 +67,7 @@ const AccordionContent = React.forwardRef<
       data-[state=open]:animate-accordion-down"
     {...props}
   >
-    <div className={cn("pt-0 pb-0", !compact && "px-5 pb-5 lg:px-12", className)}>{children}</div>
+    <div className={cn("pt-0 pb-0", !compact && "px-5 pb-2.5 lg:px-12", className)}>{children}</div>
   </AccordionPrimitive.Content>
 ));
 

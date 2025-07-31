@@ -5,9 +5,9 @@ import * as React from "react";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  `inline-flex cursor-pointer items-center gap-2 border whitespace-nowrap no-underline
-  transition-colors hover:border-yellow hover:bg-yellow hover:text-black focus-visible:border-black
-  focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50
+  `inline-flex cursor-pointer items-center gap-2 border font-normal whitespace-nowrap no-underline
+  transition-colors hover:border-blue hover:bg-blue hover:text-white focus-visible:border-black
+  focus-visible:bg-blue focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50
   [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0`,
   {
     variants: {
@@ -17,12 +17,13 @@ const buttonVariants = cva(
       },
       kind: {
         default: "border-orange bg-orange text-white",
-        outline: "border-current bg-transparent text-inherit transition-none",
-        secondary: "border-ghp-300",
-        tertiary: "border-yellow bg-yellow hover:border-orange hover:bg-orange hover:text-white",
+        outline: `border-dashed border-ghp-300 bg-transparent text-inherit
+        focus-visible:border-solid focus-visible:border-current`,
+        secondary: "border-black",
+        tertiary: "border-blue bg-blue hover:border-orange hover:bg-orange",
       },
       rounded: {
-        default: "rounded-sm",
+        default: "",
         xl: "rounded-xl",
       },
       size: {

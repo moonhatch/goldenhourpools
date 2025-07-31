@@ -12,7 +12,7 @@ const Video = ({ className, src, ratio = 16 / 9, title }) => {
           className,
         )}
       >
-        <div className="absolute top-0 right-0 bottom-0 left-0 bg-ghp-200"></div>
+        <div className="absolute top-0 right-0 bottom-0 left-0 bg-stone-200"></div>
         <div className="absolute h-full w-[1000%] pr-0 pb-[56.25%]">
           <iframe
             className="absolute top-0 left-0 h-full w-full object-cover"
