@@ -98,8 +98,16 @@ The build now successfully generates:
 - ✅ Server entry point
 - ✅ No TypeScript compilation errors
 
+### 7. Reduced Cache-Control Header Aggressiveness
+
+- **File**: `remix/app/entry.server.tsx`
+- **Issue**: Overly aggressive cache-control headers (`no-cache, no-store, must-revalidate, Pragma: no-cache, Expires: 0`) were interfering with dynamic JavaScript module imports
+- **Solution**: Simplified to just `Cache-Control: no-cache` to prevent HTML caching while allowing proper module loading
+- **Result**: Eliminates "Failed to fetch dynamically imported module" errors and infinite reload loops
+
 ## Future Maintenance
 
 - Always run `npm run build:verify` after making changes to routes
 - Monitor Vercel build logs for any compilation errors
 - Ensure TypeScript imports are complete in all route files
+- Avoid overly aggressive cache-control headers that can interfere with module loading

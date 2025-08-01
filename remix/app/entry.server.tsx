@@ -44,9 +44,7 @@ function handleBotRequest(
           const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
-          responseHeaders.set("Cache-Control", "no-cache, no-store, must-revalidate");
-          responseHeaders.set("Pragma", "no-cache");
-          responseHeaders.set("Expires", "0");
+          responseHeaders.set("Cache-Control", "no-cache");
 
           resolve(
             new Response(stream, {
@@ -93,9 +91,7 @@ function handleBrowserRequest(
           const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
-          responseHeaders.set("Cache-Control", "no-cache, no-store, must-revalidate");
-          responseHeaders.set("Pragma", "no-cache");
-          responseHeaders.set("Expires", "0");
+          responseHeaders.set("Cache-Control", "no-cache");
 
           resolve(
             new Response(stream, {
