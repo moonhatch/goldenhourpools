@@ -7,6 +7,7 @@ import { pushEvent } from "../lib/gtm";
 interface FormData {
   name: string;
   phone: string;
+  service: string;
   product: string;
   variant: string;
   addons: string;
@@ -24,6 +25,7 @@ export async function loader({ request }: LoaderArgs) {
   const formData: FormData = {
     name: url.searchParams.get("name") || "",
     phone: url.searchParams.get("phone") || "",
+    service: url.searchParams.get("service") || "",
     product: url.searchParams.get("product") || "",
     variant: url.searchParams.get("variant") || "",
     addons: url.searchParams.get("addons") || "",
@@ -49,6 +51,7 @@ export default function ContactSuccess() {
       contactData: {
         name: formData.name,
         phone: formData.phone,
+        service: formData.service,
         product: formData.product,
         variant: formData.variant,
         addons: formData.addons,

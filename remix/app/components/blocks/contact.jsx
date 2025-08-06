@@ -55,6 +55,12 @@ const Contact = ({ className, ...rest }) => {
             <Input className="mt-8" name="name" placeholder="Name*" required />
             <Input className="mt-5" name="phone" placeholder="Phone Number*" required type="tel" />
             <Input
+              name="service"
+              placeholder="Service"
+              defaultValue={heading.toLowerCase().includes("cleaning") ? "Cleaning" : ""}
+              hidden
+            />
+            <Input
               name="product"
               placeholder="Product"
               defaultValue={state?.product?.title ?? ""}

@@ -9,10 +9,8 @@ const ThankYou = ({ ...rest }) => {
 
   return (
     <Container {...cleanObject(container)}>
-      <div className="rounded-3xl bg-orange px-6 py-36 text-center text-white lg:py-64">
-        <div
-          className="ghp-prose mx-auto my-4 w-full max-w-none text-white prose-headings:text-white"
-        >
+      <div className="bg-ghp-50 px-6 py-36 text-center lg:py-64">
+        <div className="ghp-prose mx-auto my-4 w-full max-w-none">
           <h2 className="text-balance">{heading}</h2>
         </div>
       </div>
