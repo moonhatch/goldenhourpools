@@ -72,7 +72,8 @@ const LandscapeCard = ({ className, landscape, type = "nav" }) => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            <Input className="mt-3 h-12" name="quantity" placeholder="Square Feet" type="tel" />
+            {/* <Input className="mt-3 h-12" name="quantity" placeholder="Square Feet" type="tel" /> */}
+            {/* Number input goes here. */}
           </form>
         </Form>
       )}
