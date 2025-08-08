@@ -30,7 +30,7 @@ const getVariant = (product, options) => {
   return variant || product.variants[0];
 };
 
-const Card = ({ className, product, type = "nav" }) => {
+const PoolCard = ({ className, product, type = "nav" }) => {
   const [depth, setDepth] = useState("deep");
   const [ledge, setLedge] = useState(false);
   const [spa, setSpa] = useState(false);
@@ -175,7 +175,7 @@ const Card = ({ className, product, type = "nav" }) => {
               </AccordionItem>
             </Accordion>
             <Button className="mt-3 h-12 w-full" kind="default" type="submit">
-              Get Started
+              Get Started{price !== product?.price && ` — ${formatCurrency(price)}`}
             </Button>
           </form>
         </Form>
@@ -191,10 +191,10 @@ const Card = ({ className, product, type = "nav" }) => {
   );
 };
 
-Card.propTypes = {
+PoolCard.propTypes = {
   className: PropTypes.string,
   product: PropTypes.object.isRequired,
   type: PropTypes.oneOf(["form", "nav"]),
 };
 
-export default Card;
+export default PoolCard;

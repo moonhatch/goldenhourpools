@@ -57,6 +57,21 @@ export const PAGE_QUERY = groq`*[_type == "page" && slug.current == $slug][0]{
       urlTitle,
       urlThumbnail
     },
+    _type == "blockLandscapeGrid" => {
+      _type,
+      _key,
+      container,
+      landscapes[]-> {
+        _type,
+        _key,
+        image,
+        price,
+        pricePer,
+        description,
+        title,
+        slug
+      }
+    },
     _type == "blockMedia" => {
       _type,
       _key,

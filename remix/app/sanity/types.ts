@@ -179,6 +179,9 @@ export type Page = {
       } & BlockHeroVideo)
     | ({
         _key: string;
+      } & BlockLandscapeGrid)
+    | ({
+        _key: string;
       } & BlockMedia)
     | ({
         _key: string;
@@ -221,6 +224,45 @@ export type Link = {
   _type: "link";
   text?: string;
   to?: string;
+};
+
+export type Landscape = {
+  _id: string;
+  _type: "landscape";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  price?: number;
+  pricePer?: "flat" | "sqft";
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: null;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type GalleryColumn = {
@@ -345,6 +387,18 @@ export type Media = {
     | 0.6666666666666666
     | 0.5625;
   tag?: string;
+};
+
+export type BlockLandscapeGrid = {
+  _type: "blockLandscapeGrid";
+  container?: Container;
+  landscapes?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "landscape";
+  }>;
 };
 
 export type BlockHeroVideo = {
@@ -604,6 +658,7 @@ export type AllSanitySchemaTypes =
   | Page
   | Seo
   | Link
+  | Landscape
   | GalleryColumn
   | Faq
   | BlockZohoForm
@@ -613,6 +668,7 @@ export type AllSanitySchemaTypes =
   | BlockPoolGrid
   | BlockMedia
   | Media
+  | BlockLandscapeGrid
   | BlockHeroVideo
   | BlockHeroImage
   | Button
@@ -911,6 +967,7 @@ export type PAGE_QUERYResult = {
         formId: string | null;
         formPermaId: string | null;
       }
+    | {}
   > | null;
 } | null;
 // Variable: POSTS_QUERY

@@ -6,6 +6,7 @@ import Content from "./blocks/content";
 import FAQ from "./blocks/faq";
 import Gallery from "./blocks/gallery";
 import Hero from "./blocks/hero";
+import LandscapeGrid from "./blocks/landscape-grid";
 import Media from "./blocks/media";
 import PoolGrid from "./blocks/pool-grid";
 import PoolSlider from "./blocks/pool-slider";
@@ -36,6 +37,8 @@ const PageBuilder = ({ content }) => {
             return <Hero key={block._key} {...block} />;
           case "blockHeroVideo":
             return <Hero key={block._key} {...block} />;
+          case "blockLandscapeGrid":
+            return <LandscapeGrid key={block._key} {...block} />;
           case "blockMedia":
             return <Media key={block._key} {...block} />;
           case "blockPoolGrid":
