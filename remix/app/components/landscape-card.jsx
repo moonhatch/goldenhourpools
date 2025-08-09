@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react";
 import { Link, useNavigate } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -12,7 +13,7 @@ import { components } from "../sanity/portable-text";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Button } from "./ui/button";
 import { Form } from "./ui/form";
-import { Input } from "./ui/input";
+import { NumberInput } from "./ui/number-input";
 
 const formSchema = z.object({
   addons: z.array(z.string()),
@@ -20,6 +21,7 @@ const formSchema = z.object({
 
 const LandscapeCard = ({ className, landscape, type = "nav" }) => {
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(0);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -28,26 +30,29 @@ const LandscapeCard = ({ className, landscape, type = "nav" }) => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     navigate("/contact", {
       state: {
         landscape,
-        quantity: data.quantity,
+        quantity: quantity,
       },
     });
   };
 
-  console.log(landscape);
+  // Calculate display price based on quantity
+  const getDisplayPrice = () => {
+    if (quantity > 0 && landscape?.price) {
+      return formatCurrency(landscape.price * quantity);
+    }
+    return `${formatCurrency(landscape?.price)}${landscape?.pricePer === "sqft" ? "/sqft" : ""}`;
+  };
 
   return (
     <div className={cn("bg-ghp-50 p-5", className)}>
       <div className="invisible relative -top-10 block" id={landscape.handle}></div>
       <h3 className="flex justify-between border-b border-dashed border-ghp-300 pb-4 text-xl">
         <span>{landscape?.title ?? "Landscape"}</span>
-        <span>
-          {formatCurrency(landscape?.price)}
-          {landscape?.pricePer === "sqft" && "/sqft"}
-        </span>
+        <span>{getDisplayPrice()}</span>
       </h3>
       <img
         alt={landscape?.image?.alt ?? "Landscape"}
@@ -72,8 +77,12 @@ const LandscapeCard = ({ className, landscape, type = "nav" }) => {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-            {/* <Input className="mt-3 h-12" name="quantity" placeholder="Square Feet" type="tel" /> */}
-            {/* Number input goes here. */}
+            <NumberInput
+              value={quantity}
+              onChange={setQuantity}
+              placeholder={landscape?.pricePer === "sqft" ? "Square Feet" : "Quantity"}
+              min={0}
+            />
           </form>
         </Form>
       )}
