@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PortableText } from "@portabletext/react";
-import { Link, useNavigate } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { ArrowRight } from "lucide-react";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -19,8 +19,7 @@ const formSchema = z.object({
   addons: z.array(z.string()),
 });
 
-const LandscapeCard = ({ className, landscape, type = "nav" }) => {
-  const navigate = useNavigate();
+const LandscapeCard = ({ className, landscape, type = "nav", onSelectionChange }) => {
   const [quantity, setQuantity] = useState(0);
 
   const form = useForm({
@@ -30,14 +29,17 @@ const LandscapeCard = ({ className, landscape, type = "nav" }) => {
     },
   });
 
-  const onSubmit = () => {
-    navigate("/contact", {
-      state: {
+  // Call callback when quantity changes
+  useEffect(() => {
+    if (onSelectionChange && type === "form") {
+      onSelectionChange(landscape.handle, {
         landscape,
-        quantity: quantity,
-      },
-    });
-  };
+        quantity,
+        price: quantity > 0 ? landscape.price * quantity : 0,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quantity]);
 
   // Calculate display price based on quantity
   const getDisplayPrice = () => {
@@ -61,7 +63,7 @@ const LandscapeCard = ({ className, landscape, type = "nav" }) => {
       />
       {type === "form" && (
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form>
             <Accordion collapsible type="single">
               <AccordionItem
                 className="border-0"
@@ -101,6 +103,7 @@ LandscapeCard.propTypes = {
   className: PropTypes.string,
   landscape: PropTypes.object.isRequired,
   type: PropTypes.oneOf(["form", "nav"]),
+  onSelectionChange: PropTypes.func,
 };
 
 export default LandscapeCard;
