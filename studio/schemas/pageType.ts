@@ -76,6 +76,10 @@ export default defineType({
           type: 'blockHeroVideo',
         }),
         defineArrayMember({
+          name: 'blockLandscapeGrid',
+          type: 'blockLandscapeGrid',
+        }),
+        defineArrayMember({
           name: 'blockMedia',
           type: 'blockMedia',
         }),

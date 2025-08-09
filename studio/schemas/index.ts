@@ -6,6 +6,7 @@ import blockFAQType from './blockFAQType'
 import blockGalleryType from './blockGalleryType'
 import blockHeroImageType from './blockHeroImageType'
 import blockHeroVideoType from './blockHeroVideoType'
+import blockLandscapeGridType from './blockLandscapeGridType'
 import blockMediaType from './blockMediaType'
 import blockPoolGridType from './blockPoolGridType'
 import blockPoolSliderType from './blockPoolSliderType'
@@ -16,6 +17,7 @@ import buttonType from './buttonType'
 import containerType from './containerType'
 import faqType from './faqType'
 import galleryColumnType from './galleryColumnType'
+import landscapeType from './landscapeType'
 import linkType from './linkType'
 import mediaType from './mediaType'
 import pageType from './pageType'
@@ -35,6 +37,7 @@ export const schemaTypes = [
   blockGalleryType,
   blockHeroImageType,
   blockHeroVideoType,
+  blockLandscapeGridType,
   blockMediaType,
   blockPoolGridType,
   blockPoolSliderType,
@@ -45,6 +48,7 @@ export const schemaTypes = [
   containerType,
   faqType,
   galleryColumnType,
+  landscapeType,
   linkType,
   mediaType,
   pageType,

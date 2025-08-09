@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 import { cleanObject } from "@/lib/utils";
 
-import Card from "../../components/card";
 import { useBreakpoint } from "../../hooks";
 import Container from "../container";
+import PoolCard from "../pool-card";
 
 const PoolSlider = ({ ...rest }) => {
   const bp = useBreakpoint();
@@ -44,7 +44,7 @@ const PoolSlider = ({ ...rest }) => {
         <div className="embla__container mx-3 lg:mx-2">
           {products.map((product, i) => (
             <div className="embla__slide px-3" key={product.handle}>
-              <Card className={i % 2 ? "rotate-1" : "-rotate-1"} product={product} />
+              <PoolCard className={i % 2 ? "rotate-1" : "-rotate-1"} product={product} />
             </div>
           ))}
         </div>

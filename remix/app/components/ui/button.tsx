@@ -7,8 +7,9 @@ import { cn } from "../../lib/utils";
 const buttonVariants = cva(
   `inline-flex cursor-pointer items-center gap-2 border font-normal whitespace-nowrap no-underline
   transition-colors hover:border-blue hover:bg-blue hover:text-white focus-visible:border-black
-  focus-visible:bg-blue focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50
-  [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0`,
+  focus-visible:bg-blue focus-visible:text-white focus-visible:outline-none
+  disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4
+  [&_svg]:shrink-0`,
   {
     variants: {
       align: {
@@ -18,7 +19,7 @@ const buttonVariants = cva(
       kind: {
         default: "border-orange bg-orange text-white",
         outline: `border-dashed border-ghp-300 bg-transparent text-inherit
-        focus-visible:border-solid focus-visible:border-current`,
+        focus-visible:border-solid focus-visible:border-black`,
         secondary: "border-black",
         tertiary: "border-blue bg-blue hover:border-orange hover:bg-orange",
       },

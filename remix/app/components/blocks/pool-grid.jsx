@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 import { cleanObject } from "@/lib/utils";
 
-import Card from "../../components/card";
 import Container from "../container";
+import PoolCard from "../pool-card";
 
 const PoolGrid = ({ ...rest }) => {
   let { container, pools } = rest;
@@ -28,7 +28,7 @@ const PoolGrid = ({ ...rest }) => {
     <Container {...cleanObject(container)}>
       <div className="grid items-start gap-6 lg:grid-cols-2">
         {products.map((product) => (
-          <Card key={product.handle} product={product} type="form" />
+          <PoolCard key={product.handle} product={product} type="form" />
         ))}
       </div>
     </Container>

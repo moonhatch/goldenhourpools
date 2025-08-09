@@ -30,15 +30,28 @@ const Contact = ({ className, ...rest }) => {
 
   if (state?.product?.title) {
     heading = `The ${cleanObject(state?.product).title}. Good Choice.`;
+  } else if (state?.landscapes) {
+    heading = "Landscaping. Good choice.";
   }
 
   let addons = "";
+  let landscapeData = "";
 
   if (state?.addons && state?.variant?.addons) {
     addons = state.addons.reduce((str, addon) => {
       const { title } = state.variant.addons.find((a) => a.slug.current === addon);
       return !str ? title : (str += `, ${title}`);
     }, "");
+  }
+
+  // Format landscape data for submission
+  if (state?.landscapes) {
+    landscapeData = Object.values(state.landscapes)
+      .map(
+        (item) =>
+          `${item.landscape.title} (${item.quantity} ${item.landscape.pricePer === "sqft" ? "sqft" : "units"})`,
+      )
+      .join(", ");
   }
 
   return (
@@ -73,6 +86,12 @@ const Contact = ({ className, ...rest }) => {
               hidden
             />
             <Input name="addons" placeholder="Add-ons" defaultValue={addons ?? ""} hidden />
+            <Input
+              name="landscapes"
+              placeholder="Landscapes"
+              defaultValue={landscapeData ?? ""}
+              hidden
+            />
 
             {/* Add UTM parameter hidden fields */}
             <Input name="utm_source" defaultValue={utmParams.utm_source || ""} hidden />

@@ -11,6 +11,7 @@ interface FormData {
   product: string;
   variant: string;
   addons: string;
+  landscapes: string;
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
@@ -29,6 +30,7 @@ export async function loader({ request }: LoaderArgs) {
     product: url.searchParams.get("product") || "",
     variant: url.searchParams.get("variant") || "",
     addons: url.searchParams.get("addons") || "",
+    landscapes: url.searchParams.get("landscapes") || "",
     utm_source: url.searchParams.get("utm_source") || undefined,
     utm_medium: url.searchParams.get("utm_medium") || undefined,
     utm_campaign: url.searchParams.get("utm_campaign") || undefined,
@@ -55,6 +57,7 @@ export default function ContactSuccess() {
         product: formData.product,
         variant: formData.variant,
         addons: formData.addons,
+        landscapes: formData.addons,
       },
       utmData: {
         utm_source: formData.utm_source,
