@@ -31,9 +31,23 @@ export async function action({ request }: ActionArgs) {
 
   const { data } = parsed;
 
+  if (data?.name === "default") {
+    // I don't know why this is happening, but early return
+    console.log("Error: empty form data", data);
+    return redirect("/");
+  }
+
   const client = asana.ApiClient.instance;
   const token = client.authentications["token"];
   token.accessToken = process.env.ASANA_TOKEN;
+
+  const projects = [];
+
+  if (data?.service === "Cleaning") {
+    projects.push(process.env.ASANA_PROJECT_CLEANING);
+  } else {
+    projects.push(process.env.ASANA_PROJECT);
+  }
 
   const notes = `Name: ${data?.name ?? ""}
 Phone: ${data?.phone ?? ""}
@@ -53,7 +67,7 @@ GAd Campaign: ${data?.gad_campaign ?? ""}`;
   const body = {
     data: {
       name: `Form Submission - ${data.name}`,
-      projects: [process.env.ASANA_PROJECT],
+      projects,
       notes,
     },
   };
