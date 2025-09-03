@@ -1,0 +1,340 @@
+# Golden Hour Pools
+
+A modern, high-performance website for Golden Hour Pools built with cutting-edge web technologies and a headless CMS architecture.
+
+**Live Site**: [https://www.goldenhourpools.com](https://www.goldenhourpools.com)  
+**Sanity Preview Site**: [https://preview.goldenhourpools.com](https://preview.goldenhourpools.com)
+
+## Overview
+
+This project showcases a sophisticated pool company website featuring dynamic content management, advanced analytics integration, and a component-based architecture. The site demonstrates modern web development practices including server-side rendering, progressive enhancement, and comprehensive third-party integrations.
+
+## Architecture
+
+### Monorepo Structure
+
+```
+goldenhourpools/
+├── remix/          # Frontend application (Remix + React)
+├── studio/         # Sanity CMS studio
+├── package.json    # Workspace configuration
+└── LICENSE         # Proprietary license
+```
+
+### Technical Architecture
+
+- **Frontend**: Remix framework with React 18 and TypeScript
+- **Content Management**: Sanity headless CMS with custom studio
+- **Styling**: Tailwind CSS v4 (beta) with custom component system
+- **Deployment**: Vercel with optimized build configuration
+- **Analytics**: Multi-platform tracking and conversion optimization
+
+### Key Architectural Decisions
+
+- **Server-Side Rendering**: Remix provides optimal SEO and performance
+- **Component-Based Design**: Modular block system for flexible page building
+- **Headless CMS**: Sanity enables content flexibility and live preview
+- **Monorepo**: Unified development experience across frontend and CMS
+
+## Technology Stack
+
+### Frontend (`/remix`)
+
+- **Framework**: Remix v2.15.2 (React-based full-stack framework)
+- **Runtime**: Node.js 22+
+- **Language**: TypeScript 5.1.6
+- **Styling**: Tailwind CSS v4.0.0-beta with custom configuration
+- **UI Components**: shadcn/ui (Radix UI primitives with custom styling)
+- **Icons**: Lucide React icon library
+- **Build Tool**: Vite 5.1.0 with optimized configuration
+
+#### shadcn/ui Integration
+
+The project uses shadcn/ui for consistent, accessible components:
+
+**Current Components**: Accordion, Aspect Ratio, Button, Checkbox, Form, Input, Label, Radio Group
+
+**Configuration** (New York style, Stone theme, CSS variables enabled):
+
+```bash
+# Install additional shadcn/ui components
+cd remix
+npx shadcn@latest add dialog
+npx shadcn@latest add dropdown-menu
+npx shadcn@latest add toast
+npx shadcn@latest add card
+
+# Components automatically integrate with:
+# - Tailwind CSS v4 configuration
+# - Stone base color palette
+# - CSS custom properties
+# - Path aliases (@/components/ui)
+```
+
+### Content Management (`/studio`)
+
+- **CMS**: Sanity v3.99.0 with custom schemas
+- **Studio**: React 19 with styled-components
+- **Content Types**: 15+ custom schema types for flexible content modeling
+
+### Third-Party Integrations
+
+- **Analytics**: Google Analytics 4, Google Tag Manager, Crazy Egg
+- **Marketing**: Klaviyo email marketing integration
+- **Booking**: Calendly and Zoho booking systems
+- **Forms**: Zoho Forms with custom message handling
+- **Contact Form**: Asana API integration
+- **Tracking**: Linear project management ([View Project Board](https://linear.app/golden-hour-pools/project/website-42c559ae1281/issues?layout=board&ordering=priority&grouping=workflowState&subGrouping=none&showCompletedIssues=all&showSubIssues=true&showTriageIssues=false))
+
+## Features & Components
+
+### Dynamic Page Builder
+
+The site features a flexible page builder system with 10+ content block types:
+
+- **Hero Blocks**: Image and video hero sections with CTAs
+- **Content Blocks**: Rich text with portable text rendering
+- **Pool Showcase**: Grid and slider layouts for pool galleries
+- **Contact Forms**: Integrated Zoho form handling
+- **FAQ System**: Structured data with accordion UI
+- **Media Blocks**: Responsive image and video components
+- **Booking Integration**: Calendly and Zoho booking widgets
+- **Gallery Blocks**: Multi-column responsive galleries
+- **Thank You Pages**: Conversion tracking and follow-up
+
+### Advanced Features
+
+- **UTM Parameter Tracking**: Automatic capture and storage
+- **Live Visual Editing**: Sanity's visual editing in preview mode
+- **SEO Optimization**: Dynamic meta tags and structured data
+- **Performance Optimization**: Image optimization and lazy loading
+- **Error Handling**: Comprehensive error boundaries and fallbacks
+- **Cache Management**: Strategic caching for optimal performance
+- **Smart Image Cropping**: Sanity hotspot technology ensures important parts of images remain visible across all aspect ratios (16:9, 3:2, 7:5, 5:4, 1:1, 4:5, 5:7, 2:3, 9:16)
+- **Dynamic Sitemap Generation**: Automatically generates XML sitemaps from Sanity CMS content with proper lastmod dates, changefreq settings, and noIndex respect
+
+## Project Structure
+
+### Frontend Structure (`/remix`)
+
+```
+app/
+├── components/          # Reusable components
+│   ├── blocks/          # Page builder components
+│   └── ui/              # Reusable UI components
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions
+├── routes/              # Remix routes
+├── sanity/              # Sanity client and queries
+└── styles/              # Global styles and fonts
+```
+
+### Key Components
+
+- **Page Builder**: Dynamic component rendering system
+- **Block Components**: Modular content blocks (Hero, Gallery, Contact, etc.)
+- **UI Components**: Radix-based design system components
+- **Layout System**: Responsive container and grid components
+
+### CMS Structure (`/studio`)
+
+- **28+ Custom Schema Types** including:
+  - **13 Block Types**: Hero (Image/Video), Gallery, Contact, FAQ, Pool Grid/Slider, Calendly, Zoho Forms/Booking, Content, Media, Thank You
+  - **8 Content Models**: Pages, Pools, Media, SEO, Settings, Redirects, Pool Descriptions, Pool Variants
+  - **7 Utility Types**: Buttons, Links, Containers, Addons, Gallery Columns, FAQ Items
+
+```
+schemas/
+├── index.ts             # Schema registry
+├── pageType.ts          # Page content model
+├── block*/              # 13 content block schemas
+├── poolType.ts          # Pool showcase model
+├── mediaType.ts         # Media with hotspot support
+├── seoType.ts           # SEO metadata model
+└── utilities/           # Buttons, links, containers
+```
+
+## Integrations
+
+### Analytics & Tracking
+
+- **Google Analytics 4**: Comprehensive user behavior tracking
+- **Google Tag Manager**: Centralized tag management
+- **Crazy Egg**: Heatmap and user session recording
+- **UTM Tracking**: Campaign attribution and conversion tracking
+
+### Marketing & CRM
+
+- **Asana**: Contact form API submission
+- **Klaviyo**: Email marketing automation and segmentation
+- **Zoho Forms**: Lead capture with custom validation
+- **Zoho Booking**: Appointment scheduling integration
+
+### Development & Project Management
+
+- **Sanity**: Headless CMS with live preview capabilities
+- **Linear**: Issue tracking and project planning
+- **Vercel**: Deployment platform with edge optimization
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 22.0.0 or higher
+- npm or yarn package manager
+- Git for version control
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd goldenhourpools
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+
+   Copy environment files and configure:
+
+   ```bash
+   cp remix/.env.example remix/.env
+   cp studio/.env.example studio/.env
+   ```
+
+   Required environment variables:
+   - `SANITY_STUDIO_PROJECT_ID`: Sanity project ID
+   - `SANITY_STUDIO_DATASET`: Sanity dataset name
+   - `SANITY_STUDIO_URL`: Studio URL for live preview
+   - Analytics IDs for Google Analytics, GTM, etc.
+
+4. **Start Development**
+
+   ```bash
+   npm run dev
+   ```
+
+   This starts both the Remix app (port 3000) and Sanity Studio concurrently.
+
+### Development Workflow
+
+1. **Frontend Development**: Work in `/remix` directory
+2. **Content Modeling**: Modify schemas in `/studio/schemas`
+3. **Component Development**: Create blocks in `/remix/app/components/blocks`
+4. **Styling**: Use Tailwind classes with custom design tokens
+
+#### SVG to React Component Workflow
+
+The project includes an automated SVG-to-React component pipeline:
+
+```bash
+# 1. Add SVG files to the svg/ directory
+# 2. Run the conversion script
+cd remix
+npm run build:svg
+
+# This automatically:
+# - Converts SVG files to React components in app/icons/
+# - Uses kebab-case filenames
+# - Removes dimensions for responsive scaling
+# - Replaces colors with 'currentColor' for theme compatibility
+# - Generates JSX with automatic runtime
+```
+
+**Example**: `svg/sun.svg` → `app/icons/sun.jsx` (ready to import and use)
+
+### Build & Deployment
+
+#### Workspace Scripts
+
+The monorepo provides convenient top-level scripts for orchestrating both workspaces:
+
+```bash
+# Development (starts both remix and studio concurrently)
+npm run dev
+
+# Production build (builds both workspaces)
+npm run build
+
+# Deploy Sanity Studio
+npm run deploy
+
+# Format entire codebase
+npm run format
+
+# Generate TypeScript types from Sanity schemas
+npm run typegen
+```
+
+#### Build Process
+
+1. **Build Verification**
+
+   ```bash
+   npm run build          # Builds both workspaces
+   npm run build:verify   # Verifies all assets are generated (remix only)
+   ```
+
+2. **Individual Workspace Builds**
+
+   ```bash
+   cd remix && npm run build    # Build frontend only
+   cd studio && npm run build   # Build studio only
+   ```
+
+3. **Deployment**
+   - Automatic deployment via Vercel on push to main branch
+   - Build verification ensures asset integrity
+   - Studio deployment: `npm run deploy`
+
+## Development Highlights
+
+### Performance Optimizations
+
+- **Server-Side Rendering**: Remix provides optimal initial page loads
+- **Image Optimization**: Sanity CDN with responsive image generation
+- **Code Splitting**: Automatic route-based code splitting
+- **Caching Strategy**: Strategic cache headers for HTML and assets
+
+### Code Quality
+
+- **TypeScript**: Full type safety across the application
+- **ESLint & Prettier**: Consistent code formatting and linting
+- **Component Architecture**: Reusable, composable component design
+- **Error Boundaries**: Comprehensive error handling and recovery
+
+### Production Reliability
+
+- **Build Verification**: Custom script ensures build integrity
+- **Cache Management**: Prevents stale asset loading issues
+- **Error Monitoring**: Comprehensive error tracking and resolution
+
+## Architecture Decisions
+
+### Why Remix?
+
+- **Full-Stack Framework**: Unified frontend and backend in one framework
+- **Web Standards**: Built on web fundamentals (HTTP, HTML, CSS)
+- **Performance**: Optimal loading with progressive enhancement
+- **SEO**: Server-side rendering with dynamic meta tag generation
+
+### Why Sanity?
+
+- **Developer Experience**: Excellent TypeScript support and tooling
+- **Content Flexibility**: Portable text and flexible schema design
+- **Live Preview**: Real-time content editing with visual feedback
+- **Scalability**: Robust CDN and API performance
+
+### Why Monorepo?
+
+- **Unified Development**: Single repository for frontend and CMS
+- **Shared Dependencies**: Consistent tooling across workspaces
+- **Simplified Deployment**: Coordinated releases and versioning
+
+This project demonstrates modern web development practices, sophisticated third-party integrations, and production-ready architecture suitable for high-traffic commercial websites.
