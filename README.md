@@ -290,7 +290,6 @@ npm run typegen
 
 3. **Deployment**
    - Automatic deployment via Vercel on push to main branch
-   - Custom `vercel.json` configuration for optimal performance
    - Build verification ensures asset integrity
    - Studio deployment: `npm run deploy`
 
