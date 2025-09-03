@@ -59,7 +59,7 @@ goldenhourpools/
 - **Marketing**: Klaviyo email marketing integration
 - **Booking**: Calendly and Zoho booking systems
 - **Forms**: Zoho Forms with custom message handling
-- **Project Management**: Asana API integration
+- **Contact Form**: Asana API integration
 - **Tracking**: Linear project management ([View Project Board](https://linear.app/golden-hour-pools/project/website-42c559ae1281/issues?layout=board&ordering=priority&grouping=workflowState&subGrouping=none&showCompletedIssues=all&showSubIssues=true&showTriageIssues=false))
 
 ## Features & Components
@@ -234,7 +234,6 @@ schemas/
 ### Production Reliability
 
 - **Build Verification**: Custom script ensures build integrity
-- **Deployment Fixes**: Documented solutions for production issues
 - **Cache Management**: Prevents stale asset loading issues
 - **Error Monitoring**: Comprehensive error tracking and resolution
 
