@@ -44,8 +44,32 @@ goldenhourpools/
 - **Runtime**: Node.js 22+
 - **Language**: TypeScript 5.1.6
 - **Styling**: Tailwind CSS v4.0.0-beta with custom configuration
-- **UI Components**: Radix UI primitives with custom styling
+- **UI Components**: shadcn/ui (Radix UI primitives with custom styling)
+- **Icons**: Lucide React icon library
 - **Build Tool**: Vite 5.1.0 with optimized configuration
+
+#### shadcn/ui Integration
+
+The project uses shadcn/ui for consistent, accessible components:
+
+**Current Components**: Accordion, Aspect Ratio, Button, Checkbox, Form, Input, Label, Radio Group
+
+**Configuration** (New York style, Stone theme, CSS variables enabled):
+
+```bash
+# Install additional shadcn/ui components
+cd remix
+npx shadcn@latest add dialog
+npx shadcn@latest add dropdown-menu
+npx shadcn@latest add toast
+npx shadcn@latest add card
+
+# Components automatically integrate with:
+# - Tailwind CSS v4 configuration
+# - Stone base color palette
+# - CSS custom properties
+# - Path aliases (@/components/ui)
+```
 
 ### Content Management (`/studio`)
 
@@ -86,6 +110,8 @@ The site features a flexible page builder system with 10+ content block types:
 - **Performance Optimization**: Image optimization and lazy loading
 - **Error Handling**: Comprehensive error boundaries and fallbacks
 - **Cache Management**: Strategic caching for optimal performance
+- **Smart Image Cropping**: Sanity hotspot technology ensures important parts of images remain visible across all aspect ratios (16:9, 3:2, 7:5, 5:4, 1:1, 4:5, 5:7, 2:3, 9:16)
+- **Dynamic Sitemap Generation**: Automatically generates XML sitemaps from Sanity CMS content with proper lastmod dates, changefreq settings, and noIndex respect
 
 ## Project Structure
 
@@ -112,12 +138,20 @@ app/
 
 ### CMS Structure (`/studio`)
 
+- **28+ Custom Schema Types** including:
+  - **13 Block Types**: Hero (Image/Video), Gallery, Contact, FAQ, Pool Grid/Slider, Calendly, Zoho Forms/Booking, Content, Media, Thank You
+  - **8 Content Models**: Pages, Pools, Media, SEO, Settings, Redirects, Pool Descriptions, Pool Variants
+  - **7 Utility Types**: Buttons, Links, Containers, Addons, Gallery Columns, FAQ Items
+
 ```
 schemas/
+├── index.ts             # Schema registry
 ├── pageType.ts          # Page content model
-├── blockTypes/          # Content block schemas
+├── block*/              # 13 content block schemas
 ├── poolType.ts          # Pool showcase model
-└── seoType.ts           # SEO metadata model
+├── mediaType.ts         # Media with hotspot support
+├── seoType.ts           # SEO metadata model
+└── utilities/           # Buttons, links, containers
 ```
 
 ## Integrations
@@ -194,6 +228,26 @@ schemas/
 2. **Content Modeling**: Modify schemas in `/studio/schemas`
 3. **Component Development**: Create blocks in `/remix/app/components/blocks`
 4. **Styling**: Use Tailwind classes with custom design tokens
+
+#### SVG to React Component Workflow
+
+The project includes an automated SVG-to-React component pipeline:
+
+```bash
+# 1. Add SVG files to the svg/ directory
+# 2. Run the conversion script
+cd remix
+npm run build:svg
+
+# This automatically:
+# - Converts SVG files to React components in app/icons/
+# - Uses kebab-case filenames
+# - Removes dimensions for responsive scaling
+# - Replaces colors with 'currentColor' for theme compatibility
+# - Generates JSX with automatic runtime
+```
+
+**Example**: `svg/sun.svg` → `app/icons/sun.jsx` (ready to import and use)
 
 ### Build & Deployment
 
