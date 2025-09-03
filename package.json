@@ -6,6 +6,8 @@
     "studio"
   ],
   "scripts": {
+    "build": "concurrently \"npm run build --workspace=remix\" \"npm run build --workspace=studio\"",
+    "deploy": "npm run deploy --workspace=studio",
     "dev": "concurrently \"npm run dev --workspace=remix\" \"npm run dev --workspace=studio\"",
     "format": "npm run format",
     "typegen": "npm run typegen --workspace=studio"
