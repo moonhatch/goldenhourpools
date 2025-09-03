@@ -3,7 +3,7 @@
 A modern, high-performance website for Golden Hour Pools built with cutting-edge web technologies and a headless CMS architecture.
 
 **Live Site**: [https://www.goldenhourpools.com](https://www.goldenhourpools.com)  
-**Preview Site** (with Sanity overlays): [https://goldenhourpools-preview.vercel.app](https://goldenhourpools-preview.vercel.app)
+**Sanity Preview Site**: [https://preview.goldenhourpools.com](https://preview.goldenhourpools.com)
 
 ## Overview
 
@@ -251,23 +251,48 @@ npm run build:svg
 
 ### Build & Deployment
 
+#### Workspace Scripts
+
+The monorepo provides convenient top-level scripts for orchestrating both workspaces:
+
+```bash
+# Development (starts both remix and studio concurrently)
+npm run dev
+
+# Production build (builds both workspaces)
+npm run build
+
+# Deploy Sanity Studio
+npm run deploy
+
+# Format entire codebase
+npm run format
+
+# Generate TypeScript types from Sanity schemas
+npm run typegen
+```
+
+#### Build Process
+
 1. **Build Verification**
 
    ```bash
-   npm run build
-   npm run build:verify  # Verifies all assets are generated
+   npm run build          # Builds both workspaces
+   npm run build:verify   # Verifies all assets are generated (remix only)
    ```
 
-2. **Production Build**
+2. **Individual Workspace Builds**
 
    ```bash
-   cd remix && npm run build
+   cd remix && npm run build    # Build frontend only
+   cd studio && npm run build   # Build studio only
    ```
 
 3. **Deployment**
    - Automatic deployment via Vercel on push to main branch
    - Custom `vercel.json` configuration for optimal performance
    - Build verification ensures asset integrity
+   - Studio deployment: `npm run deploy`
 
 ## Development Highlights
 
